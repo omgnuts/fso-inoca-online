@@ -1,0 +1,11 @@
+The spell "Portal" allows players to walk through into another world. To edit where the portal will warp players, you'll need to view the /DAT/SETTINGS/PORTAL.TXT file
+
+The current file looks like this:
+
+x1000y992:5:5|x1000y992:5:7|x1000y992:1:1|
+
+You must seperate areas with a | (straight line, above the ENTER/RETURN key). Use a COLON to seperate the parameters. You can have up to 30 different warp spots, all of which are generated randomly when a player crosses a portal.
+
+first parameter = map
+second parameter = x location
+third parameter = y location

@@ -1,0 +1,37 @@
+#:Knife:small:normal:0:1d1%2:0d1%0:0
+#:Dagger:small:normal:0:1d2%2:0d1%0:0
+#:Short Sword:small:normal:0:1d5%4:0d1%0:0
+#:Axe:axe:normal:0:1d2%4:0d1%0:0
+#:Gold Axe:axe:normal:1:1d6%6:0d1%0:0
+#:War Hammer:hammer:normal:0:1d5%9:0d1%0:0
+#:Thor's Hammer:hammer:electric:1:1d6%12:0d1%0:0
+#:Long Sword:sword:normal:0:1d6%6:0d1%0:0
+#:Gold Sword:sword:normal:1:1d9%7:0d1%0:0
+#:Katana:scimitar:ninja:0:1d6%3:0d1%0:0
+#:Steel Scimitar:scimitar:normal:0:1d4%6:0d1%0:0
+#:Bo:sword:ninja:0:1d8%5:0d1%0:0
+#:Fire Sword:sword:fire:1:1d4%5:0d1%0:0
+#:Sword of Hope:sword:holy:1:1d5%8:0d1%0:0
+#:Broad Sword:sword:normal:0:1d6%8:0d1%0:0
+#:Knight's Sword:sword:holy:1:1d8%6:0d1%0:0
+#:Star Sword:sword:holy:1:1d7%11:0d1%0:0
+#:Holy Grail:sword:holy:1:2d7%5:0d1%0:0
+#:Rune Sword:sword:earth:1:1d4%10:0d1%0:0
+#:Wooden Staff:staff:normal:0:1d3%2:0d1%0:0
+#:Steel Staff:staff:normal:0:1d4%3:0d1%0:0
+#:Gold Staff:staff:normal:1:1d4%4:0d1%0:0
+#:Lord's Staff:staff:holy:1:1d6%6:0d1%0:0
+#:Fire Staff:staff:fire:1:1d4%3:0d1%0:0
+#:Dark Sword:sword:unholy:1:1d3%5:0d1%0:0
+#:Dark Scimitar:scimitar:unholy:1:1d9%4:0d1%0:0
+#:Unholy Lance:spear:unholy:1:1d5%5:0d1%0:0
+#:Mining Hammer:hammer:normal:0:1d3%2:0d1%0:0
+#:Fishing Pole:club:normal:0:1d3%0:0d1%0:0
+#:Blacksmith Hammer:hammer:normal:0:1d3%0:0d1%0:0
+#:Ice Sword:sword:ice:1:1d12%5:0d1%0:0
+#:Pharaoh Sword:sword:holy:1:1d13%13:0d1%0:0
+#:Wooden Bow:bow:normal:0:0d1%0:0d1%1:0
+#:Steel Bow:bow:normal:0:0d1%0:1d3%1:0
+#:Wooden Crossbow:crossbow:normal:0:0d1%0:0d1%1:0
+#:Silver Crossbow:crossbow:normal:0:0d1%0:0d1%3:0
+#:Solarix's Channel:bow:normal:0:0d1%0:2d3%3:0

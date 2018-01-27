@@ -1,0 +1,2 @@
+INV|280 Gold:2
+INV|Argon's Ring:1000

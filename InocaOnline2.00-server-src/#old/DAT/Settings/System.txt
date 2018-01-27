@@ -1,0 +1,8 @@
+Speed Hack Protection:OFF
+Char Edit Protection:OFF
+Admin Attack Protection:OFF
+Experience Req (suggested is 250):100
+Jail Sentence Time (1800 = 1 minute):8000
+Chars Drop Items On Death:OFF
+Monsters Give Auto-Gold:OFF
+Death Map:x1000y992:5:5

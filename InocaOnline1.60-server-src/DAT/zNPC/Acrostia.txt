@@ -1,0 +1,1 @@
+BIO|Name: AcrostiaBIO|Class: Exiled PeasantPRO|Ah, welcome exile.  I see the Gods have punished you for one reason or another... Many have tried to leave this place and have died in the process - can you do any better?SEL|Orc Meat:10:99999805SEL|Wind Cabinet:1:34934882FLG|StillGLD|1410067349

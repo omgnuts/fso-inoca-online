@@ -1,0 +1,12 @@
+There are several different types of chest available to admins to add re-spawning quest items to. Type these commands in-game to drop one of the chests...
+
+/drop water chest
+/drop gold chest
+/drop dark chest
+/drop wind chest
+/drop emerald chest
+/drop steel chest
+
+then open up your /DAT/QUESTCHEST folder and there should be text files for each chest, if there's NOT, then add the file. for example, create the text file: dark chest.txt for a dark chest.
+
+Any item you put in this text file will randomly spawn over time. If you add more than 1 item it will randomly add one of those items. 

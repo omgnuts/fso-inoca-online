@@ -1,0 +1,3 @@
+INV|252 Gold:2
+INV|Gauntlets:20
+INV|Mage's Ring:1000

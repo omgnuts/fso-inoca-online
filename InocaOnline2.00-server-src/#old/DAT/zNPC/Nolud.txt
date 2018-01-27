@@ -1,0 +1,5 @@
+OWN|Elylas
+BIO|Name: Nolud
+BIO|Class: Shopkeeper
+PRO|GLD|94430SEL|Logs:25:1359
+BUY|Logs:10

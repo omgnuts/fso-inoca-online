@@ -1,0 +1,3 @@
+BIO|Name: Amber
+BIO|Class: Real Estate Agent
+PRO|I manage all property deeds and keys in Asherah!SEL|Small House Deed:40000:999910SEL|Blue Cottage Deed:35000:9819851SEL|Small Farm Deed:40000:999954SEL|Small Guild Hall Deed:70000:8199906SEL|House Key:10:1215751313SEL|Guild Key:10:9999584GLD|2032734173

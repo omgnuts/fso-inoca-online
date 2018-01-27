@@ -1,0 +1,3 @@
+OWN|Agasajo
+BIO|Name: Jimi
+BIO|Class: ShopkeeperGLD|92875SEL|chunk of iron:9999:114BUY|chunk of iron:400SEL|nectar:20:150BUY|nectar:10SEL|logs:50:1464BUY|logs:15SEL|purple potion:40:0BUY|purple potion:20SEL|squid:20:3982BUY|squid:5SEL|broad sword:1400:1BUY|broad sword:700

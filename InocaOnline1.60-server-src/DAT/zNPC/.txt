@@ -1,0 +1,1 @@
+BIO|Name: AkadiusBIO|Class: ScavengerPRO|For years I've been collecting the various armor and weapons left behind from weak adventurers killed by the monsters of the forest. If you'd like some, you can have some. But, it'll cost ya!SEL|Damaged Helm:45:25SEL|Damaged Armor:60:25SEL|Damaged Shield:55:25SEL|Damaged Sword:70:25GLD|200FLG|PassiveFLG|Still

@@ -1,0 +1,188 @@
+Searching for: selinventory
+usebutton.txt(2): Global SelInventory, InvenNumSel, HP, HPMax, SP, SPMax, Instrument, KeyLockOut, Musicianship
+usebutton.txt(20): set CurItttem = SelInventory & ":" & InvenNumSel
+usebutton.txt(26): if SelInventory contains "Key" then
+usebutton.txt(32): if SelInventory = "Boat Deed" then
+usebutton.txt(36): if SelInventory = "Airship Deed" then
+usebutton.txt(47): if SelInventory = "Battleship Deed" then
+usebutton.txt(51): if SelInventory = "Small House Deed" then
+usebutton.txt(62): if SelInventory = "Small Farm Deed" then
+usebutton.txt(73): if SelInventory = "Small Guild Hall Deed" then
+usebutton.txt(84): if SelInventory = "Blue Cottage Deed" then
+usebutton.txt(95): if SelInventory = "Small Shop Deed" then
+usebutton.txt(106): if SelInventory = "Stone Guild Hall Deed" then
+usebutton.txt(117): if SelInventory = "Fortress Guild Hall Deed" then
+usebutton.txt(128): if SelInventory = "Large House Deed" then
+usebutton.txt(146): if SelInventory contains "Film" then
+usebutton.txt(154): if SelInventory = "Ocarina" then
+usebutton.txt(160): if SelInventory = "Canvas" then
+usebutton.txt(163): set LastItemUsed = SelInventory & ":" & InvenNumSel
+usebutton.txt(164): set TheDatt = SelInventory & ":" & InvenNumSel
+usebutton.txt(170): if SelInventory contains "Painting" then
+usebutton.txt(176): if SelInventory contains "Photo" then
+usebutton.txt(182): if SelInventory = "Piano" then
+usebutton.txt(188): if SelInventory contains "Map" then
+usebutton.txt(191): set TheMap = SelInventory & ".txt"
+usebutton.txt(200): if SelInventory = "Apple" then set EQType = "Yes"
+usebutton.txt(201): if SelInventory contains " Potion" then set EQType = "Yes"
+usebutton.txt(202): if SelInventory contains " photo" then set EQType = "Yes"
+usebutton.txt(203): if SelInventory = "Steel Key" then set EQType = "Yes"
+usebutton.txt(204): if SelInventory = "Wooden Key" then set EQType = "Yes"
+usebutton.txt(205): if SelInventory = "Emerald Key" then set EQType = "Yes"
+usebutton.txt(206): if SelInventory = "Fire Key" then set EQType = "Yes"
+usebutton.txt(207): if SelInventory = "Gold Key" then set EQType = "Yes"
+usebutton.txt(208): if SelInventory = "Pie" then set EQType = "Yes"
+usebutton.txt(209): if SelInventory = "Nectar" then set EQType = "Yes"
+usebutton.txt(210): if SelInventory = "Watermelon" then set EQType = "Yes"
+usebutton.txt(211): if SelInventory = "Ale" then set EQType = "Yes"
+usebutton.txt(212): if SelInventory = "Corn" then set EQType = "Yes"
+usebutton.txt(213): if SelInventory = "Fish" then set EQType = "Yes"
+usebutton.txt(214): if SelInventory = "Orc Meat" then set EQType = "Yes"
+usebutton.txt(215): if SelInventory = "Cooked Pig" then set EQType = "Yes"
+usebutton.txt(216): if SelInventory = "Cyclops Meat" then set EQType = "Yes"
+usebutton.txt(217): if SelInventory = "Yeti Meat" then set EQType = "Yes"
+usebutton.txt(218): if SelInventory = "Raw Fish" then set EQType = "Yes"
+usebutton.txt(219): if SelInventory = "Fish Sticks" then set EQType = "Yes"
+usebutton.txt(220): if SelInventory = "Orc Burger" then set EQType = "Yes"
+usebutton.txt(221): if SelInventory = "Cyclops Burger" then set EQType = "Yes"
+usebutton.txt(222): if SelInventory = "Yeti Burger" then set EQType = "Yes"
+usebutton.txt(223): if SelInventory = "Orc Pot Pie" then set EQType = "Yes"
+usebutton.txt(224): if SelInventory = "Trout" then set EQType = "Yes"
+usebutton.txt(225): if SelInventory = "Catfish" then set EQType = "Yes"
+usebutton.txt(226): if SelInventory = "Swordfish" then set EQType = "Yes"
+usebutton.txt(227): if SelInventory = "Squid" then set EQType = "Yes"
+usebutton.txt(228): if SelInventory = "Trout Fillet" then set EQType = "Yes"
+usebutton.txt(229): if SelInventory = "Catfish Sandwich" then set EQType = "Yes"
+usebutton.txt(230): if SelInventory = "Swordfish Steak" then set EQType = "Yes"
+usebutton.txt(231): if SelInventory = "Squid Platter" then set EQType = "Yes"
+usebutton.txt(232): if SelInventory contains "Seeds" then set EQType = "Yes"
+usebutton.txt(233): if SelInventory contains "Book" then set EQType = "Yes"
+usebutton.txt(234): if SelInventory contains "Film" then set EQType = "Yes"
+usebutton.txt(238): set SInv = SelInventory
+usebutton.txt(240): if SelInventory contains "#" then
+usebutton.txt(241): set SInv = item 1 of SelInventory
+usebutton.txt(253): if SelInventory = "Apple" then set HP = HP + 1 + random(3)
+usebutton.txt(254): if SelInventory = "Pie" then set HP = HP + 5 + random(5)
+usebutton.txt(255): if SelInventory = "Nectar" then set SP = SP + 4 + random(4)
+usebutton.txt(256): if SelInventory = "Fish" then set HP = HP + 5 + random(4)
+usebutton.txt(257): if SelInventory = "Corn" then set HP = HP + 4 + random(3)
+usebutton.txt(258): if SelInventory = "Watermelon" then set HP = HP + 6 + random(4)
+usebutton.txt(259): if SelInventory = "Ale" then set HP = HP + 1 + random(3)
+usebutton.txt(260): if SelInventory = "Orc Meat" then set HP = HP + 3 + random(3)
+usebutton.txt(261): if SelInventory = "Cyclops Meat" then set HP = HP + 3 + random(3)
+usebutton.txt(262): if SelInventory = "Yeti Meat" then set HP = HP + 3 + random(3)
+usebutton.txt(263): if SelInventory = "Raw Fish" then set HP = HP + 1 + random(2)
+usebutton.txt(264): if SelInventory = "Fish Sticks" then set HP = HP + 6 + random(5)
+usebutton.txt(265): if SelInventory = "Orc Burger" then set HP = HP + 9 + random(6)
+usebutton.txt(266): if SelInventory = "Cyclops Burger" then set HP = HP + 12 + random(7)
+usebutton.txt(267): if SelInventory = "Yeti Burger" then set HP = HP + 17 + random(8)
+usebutton.txt(268): if SelInventory = "Orc Pot Pie" then set HP = HP + 9 + random(5)
+usebutton.txt(269): if SelInventory = "Trout" then set HP = HP + 2 + random(3)
+usebutton.txt(270): if SelInventory = "Catfish" then set HP = HP + 3 + random(3)
+usebutton.txt(271): if SelInventory = "Swordfish" then set HP = HP + 4 + random(3)
+usebutton.txt(272): if SelInventory = "Squid" then set HP = HP + 5 + random(3)
+usebutton.txt(273): if SelInventory = "Trout Fillet" then set HP = HP + 3 + random(3)
+usebutton.txt(274): if SelInventory = "Catfish Sandwich" then set HP = HP + 4 + random(4)
+usebutton.txt(275): if SelInventory = "Swordfish Steak" then set HP = HP + 7 + random(4)
+usebutton.txt(276): if SelInventory = "Squid Platter" then set HP = HP + 8 + random(5)
+usebutton.txt(277): if SelInventory = "Blue Potion" then set HP = HP + 14 + random(8)
+usebutton.txt(278): if SelInventory = "Red Potion" then set SP = SP + 8 + random(3)
+usebutton.txt(279): if SelInventory = "Green Potion" then set HP = HP + 19 + random(5)
+usebutton.txt(280): if SelInventory = "Yellow Potion" then set SP = SP + 14 + random(6)
+usebutton.txt(281): if SelInventory = "Purple Potion" then set HP = HP + 19 + random(8)
+usebutton.txt(282): if SelInventory = "Purple Potion" then set SP = SP + 19 + random(8)
+usebutton.txt(283): if SelInventory = "White Potion" then set HP = HP + 30 + random(8)
+usebutton.txt(284): if SelInventory = "White Potion" then set SP = SP + 30 + random(8)
+usebutton.txt(285): if SelInventory = "Cooked Pig" then set HP = HP + 20 + random(8)
+usebutton.txt(289): if SelInventory = "Cooked Pig" then set Hunger = Hunger + 7200
+usebutton.txt(290): if SelInventory = "Apple" then set Hunger = Hunger + 1750
+usebutton.txt(291): if SelInventory = "Pie" then set Hunger = Hunger + 2100
+usebutton.txt(292): if SelInventory = "Nectar" then set Hunger = Hunger + 1300
+usebutton.txt(293): if SelInventory = "Fish" then set Hunger = Hunger + 2400
+usebutton.txt(294): if SelInventory = "Corn" then set Hunger = Hunger + 2500
+usebutton.txt(295): if SelInventory = "Watermelon" then set Hunger = Hunger + 8500
+usebutton.txt(296): if SelInventory = "Ale" then set Hunger = Hunger + 450
+usebutton.txt(297): if SelInventory = "Orc Meat" then set Hunger = Hunger + 1700
+usebutton.txt(298): if SelInventory = "Cyclops Meat" then set Hunger = Hunger + 1800
+usebutton.txt(299): if SelInventory = "Yeti Meat" then set Hunger = Hunger + 1900
+usebutton.txt(300): if SelInventory = "Raw Fish" then set Hunger = Hunger + 1900
+usebutton.txt(301): if SelInventory = "Fish Sticks" then set Hunger = Hunger + 2300
+usebutton.txt(302): if SelInventory = "Orc Burger" then set Hunger = Hunger + 3200
+usebutton.txt(303): if SelInventory = "Cyclops Burger" then set Hunger = Hunger + 4300
+usebutton.txt(304): if SelInventory = "Yeti Burger" then set Hunger = Hunger + 5400
+usebutton.txt(305): if SelInventory = "Orc Pot Pie" then set Hunger = Hunger + 4300
+usebutton.txt(306): if SelInventory = "Trout" then set Hunger = Hunger + 1300
+usebutton.txt(307): if SelInventory = "Catfish" then set Hunger = Hunger + 1300
+usebutton.txt(308): if SelInventory = "Swordfish" then set Hunger = Hunger + 1300
+usebutton.txt(309): if SelInventory = "Squid" then set Hunger = Hunger + 1300
+usebutton.txt(310): if SelInventory = "Trout Fillet" then set Hunger = Hunger + 2800
+usebutton.txt(311): if SelInventory = "Catfish Sandwich" then set Hunger = Hunger + 3900
+usebutton.txt(312): if SelInventory = "Swordfish Steak" then set Hunger = Hunger + 4100
+usebutton.txt(313): if SelInventory = "Squid Platter" then set Hunger = Hunger + 5400
+usebutton.txt(314): if SelInventory = "Blue Potion" then set Hunger = Hunger + 3200
+usebutton.txt(315): if SelInventory = "Red Potion" then set Hunger = Hunger + 3200
+usebutton.txt(316): if SelInventory = "Green Potion" then set Hunger = Hunger + 3500
+usebutton.txt(317): if SelInventory = "Yellow Potion" then set Hunger = Hunger + 3500
+usebutton.txt(318): if SelInventory = "Purple Potion" then set Hunger = Hunger + 3500
+usebutton.txt(319): if SelInventory = "White Potion" then set Hunger = Hunger + 3500
+usebutton.txt(328): if SelInventory = "Cooked Pig" then set TheText = "You eat the cooked pig."
+usebutton.txt(329): if SelInventory = "Apple" then set TheText = "You eat an apple."
+usebutton.txt(330): if SelInventory = "Watermelon" then set TheText = "You eat the watermelon."
+usebutton.txt(331): if SelInventory = "Pie" then set TheText = "You eat a pie."
+usebutton.txt(332): if SelInventory = "corn" then set TheText = "You eat some corn."
+usebutton.txt(333): if SelInventory = "nectar" then set TheText = "You eat the nectar."
+usebutton.txt(334): if SelInventory = "fish" then set TheText = "You eat some raw fish. *yeck*"
+usebutton.txt(335): if SelInventory = "ale" then set TheText = "You drink the ale. *burp*"
+usebutton.txt(336): if SelInventory = "Orc Meat" then set TheText = "You eat some raw orc meat. You're disgusting."
+usebutton.txt(337): if SelInventory = "Cyclops Meat" then set TheText = "You eat some raw cyclops meat. You're disgusting."
+usebutton.txt(338): if SelInventory = "Yeti Meat" then set TheText = "You eat some raw yeti meat. You're disgusting."
+usebutton.txt(339): if SelInventory = "Raw Fish" then set TheText = "You eat some raw fish. You're disgusting."
+usebutton.txt(340): if SelInventory = "Fish Sticks" then set TheText = "You eat some fish sticks."
+usebutton.txt(341): if SelInventory = "Orc Burger" then set TheText = "You eat an orc burger."
+usebutton.txt(342): if SelInventory = "Cyclops Burger" then set TheText = "You eat a cyclops burger."
+usebutton.txt(343): if SelInventory = "Yeti Burger" then set TheText = "You eat a yeti burger."
+usebutton.txt(344): if SelInventory = "Orc Pot Pie" then set TheText = "You eat an orc pot pie."
+usebutton.txt(345): if SelInventory contains " Potion" then set TheText = "You drink the " & SelInventory & "."
+usebutton.txt(346): if SelInventory = "Trout" then set TheText = "You eat the trout."
+usebutton.txt(347): if SelInventory = "Catfish" then set TheText = "You eat the catfish."
+usebutton.txt(348): if SelInventory = "Swordfish" then set TheText = "You eat the swordfish."
+usebutton.txt(349): if SelInventory = "Squid" then set TheText = "You eat the squid."
+usebutton.txt(350): if SelInventory = "Trout Fillet" then set TheText = "You eat the trout fillet."
+usebutton.txt(351): if SelInventory = "Catfish Sandwich" then set TheText = "You eat the catfish sandwich."
+usebutton.txt(352): if SelInventory = "Swordfish Steak" then set TheText = "You eat the swordfish steak."
+usebutton.txt(353): if SelInventory = "Squid Platter" then set TheText = "You eat the squid platter."
+usebutton.txt(355): if SelInventory contains "Book" then 
+usebutton.txt(357): if SelInventory contains "Firesword" then set ReqDex = 25
+usebutton.txt(358): if SelInventory contains "Meteor" then set ReqDex = 25
+usebutton.txt(359): if SelInventory contains "Fireball" then set ReqDex = 15
+usebutton.txt(360): if SelInventory contains "Hold" then set ReqDex = 15
+usebutton.txt(361): if SelInventory contains "Major Heal" then set ReqDex = 22
+usebutton.txt(362): if SelInventory contains "Argon's First" then set ReqDex = 10
+usebutton.txt(363): if SelInventory contains "Stone Skin" then set ReqDex = 23
+usebutton.txt(364): if SelInventory contains "Smoke bomb" then set ReqDex = 17
+usebutton.txt(365): if SelInventory = "Bolt Book" then set ReqDex = 24
+usebutton.txt(366): if SelInventory contains "Firebolt" then set ReqDex = 20
+usebutton.txt(367): if SelInventory contains "Splash" then set ReqDex = 18
+usebutton.txt(368): if SelInventory contains "Portal" then set ReqDex = 26
+usebutton.txt(369): if SelInventory contains "Illusionary" then set ReqDex = 10
+usebutton.txt(370): if SelInventory contains "Raise Dead" then set ReqDex = 15
+usebutton.txt(371): if SelInventory contains "Magic Shield" then set ReqDex = 21
+usebutton.txt(373): set nCastNum  = the number of member SelInventory of castlib "Inventory"
+usebutton.txt(389): if SelInventory = "Purple Potion" then
+usebutton.txt(396): if SelInventory = "Seeds" then RunRegularSeeds
+usebutton.txt(397): if SelInventory = "Magic Seeds" then RunMagicSeeds
+usebutton.txt(398): if SelInventory = "Premium Seeds" then RunPremiumSeeds
+usebutton.txt(399): if SelInventory = "Flower Seeds" then RunFlowerSeeds
+usebutton.txt(400): if SelInventory = "Rose Seeds" then RunRosesSeeds
+usebutton.txt(402): if SelInventory contains "Key" then set DontFood = 1
+usebutton.txt(403): if SelInventory contains "Seeds" then set DontFood = 1
+usebutton.txt(404): if SelInventory contains "Book" then set DontFood = 1
+usebutton.txt(405): if SelInventory contains "Film" then set DontFood = 1
+usebutton.txt(418): if SelInventory contains "Book" then
+usebutton.txt(419): set LastItemUsed = SelInventory & ":" & InvenNumSel
+usebutton.txt(420): set TheDatt = SelInventory & ":" & InvenNumSel
+usebutton.txt(427): if Selinventory = "Film" then
+usebutton.txt(435): set LastItemUsed = SelInventory & ":" & InvenNumSel
+usebutton.txt(436): set TheDatt = SelInventory & ":" & InvenNumSel
+Found 185 occurrence(s) in 1 file(s)
+

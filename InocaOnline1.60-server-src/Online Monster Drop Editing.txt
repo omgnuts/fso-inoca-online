@@ -1,0 +1,16 @@
+FSO allows you to edit what monsters drop online.
+
+Go to the NPC editor and load one of the monsters. To set what they drop add a line like this:
+
+INV|Short Sword:10
+
+this will have this monster (or NPC) drop a short sword at a random 10 when it is killed. TO ensure a monster drops 5 gold every time it's killed, add this line:
+
+INV|5 Gold:1
+
+You can have monsters and NPCs drop any amount of items you wish. Here is a good mutant worm script:
+
+INV|300 Gold:20
+INV|Steel Shield:40
+INV|500 Gold:50
+INV|Argon's Plate:100

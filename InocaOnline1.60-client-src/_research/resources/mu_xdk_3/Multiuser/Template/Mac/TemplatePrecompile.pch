@@ -1,0 +1,1 @@
+// This precompiled header file is for Shockwave Multiuser server xtras#define MAC#define _MAC#define MACVER#define _MACVER#define MACINTOSH#define _MACINTOSH#define DEBUG#define _DEBUG#define XDEBUG 1#define TARGET_PRECARBON#define MOA_DEBUG#define __new__#include	"SrvXtnConfig.h"#include 	"Assert.h"

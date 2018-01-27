@@ -1,0 +1,4 @@
+BIO|Name: Teli
+BIO|Class: Armorer
+PRO|I have the best armor in the land!SEL|Ceramic Armor:60000:999975
+BUY|Ceramic Armor:20000:1000000GLD|2264000

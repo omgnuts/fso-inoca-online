@@ -1,0 +1,5 @@
+OWN|Kingme
+BIO|Name: Velor
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

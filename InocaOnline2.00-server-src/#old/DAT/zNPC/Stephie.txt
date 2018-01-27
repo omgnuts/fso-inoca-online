@@ -1,0 +1,1 @@
+BIO|Name: StephieBIO|Class: WeaponsmithPRO|No sharper blade will you find.SEL|Dark Sword:20000:999918BUY|Dark Sword:10000SEL|Knight's Sword:15000:99918BUY|Knight's Sword:7500SEL|Fire Staff:150000:1422565507BUY|Fire Staff:75000SEL|Ice Hammer:10000:928281BUY|Ice Hammer:5000GLD|1302475692

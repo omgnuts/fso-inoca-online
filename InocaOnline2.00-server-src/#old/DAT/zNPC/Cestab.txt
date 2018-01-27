@@ -1,0 +1,5 @@
+OWN|Ractor
+BIO|Name: Cestab
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

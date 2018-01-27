@@ -1,0 +1,5 @@
+OWN|Shawtee
+BIO|Name: Dighed
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

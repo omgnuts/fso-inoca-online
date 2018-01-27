@@ -1,0 +1,1 @@
+BIO|Name: MirraBIO|Class: Old WizardFLG|PassivePRO|Why hello. I may be old, but im wise..sorry about the lack of magic..im old i tell you!SEL|Meteor Book:9800:999987SEL|Wind Wave Book:12000:999986SEL|Argon's Fist Book:12500:999989GLD|1432900

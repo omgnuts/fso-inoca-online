@@ -1,0 +1,3 @@
+BIO|Name: The Great Fire Demon
+INV|500 Gold:2
+INV|Ring of Experience:1000

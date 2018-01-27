@@ -1,0 +1,8 @@
+GUILDS
+Creating - to create a guild you will need to locate a Guild Center, stand in front of it and click on it, then create your desired guild.
+Joining - to join a guild you'll need to find a Guild Center and select the guild you wish to join (you might not be allowed in), or be invited to join by a guild member. 
+Inviting - to invite people into your guild type /invite name into the chat window. They can then choose to accept or decline the invitation.
+Exiling - to exile, disband, and abdicate to others, you'll need to revisit the guild center and make any changes there.
+Unjoining - if you decide a guild is not right for you, you can terminate your membership by visiting a Guild Center and making the appropriate changes there. 
+
+To talk to your guild type /g message. for example, to say "hi" to your guild type this: /g hi 

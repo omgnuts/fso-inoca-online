@@ -1,0 +1,10 @@
+For users to build their own houses/guild halls, you'll need to have an NPC sell one of the following deeds:
+
+small house deed
+blue cottage deed
+small guild hall deed
+etc...
+
+A user will then find a spot (3x3 clear area of grass (first tile in the editor)), then USE the deed on that spot. Their house or hall will then be built.
+
+You will also need an NPC that sells house and guild keys. Note that these keys can only by used on doors owned by that player. Dropping a house key doesn't give someone access to YOUR door, but allows them to open their own door with the key. All guild members will have access to guild doors if they own a guild key.

@@ -1,0 +1,183 @@
+# Microsoft Developer Studio Project File - Name="MarsLogger" - Package Owner=<4>
+# Microsoft Developer Studio Generated Build File, Format Version 6.00
+# ** DO NOT EDIT **
+
+# TARGTYPE "Win32 (x86) Dynamic-Link Library" 0x0102
+
+CFG=MarsLogger - Win32 Release
+!MESSAGE This is not a valid makefile. To build this project using NMAKE,
+!MESSAGE use the Export Makefile command and run
+!MESSAGE 
+!MESSAGE NMAKE /f "MarsLogger.mak".
+!MESSAGE 
+!MESSAGE You can specify a configuration when running NMAKE
+!MESSAGE by defining the macro CFG on the command line. For example:
+!MESSAGE 
+!MESSAGE NMAKE /f "MarsLogger.mak" CFG="MarsLogger - Win32 Release"
+!MESSAGE 
+!MESSAGE Possible choices for configuration are:
+!MESSAGE 
+!MESSAGE "MarsLogger - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE 
+
+# Begin Project
+# PROP AllowPerConfigDependencies 0
+# PROP Scc_ProjName "MarsLogger"
+# PROP Scc_LocalPath "."
+CPP=cl.exe
+MTL=midl.exe
+RSC=rc.exe
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "Release"
+# PROP BASE Intermediate_Dir "Release"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir "Release"
+# PROP Intermediate_Dir "Release"
+# PROP Ignore_Export_Lib 0
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "DLL_EXPORTS" /YX /FD /c
+# ADD CPP /nologo /Gz /MD /W3 /GR /GX /O2 /I "..\..\lib" /I "..\..\..\..\include\win32" /I "..\..\..\..\include" /I "..\..\MoaXDK" /I "Source" /I "Source\Win" /I "..\..\ServerXtras\Common" /I "..\..\Common" /I "..\..\Stl" /D WINVER=0x0400 /D _WINVER=0x0400 /D "WINDOWS" /D "_WINDOWS" /D "WIN32" /D "_WIN32" /D "WIN32_LEAN_AND_MEAN" /D "RELEASE" /D "_RELEASE" /D "NDEBUG" /D "_NDEBUG" /D XDEBUG=0 /D "WINDLL" /D "_WINDLL" /FR /FD /c
+# SUBTRACT CPP /YX
+# ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
+# ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
+# ADD BASE RSC /l 0x409 /d "NDEBUG"
+# ADD RSC /l 0x409 /i "Resources" /i "..\..\lib" /i "..\..\..\..\include" /i "Source\\" /i "Source\Win" /i "..\..\ServerXtras\Common" /i "..\..\Common" /d WINVER=0x0400 /d _WINVER=0x0400 /d "WINDOWS" /d "_WINDOWS" /d "WIN32" /d "_WIN32" /d "WIN32_LEAN_AND_MEAN" /d "RELEASE" /d "_RELEASE" /d "NDEBUG" /d "_NDEBUG" /d XDEBUG=0 /d "WINDLL" /d "_WINDLL"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo /o"..\Director.bsc"
+LINK32=link.exe
+# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib comdlg32.lib winmm.lib ole32.lib uuid.lib shell32.lib advapi32.lib version.lib msvcrt.lib /nologo /base:"0x6a400000" /dll /machine:I386 /nodefaultlib /out:"..\Xtras\Logger.x32"
+# SUBTRACT LINK32 /pdb:none
+# Begin Target
+
+# Name "MarsLogger - Win32 Release"
+# Begin Group "Headers"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\Source\Assert.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\BExcpton.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\CommonVersion.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Win\CPrecompile.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Logger.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\LoggerConfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\MovieLogData.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\operatornew.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvExtension.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnConfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnDefs.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnGUIDs.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnPrecompile.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnReg.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnUtils.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\xversion.h
+# End Source File
+# End Group
+# Begin Group "Resources"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\Resources\Logger.rc
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=.\Source\BExcpton.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\BString.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Logger.cpp
+# End Source File
+# Begin Source File
+
+SOURCE="..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\VC98\Include\MINMAX.H"
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\MovieLogData.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\operatornew.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvExtension.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnGUIDs.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnReg.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnUtils.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SrvXtnXtra.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\xtra.def
+# End Source File
+# End Target
+# End Project

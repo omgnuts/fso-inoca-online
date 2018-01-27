@@ -1,0 +1,1 @@
+SEL|Fireball:100:50TRN|Fire Mage:10000BIO|Name:The Fire GodBIO|Class:Fire ElementalPRO|Standing close to this being makes you feel warm, but cautious.RND|I fear that we have no counter for water.RND|We shall scortch the earth soon.SEL|Apple:50:3BUY|Cloud:50GLD|5351

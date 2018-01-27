@@ -1,0 +1,5 @@
+OWN|Gibblets
+BIO|Name: Kumub
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

@@ -1,0 +1,4 @@
+USING ITEMS
+In order to use an item such as a tool or weapon, you will need to equip it. Do this by clicking on the item in your inventory window and choosing (clicking) EQUIP. If you already have an item equipped (for instance, a dagger equipped in your hand when you are trying to place a hammer there), you will need to unequip the present item before equipping the new one. You can unequip an item by clicking on the X beside it. Weapons and tools are all wielded in the same manner, by using the tab key.
+
+To use an item such as food (to eat or cook) or a deed (to build), you will need to click on it in the inventory window and choose the appropriate action. Items like Potion Bottles must also be used in this manner. 

@@ -1,0 +1,10 @@
+RUNNING YOUR OWN SHOP
+You can run your own shop 24/7 in FSO, even when you're not logged on. To do so you'll first need to get a shop deed and build your shop (the same as you would a house or guild hall). Your new shop comes equipped with an employee that will do all of the work for you.
+
+To communicate with your employee you'll need to start all of your commands with his name: for example, let's say our employee is Picha (check the name by clicking on him). If we wanted to find out what his inventory was like we could type picha inventory.
+
+To add gold to your NPC so he can buy items from players, simply GIVE him gold by facing him and clicking the gold drop button next to your gold amount. or to take some gold from the register type this: picha register 100
+
+To add a new item for your NPC to sell, use this line: picha set long sword=100,30. The first number is the SELL price, the second number is the buy back price. Keep in mind to NOT use a space after the item name. (itemname=sellprice,buyprice)
+
+To remove an item from your employee's list, type picha remove long sword. NOTE: you'll have to clear out all of the items the employee is holding before you can remove it from the list. To add and remove items from your employee simply buy or sell them. If the prices are too expensive just set the price lower by typing picha set long sword=1,1. Then raise it again when you're done buying back your long swords.

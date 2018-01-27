@@ -1,0 +1,20 @@
+BASIC COMMANDS
+There are a series of commands you can type into the chat window to accomplish certain tasks. For example, to retrieve a list of who is online, you could simply type who.
+
+(user=playername)
+
+password=newpw - (newpw = whatever password you want to use)
+/logchat blah.txt - logs chat window to file. You can substitute blah.txt for whatever filename you want. The file will save into the prefs folder of you fso client. If you wish to keep past chatlogs then name them uniquely or they will be overwritten.
+/balance - will display how much money you have in the bank. You must be inside a bank to use this command.
+/deposit amount - will allow you to deposit money into a bank. You must be inside a bank to use this command.
+/withdraw amount - will allow you to withdraw money from a bank. You must be inside a bank to use this command.
+/help - displays a list of help topics unless the server admin has disabled that function.
+/help topic - displays a help file for the topic you request. The topic you request must exist in the server's "help topics" list.
+who - displays a list of who is online.
+/ignore user - allows you to ignore a user.
+/unignore user - allows you to once again be annoyed by the above mentioned user.
+/invite user - command used to invite players into your guild. 
+NPCname inventory - displays your NPC's inventory. 
+NPCname register # - command used to take gold from your NPC.
+NPCname set itemname=sellprice,buyprice - adds items to your NPC. Do not use a space between the selling price and buying price.
+NPCname remove itemname - removes an item from your NPC's Stock. 

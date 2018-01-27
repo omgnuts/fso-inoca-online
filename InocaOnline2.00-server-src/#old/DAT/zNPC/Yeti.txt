@@ -1,0 +1,2 @@
+INV|289 Gold:2
+INV|Yeti Meat:10

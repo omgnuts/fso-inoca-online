@@ -1,0 +1,5 @@
+BIO|Name: Pindel
+BIO|Class: Bowyer
+PRO|Using a bow is very powerful and useful, you need to equip it and equip arrows for it, then each time you fire an arrow it takes a crystak of the same color. I have blue arrows and blue crystals for you.GLD|100407529SEL|Wooden Bow:50:1006992
+BUY|Wooden Bow:25SEL|Blue Arrows:30:999728
+BUY|Blue Arrows:15SEL|Blue Crystals:2:99960418

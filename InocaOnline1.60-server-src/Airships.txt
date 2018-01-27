@@ -1,0 +1,1 @@
+Airships work the same way as boats (Airship Deed) except you must be careful when building your game world. Airships can move over any tiles EXCEPT mountain tiles. Make sure you close off your world with mountain tiles and that all maps are seamless.

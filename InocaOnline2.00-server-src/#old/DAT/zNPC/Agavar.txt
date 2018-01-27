@@ -1,0 +1,1 @@
+BIO|Name: AgavarBIO|Class: WeaponsmithPRO|You'll not find a higher quality weaponSEL|Broad Sword:1500:101101BUY|Broad Sword:750SEL|War Hammer:2000:102454BUY|War Hammer:1000SEL|Dark Scimitar:2000:99845BUY|Dark Scimitar:1000GLD|5767992

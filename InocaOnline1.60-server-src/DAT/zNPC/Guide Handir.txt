@@ -1,0 +1,3 @@
+BIO|Name: Handir
+BIO|Class: Guide
+PRO|Hello intrepid adventurer, and Welcome to the world of Asherah. I'm sure you have many questions about this place. I am an NPC and you can buy and sell items to people like me, and find out important information.

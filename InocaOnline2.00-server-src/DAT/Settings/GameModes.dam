@@ -1,0 +1,8 @@
+0:DROP_ON_DEATH
+1:DEATH_PENALTY
+OFF:Speed Hack Protection
+OFF:Char Edit Protection
+OFF:Admin Attack Protection
+100:Experience Req (suggested is 250)
+8000:Jail Sentence Time (1800 = 1 minute)
+OFF:Monsters Give Auto-Gold

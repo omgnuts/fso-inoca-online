@@ -1,0 +1,25 @@
+MENU OPTIONS (Preferences)
+1. Load Character 
+2. New Character 
+3. Select Server 
+4. Game Setup 
+5. Exit Game 
+
+Selecting a server
+The first thing you should do upon launching the game client, is to decide which server you would like to play on. This is important as characters do not cross over to other servers, so either you have to stick with one character on one server, or you would have to play different characters on a variety of servers. The choice is yours, but establishing characters on multiple servers can prove time consuming, since you have to build each of them up individually. Please note that the servers are each run independently, and therefore bouncing from one server to another and asking to get items you attained on a previous server will do you little good. Yet another reason your choice of server is an important one.
+
+I recommend that before you decide to stick with one server, you visit a few to see which you prefer. You should do this in the beginning before you work on building your character up, when switching servers would be easiest since you wouldn't have invested too much time in a character only to give it up.
+
+The client comes with one default server and 2 other "authorized servers". Certainly since those have been chosen to be included by the game creator, we would recommend those to you. However, there are many excellent user run servers that you could also play. Deciding on which one is best for you is something you'll have to do on your own. You can find a list of "user run" servers on the FSO Support Forums, or if you prefer you can stick with one of the 3 endorsed by FSO's creator. 
+
+Setting up the Game
+You must be signed online to use the "create character" and "load character" options. Only use the "create character" option after you have set your server preferences, since you'll be creating a character on the server that your game client specifies. 
+
+Select Server Screen
+The 3 authorized FSO servers are listed here. Unless you alter your server settings, you will play the default server. If you choose to play one of the other 2 authorized servers, you just need to point your mouse and click on the info of the server you wish to play. That will adjust your server settings for you. If you do not wish to alter any settings, you can return to the title screen using the menu bar in the upper left hand corner of the browser window. >>file >>return to title screen. If you choose not to play any of the authorized servers, you can specify another server (if you know the IP) or choose from a list of user run servers in the "game setup" menu. 
+
+Game Setup Screen
+On the game setup screen you can manually add a server IP or choose from a list of user run servers, should you opt not to play on one of the 3 authorized servers. If you have already selected a server from the select server screen, then you do not need to alter the server settings here. You can also elect to disable options such as sound, complex fx, and rendering characters. 
+
+Creating a Character
+You must assign yourself certain skill levels. Strength, Stamina, Intelligence, Wisdom and Dexterity on the character creation screen. Choose wisely since you will not be able to alter them later. You can also specify whether you want a female or male character, select the class you wish to belong to... Fighter, Mage, Ranger, or change your character sprite by using the arrow keys. You must create a different character for each server you play on. 

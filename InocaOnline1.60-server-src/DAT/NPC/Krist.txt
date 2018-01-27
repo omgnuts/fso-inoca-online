@@ -1,0 +1,1 @@
+BIO|Name: KristBIO|Class: AlchemistPRO|Buy some of my sands and start mixing your own potions!SEL|Potion Bottle:3:759739SEL|Blue Sand:1500:996608SEL|Blue Potion:10:56704SEL|Red Potion:12BUY|Blue Potion:5BUY|Red Potion:6GLD|2350130

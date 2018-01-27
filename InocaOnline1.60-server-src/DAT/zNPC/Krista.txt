@@ -1,0 +1,18 @@
+BIO|Name: Miqa
+BIO|Class: Armorer
+PRO|Come, get suited up in only the finest of my armor.
+SEL|Leather Armor:150:10000000000
+BUY|Leather Armor:75
+SEL|Leather Cap:60:100000
+BUY|Leather Cap:30
+SEL|Leather Boots:30:10000
+BUY|Leather Boots:15
+SEL|Small Shield:200:25
+SEL|Chain Armor:400:25
+SEL|Chain Helm:300:25
+SEL|Chain Boots
+SEL|Steel Shield
+BUY|Damaged Armor:25
+BUY|Damaged Helm:15
+BUY|Damaged Shield:20
+GLD|200

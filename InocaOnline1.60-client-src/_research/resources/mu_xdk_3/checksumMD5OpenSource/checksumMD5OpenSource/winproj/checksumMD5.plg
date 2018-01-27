@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Script - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\calu\LOCALS~1\Temp\RSPBC.tmp" with contents
+[
+/nologo /Gz /MT /W3 /GX /O2 /I "..\..\Include" /I "..\source" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"C:\Program Files\Macromedia\Director MX\Xtras\XDK_Original_Unmodified\checksumMD5OpenSource\source\caluMD5_utilities.cpp"
+"C:\Program Files\Macromedia\Director MX\Xtras\XDK_Original_Unmodified\checksumMD5OpenSource\source\caluMD5ClassScript.cpp"
+"C:\Program Files\Macromedia\Director MX\Xtras\XDK_Original_Unmodified\checksumMD5OpenSource\source\caluMD5regster.cpp"
+"C:\Program Files\Macromedia\Director MX\Xtras\XDK_Original_Unmodified\checksumMD5OpenSource\source\MD5Checksum.cpp"
+"C:\Program Files\Macromedia\Director MX\Xtras\XDK_Original_Unmodified\checksumMD5OpenSource\source\StdAfx.cpp"
+"C:\Program Files\Macromedia\Director MX\Xtras\XDK_Original_Unmodified\checksumMD5OpenSource\source\Xtra.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\calu\LOCALS~1\Temp\RSPBC.tmp" 
+Creating temporary file "C:\DOCUME~1\calu\LOCALS~1\Temp\RSPBD.tmp" with contents
+[
+winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /pdb:none /machine:I386 /def:".\checksumMD5.def" /force /out:".\Debug\MD5Hashing.x32" /implib:".\Release/MD5Hashing.lib" 
+".\Release\caluMD5_utilities.obj"
+".\Release\caluMD5ClassScript.obj"
+".\Release\caluMD5regster.obj"
+".\Release\MD5Checksum.obj"
+".\Release\StdAfx.obj"
+".\Release\Xtra.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\calu\LOCALS~1\Temp\RSPBD.tmp"
+<h3>Output Window</h3>
+Compiling...
+caluMD5_utilities.cpp
+caluMD5ClassScript.cpp
+caluMD5regster.cpp
+MD5Checksum.cpp
+StdAfx.cpp
+Xtra.cpp
+Generating Code...
+Linking...
+   Creating library .\Release/MD5Hashing.lib and object .\Release/MD5Hashing.exp
+LINK : warning LNK4089: all references to "ADVAPI32.dll" discarded by /OPT:REF
+LINK : warning LNK4089: all references to "SHELL32.dll" discarded by /OPT:REF
+
+
+
+<h3>Results</h3>
+MD5Hashing.x32 - 0 error(s), 2 warning(s)
+</pre>
+</body>
+</html>

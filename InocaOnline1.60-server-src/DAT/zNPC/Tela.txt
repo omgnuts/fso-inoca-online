@@ -1,0 +1,1 @@
+BIO|Name: TelaBIO|Class: BowyerPRO|I can hook you up with a bow, or a crossbow, I got what you need.SEL|Wooden Bow:20:1802SEL|Wooden Crossbow:100:1410064986SEL|Blue Arrows:20:1215749937BUY|Blue Arrows:5SEL|Red Arrows:50:999257BUY|Red Arrows:10BUY|Wooden Bow:10:9999999BUY|Wooden Crossbow:25:99999999GLD|221270

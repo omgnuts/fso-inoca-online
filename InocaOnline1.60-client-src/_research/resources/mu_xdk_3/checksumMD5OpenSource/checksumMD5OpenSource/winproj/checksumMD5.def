@@ -1,0 +1,8 @@
+LIBRARY   MD5HASHING
+EXPORTS
+			DllGetClassObject	PRIVATE
+			DllGetInterface	PRIVATE
+			DllGetClassForm	PRIVATE
+			DllCanUnloadNow	PRIVATE
+			DllGetClassInfo	PRIVATE
+

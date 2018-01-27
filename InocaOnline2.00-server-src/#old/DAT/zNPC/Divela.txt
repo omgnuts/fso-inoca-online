@@ -1,0 +1,8 @@
+BIO|Name: Divela
+BIO|Class: Armorer
+PRO|Only the highest quality armor in these parts.SEL|Plate Armor:5000:99710
+BUY|Plate Armor:2500SEL|Plate Helm:2500:99663
+BUY|Plate Helm:1250SEL|Plate Boots:2000:99695
+BUY|Plate Boots:1000SEL|Gauntlets:1000:99792
+BUY|Gauntlets:500SEL|Steel Shield:800:99739
+BUY|Steel Shield:400GLD|4856199

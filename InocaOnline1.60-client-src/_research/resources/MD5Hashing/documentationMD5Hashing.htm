@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>calu MD5 Hashing Xtra</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.style4 {font-size: x-small}
+.style5 {font-family: "Courier New", Courier, mono}
+.style6 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<p class="styleContent"><span lang=EN-US><font size="+1">MD5 Hashing Xtra v1.1</font><strong><br>
+Copyright &copy; 2003-2004 by <span class=SpellE>Chieh</span> <span class=GramE>An</span> Lu</strong></span> </p>
+<p class=MsoNormal><span lang=EN-US><o:p></o:p></span><span lang=EN-US><span lang=EN-US>This document was last revised on May 17, 2004. For the most up-to-date documentation, please use the online docs at <span lang=EN-US><a
+href="http://xtras.calu.us">http://xtras.calu.us</a></span></span><a
+href="http://xtras.calu.us"></a></span></p>
+<hr>
+<h1>Table of Content</h1>
+<p><a href="#EULA">Usage Terms </a><br>
+    <a href="#SysReq">System Requirements </a><br>
+    <a href="#overview">Overview </a><br>
+    <a href="#_directorSecurity">Security In Macromedia Director </a><br>
+    <a href="#howToUse">How to use MD5 Hashing Xtra </a></p>
+<blockquote>
+  <p> <a href="#register_f">caluMD5_register( )</a><br>
+    <a href="#new_f">new( ) </a><br>
+	<a href="#getFileMD5_f">getFileMD5( ) </a><br>
+
+    <a href="#getStringMD5_f">getStringMD5( ) </a><br>
+    <a href="#getLastError_f">getLastError( ) </a></p>
+</blockquote>
+<p> <a href="#insideDemoFile">Inside the Director Demo File </a><br>
+    <a href="#Support">Support Information </a><br>
+    <a href="#VersionHistory">Version History </a></p>
+<hr>
+<h1><a name="EULA" id="EULA">Usage Terms: </a></h1>
+<p><span lang=EN-US>This End-User License Agreement(&quot;EULA&quot;) is a legal agreement between you and Calu software, please read it carefully.</span></p>
+<p>YOU AGREE TO BE BOUND BY THE TERMS OF THIS EULA BY INSTALLING THIS PRODUCT. IF YOU DO NOT AGREE, DO NOT INSTALL THIS PRODUCT. </p>
+<p><span class="MsoNormal"><span lang=EN-US>Calu software <span class=SpellE></span> makes no representations concerning either the merchantability of this software or the suitability of this software for any particular purpose. It is provided &quot;as is&quot; without express or implied warranty of any kind. In no event is Calu software liable for any damage, including profit loss, and/or any other incidental or consequential damage. There may be errors in this software or its documentation and examples. You agree to bear all risks by agreeing to use this <span class=SpellE>xtra</span>.</span></span></p>
+<p>You may not sell this xtra for profit and this document must accompany all source file distributions of the MD5 Hashing xtra . </p>
+<hr>
+<h1><a name="SysReq" id="SysReq">System Requirement </a></h1>
+<p>Macromedia Director 7, 8, 8.5 and MX, MX2004 <br>
+  Microsoft Windows 98, ME, NT, 2000, XP or Macintosh 9.2 or Macintosh OSX <br>
+  <br>
+This has also been reported to work on Macromedia Authorware 6.</p>
+<hr>
+<h1><a name="overview" id="overview">Overview </a></h1>
+<p>(a) MD5 was developed by <a href="http://theory.lcs.mit.edu/~rivest/homepage.html">Professor Ronald L. Rivest </a>of MIT. What it does, to quote the executive summary of <a href="ftp://ftp.umbc.edu/pub/unix/rfc/rfc1321.txt.gz">rfc1321 </a>, is: </p>
+<p>[The MD5 algorithm] takes as input a message of arbitrary length and produces as output a 128-bit "fingerprint" or "message digest" of the input. It is conjectured that it is computationally infeasible to produce two messages having the same message digest, or to produce any message having a given pre specified target message digest. The MD5 algorithm is intended for digital signature applications, where a large file must be "compressed" in a secure manner before being encrypted with a private (secret) key under a public-key cryptosystem such as RSA </p>
+<p>In layman Director user terms, it means that MD5 is a quick tool at creating digital fingerprints. Using MD5 for security is much more secure than any encryption algorithm that are currently available for Director users. Using MD5 for file authenticity is much more reliable than CRC. Since MD5 creates a one way hash, it is not suitable for situations where decryption to the source is necessary. One way hashing is often used for comparing a message against a key to verify that the message have not been tampered with. </p>
+<p>For more information on MD5, visit RSA at <a href="http://www.rsasecurity.com/rsalabs/faq/3-6-6.html">http://www.rsasecurity.com/rsalabs/faq/3-6-6.html </a>. </p>
+<p>(b) Some possible uses of this xtra </p>
+<ol>
+  <ol>
+    <li>Verifying the completeness of a downloaded file
+    <li>Create "signatures" to passwords for  security
+    <li>Check for file differences
+    <li>Check for file tampering
+    <li>Check for the authenticity of a message</li>
+  </ol>
+</ol>
+<h1>
+  <hr>
+  <a name="_directorSecurity">Security in Macromedia Director </a></h1>
+<p>As Director developers, we know that ".dir" files contains no encryption thus it is never an option to distribute ".dir" files to clients. For distribution, files need to be converted into protected ".dxr" files, or ".exe" files. Anyone who has tried creating several executables know that this is a repetitive and painful process. Using stub projectors to launch "dxr" file is much more convenient. The dangers of using dxr is that all your assets are vulnerable to eavesdroppers. One can easily create a MIAW to copy bitmaps, vectors, text, field..etc, from the protect movie, but the source code (scripts) are never revealed. This is adequate security for most cases because hackers will have little use of the movie assets without the source code. Anyone who believes that &quot;dxr&quot; files are secure should read this carefully. </p>
+<p> Try opening your "dxr" file in a hex editor and you will find lots of binary garbage, however if you look carefully, there are noticeable amounts of ascii text remaining. For example, your script handlers names are not  encrypted. Even worse, look carefully and you will see the string constants in your source code are exposed too. String constants are anything in your script that is in between the 2 quotes marks. For example, consider the following lingo code<br>
+  <br>
+  <span class="style5">password = "<span class="style6">hello world</span>"</span><br>
+<br>
+the string constant, "hello world" , is stored as it. This means that if you were to create a director movie with password validation, your password is exposed to the eavesdropper. To help avoid issues such as storing string constants in your Director movie, simply use the the MD5 Hashing Xtra. Read &quot;<a href="#insideDemoFile">Inside the demo file</a>&quot; to see how MD5 Hashing Xtra can help you.</p>
+<hr>
+<h1><a name="howToUse" id="howToUse">How to use MD5 Hashing Xtra </a></h1>
+<p>Place a copy of MD5 Hashing Xtra into Macromedia Director's Xtra folder. For further instructions, check tech note ID 14888 at <a href="http://www.macromedia.com/">http://www.macromedia.com/ </a>. </p>
+<p><strong>Function and methods in the xtra:</strong><strong></strong></p>
+<p>To check for the functions and methods in the MD5 Hashing Xtra , type the following into Director's message window: </p>
+<p class="style5">put xtra("caluMD5").interface() </p>
+<p>The possible function/Methods are: </p>
+<p>- <a href="#new_f">new() </a><br>
+  - <a href="#getFileMD5_f">getFileMD5(string filePath ) </a><br>
+  - <a href="#getStringMD5_f">getStringMD5(string encodeText ) </a><br>
+  - <a href="#getLastError_f">getLastError() </a><br>
+  - <a href="#register_f">caluMD5_register(string user, string code) </a></p>
+<strong></strong>
+<hr>
+<h1><a name="register_f" id="register_f">caluMD5_ register( )</a> </h1>
+<p><strong>Usage:</strong></p>
+<blockquote>
+  <p>caluMD5_ register( user, registerCode ) </p>
+</blockquote>
+<p><strong>Parameters: </strong></p>
+<blockquote>
+  <p>user : (string) "I" </p>
+  <p>registerCode : (string) "agree with the usage terms" </p>
+</blockquote>
+<p><strong>Examples: </strong></p>
+<blockquote>
+  <p>caluMD5_ register( "I","agree with the usage terms") </p>
+</blockquote>
+<p><strong>Returns: </strong></p>
+<blockquote>
+  <p>boolean <br>
+    (1) Registration successful <br>
+    (2) Registration failed </p>
+</blockquote>
+<p><strong>Notes: </strong></p>
+<blockquote>
+  <p>(1) While I'm giving away this MD5 Hashing Xtra for free, I do ask that you read and agree with the usage terms set forth in this document. In order to use this Xtra , you MUST agree with the usage terms. Copy the code in this example into your Director script prior to calling any other functions in MD5 hashing Xtra . </p>
+  <p> (2) Note that his function is a global Director handler, which means that it doesn't need to be instantiated prior to usage. This is the only function in this xtra that is in global scope. </p>
+</blockquote>
+<hr>
+<h1><a name="new_f" id="new_f">new( )</a> </h1>
+<blockquote>
+  <p>Creates an instance of the MD5 Hashing Xtra </p>
+</blockquote>
+<p><strong>Usage: </strong></p>
+<blockquote>
+  <p>new ( object me ) </p>
+</blockquote>
+<p><strong>Parameters: </strong></p>
+<blockquote>
+  <p>None </p>
+</blockquote>
+<p><strong>Examples: </strong></p>
+<blockquote>
+  <p class="style5">xtra_md5 = xtra(&quot;caluMD5").new() </p>
+</blockquote>
+<p><strong>Returns: </strong></p>
+<blockquote>
+  <p>A reference to an instance of the MD5 Hashing xtra . </p>
+</blockquote>
+<hr>
+<h1><a name="getFileMD5_f" id="getFileMD5_f">getFileMD5( )</a> </h1>
+<blockquote>
+  <p>Derives the MD5 hash value from the contents of a file.</p>
+</blockquote>
+<p><strong>Usage: </strong></p>
+<blockquote>
+  <p>getFileMD5 ( object me, string filePath )</p>
+</blockquote>
+<p><strong>Parameters: </strong></p>
+<blockquote>
+  <p>filePath : (string), the absolute path to a file </p>
+</blockquote>
+<p><strong>Examples: </strong></p>
+<blockquote>
+  <p><strong> Windows: <br>
+    </strong><span class="style5">xtra_md5 = xtra(&quot;caluMD5").new() </span><strong>    <br>
+    </strong><span class="style5">md5Value = xtra_md5.filePath(&quot;C:\Program Files\Macromedia\Director 8.5\Readme.htm") </span></p>
+  <p><strong>Macintosh:<br>
+      </strong><span class="style5">xtra_md5 = xtra(&quot;caluMD5").new() <br>
+  md5Value = xtra_md5.filePath(&quot;Macintosh HD:Applications:Macromedia Director MX:ReadMe.htm&quot;)</span></p>
+</blockquote>
+<p><strong>Returns: </strong></p>
+<blockquote>
+  <p>(1) returns the MD5 hash value if the encoding was successful <br>
+    (2) returns an empty string if there was a error. Use getLastError ( ) for more information.    </p>
+</blockquote>
+<hr>
+<strong> </strong>
+<h1><a name="getStringMD5_f" id="getStringMD5_f">getStringMD5( )</a> </h1>
+<blockquote>
+  <p>Derives the MD5 hash value from a string. </p>
+</blockquote>
+<p><strong>Usage: </strong></p>
+<blockquote>
+  <p>getStringMD5 ( object me, string encodingText ) </p>
+</blockquote>
+<p><strong>Parameters: </strong></p>
+<blockquote>
+  <p>encodingText : (string), the text that you wish to hash into a MD5 value. </p>
+</blockquote>
+<p><strong>Examples: </strong></p>
+<blockquote>
+  <p class="style5">xtra_md5 = xtra(&quot;caluMD5").new() <br>
+  passwordHashed = xtra_md5.getStringMD5("hello world") </p>
+</blockquote>
+<p><strong>Returns </strong><strong>: </strong></p>
+<blockquote>
+  <p>(String) - MD5 hash value. </p>
+</blockquote>
+<hr>
+<h1><a name="getLastError_f" id="getLastError_f">getLastError( )</a> </h1>
+<blockquote>
+  <p>Gets the error number from the previous operation </p>
+</blockquote>
+<p><strong>Usage: </strong></p>
+<blockquote>
+  <p>getLastError ( object me ) </p>
+</blockquote>
+<p><strong>Parameters: </strong></p>
+<blockquote>
+  <p>None </p>
+</blockquote>
+<p><strong>Examples: </strong></p>
+<blockquote>
+  <p><span class="style5">xtra_md5 = xtra(&quot;caluMD5").new() <br>
+passwordHashed = xtra_md5.getStringMD5("hello world")<br>
+nError = 
+  </span><span class="style5">xtra_md5</span>.getLastError( )
+  </p>
+</blockquote>
+<p><strong>Returns </strong><strong>: </strong></p>
+<blockquote>
+  <p>(Integer) - an error code </p>
+</blockquote>
+<p><strong>Notes: </strong></p>
+<blockquote>
+  <p><strong>Error code : </strong> -5 <br>
+      <strong>Meaning: </strong>Xtra has not been registered. <br>
+      <strong>Resolutions : </strong> read <a href="#register_f">caluMD5_register </a></p>
+  <p><strong>Error code: </strong> -4 <br>
+      <strong>Meaning: </strong> Error in file hashing. Probably because file is in use <br>
+      <strong>Resolution: </strong> Try using another utility like <a href="http://kblab.net/xtras/">fileXtra </a>to make a copy of the file to another location and try hashing again. </p>
+  <p><strong>Error code: </strong> -2 <br>
+      <strong>Meaning: </strong> String is not a valid path to a file. <br>
+      <strong>Resolution: </strong> check that your path is valid. </p>
+  <p><strong>Error code </strong>: -1 <br>
+      <strong>Meaning: </strong> File path parameter string is over the Windows legal limit of 259 characters <br>
+      <strong>Resolution </strong>: check that your path is valid. </p>
+</blockquote>
+<hr>
+<h1><a name="insideDemoFile">Inside the Director Demo File </a></h1>
+<p>A  director demo movie is provided to illustrate the use of the MD5 hashing xtra. Some of the examples in the movie makes frequent use of fileIO xtra and <a href="http://kblab.net/xtras/">fileXtra 4.</a> All xtras used in the demo can be downloaded and distributed for free.</p>
+<p><strong>The 3 examples in the movie demonstrate some possible uses of this xtra. </strong></p>
+<p>Examples 1 and 2 demonstrates the concept of file authentication. File authentication is frequently used to detect file tampering or file corruption. When you need to store files externally such as game's high scores or current game progress, it is recommended to also store the MD5 value. You can later detect if the end user physically tampered with your file. When downloading files, it is also important to verify that the file was not damaged during the download process. Do not always believe that the TCP/IP protocol will verify this accurately every time. TCP/IP works most of the time, but errors can still go undetected in the TCP/IP checksum process. </p>
+<p>Example 3 demonstrate a password checker that makes good use of the this one way hash. As noted in this document, dxr files don't encrypt string constants. Password constants are vulnerable to eavesdropping. By using a one way hash, we can reveal the public key ( the MD5 hashed value ) and still protect the private key ( your password string ). When a user types a password into the input field, we hash the private key using the MD5 algorithm and test if the hashed password equals the public key. Even if the user tries to use a hex editor to read the stored password string constant, he/she cannot reverse engineer your private key from the MD5 Hash value.</p>
+<p>To further increase the security of you application, it is recommended that you add a &quot;salt&quot; value to the hash algorithm. Adding salt means adding additional random string with your private key. Salt is a great way to prevent someone who wish to reverse engineer your hash algorithm. For example, to encode &quot;hello world&quot;, add a random string such as &quot;X%@&quot; to the hash value. The encoded string &quot;X%@hello world&quot; is much harder to reverse engineer, especially against someone who tries to build a dictionary.</p>
+<hr>
+<h1><a name="Support" id="Support">Support Info </a></h1>
+<p>MD5 Hashing is a free xtra. There is no email support provided. 
+If you have any questions,   problems, concerns and/or bug, please submit them to the forums at <a href="http://xtras.calu.us/forums">http://xtras.calu.us/forums</a>. </p>
+<hr>
+<h1><a name="VersionHistory">Version History </a></h1>
+<p>  v1.0 Release - February 2, 2003. Final Release with a demo director movie. <br>
+  v1.1 Release - May 17, 2004. Completely rewritten. New cross platform implementation.</p>
+</body>
+</html>

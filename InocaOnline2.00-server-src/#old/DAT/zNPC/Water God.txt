@@ -1,0 +1,1 @@
+SEL|Splash:100TRN|Water Mage:10000BIO|Name:The Water GodBIO|Class:Water ElementalPRO|Standing before you is the being that controls all water in the world. RND|Bring me the wind orbs or all will be lost.RND|Fire does not effect us in the slightest.

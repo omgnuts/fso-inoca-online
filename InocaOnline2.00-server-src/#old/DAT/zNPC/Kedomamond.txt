@@ -1,0 +1,3 @@
+BIO|Name: Kedomamond
+BIO|Class: Real Estate Agent
+PRO|I'm like Amber, but superior!SEL|Small House Deed:40000:999948SEL|Blue Cottage Deed:35000:9819888SEL|Small Farm Deed:40000:999973SEL|Small Guild Hall Deed:70000:9999926SEL|Small Shop Deed:120000:99968SEL|Large House Deed:75000:9951SEL|House Key:10:99934SEL|Guild Key:10:99992GLD|-1833269063

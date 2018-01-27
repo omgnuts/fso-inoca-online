@@ -1,0 +1,1 @@
+BIO|Name: EdomosBIO|Class: AlchemistPRO|Buy some of my sands and start mixing your own potions!SEL|Potion Bottle:3:937346SEL|Blue Sand:10:999146SEL|Green Sand:15:999725SEL|Red Sand:20:999442SEL|Yellow Sand:300:98919SEL|White Sand:500:998940SEL|Purple Sand:900:998888GLD|2127528

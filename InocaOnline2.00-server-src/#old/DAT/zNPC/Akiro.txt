@@ -1,0 +1,8 @@
+BIO|Name: Akiro
+BIO|Class: Stealthly Ninja Master
+PRO|Like the inevitability of the Sakura Blossoming, I'll have what you need.SEL|Steel Scimitar:50:100074
+BUY|Steel Scimitar:25SEL|Katana:75:99963
+BUY|Katana:38SEL|Bo:150:99948
+BUY|Bo:75SEL|Steel Staff:150:99647
+BUY|Steel Staff:75SEL|Ninja Outfit:300:99988
+BUY|Ninja Outfit:150GLD|146412925

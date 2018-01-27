@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Multiuser XDK 3.0 ReadMe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h3><font face="Arial, Helvetica, sans-serif">Multiuser Server XDK 3.0 ReadMe</font></h3>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Welcome to the Multiuser 
+  Server XDK release. The goal of this XDK is to enable you to write server Xtras 
+  that extend the functionality of the Multiuser server. The XDK is designed to 
+  work with version 8.X of the Director XDK and version 3.0 of the server. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">This release supercedes 
+  any previous release of the multiuser XDK. Backward compatibility is generally 
+  supported, but any new APIs clearly are not supported in earlier versions of 
+  the server.</font></p>
+<h4><font face="Arial, Helvetica, sans-serif">Contents of the Multiuser XDK</font></h4>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><i><b><font size="-1">Common</font></b></i> 
+    - <font size="-1">Headers, code and resource files used by server xtras.</font><br>
+    <i><b><font size="-1">Docs</font></b></i> - <font size="-1">ReadMe and <a href="MultiuserXDKFuncSpec.htm">Functional 
+    Specification</a>.<br>
+    </font></font><font face="Arial, Helvetica, sans-serif"><i><b><font size="-1">MarsLogger</font></b></i> 
+    - <font size="-1">A sample Xtra Project.<br>
+    </font></font><font face="Arial, Helvetica, sans-serif"><i><b><font size="-1">MoaXDK</font></b></i> 
+    - <font size="-1">Defines server interfaces and callbacks.</font><br>
+    <i><b><font size="-1">Stl</font></b></i> - <font size="-1">Standard header 
+    files that are not required but may be used by server Xtras.</font><br>
+    <i><b><font size="-1">Template</font></b></i> - <font size="-1">The core files 
+    required to build server Xtras</font>.<br>
+    <i><b><font size="-1">Xtras</font></b></i> - <font size="-1">folder into which 
+    the Sample Xtra builds. Builds of the Mac and Windows MarsLogger Xtras - Logger 
+    and Logger.x32 - are provided.</font></font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif"><br>
+  </font><font face="Arial, Helvetica, sans-serif"><b>Required Supporting Files</b></font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"> <font size="-1">The server xtras 
+    depend on some of the files contained in the Director 8 XDK. Your xtra projects 
+    and workspaces should link to the D8 XDK's Include, Lib and Runtime directories. 
+    Xtras also require linking to Multiuser MOAXDK.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">To install the Multiuser 
+    XDK, extract the contents of the ZIP into Example folder. Specify a new Multiuser 
+    folder in the Extract To field in the WinZip Extract dialog.</font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif"><b>Notes on the Sample Files and 
+  Projects</b></font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1"><b><i>MarsLogger</i></b> 
+    - A server xtra designed to log server events. Intended as a ready-to-build 
+    project that will illuminate the server-xtra architecture and enable a quick 
+    start in designing your own xtras. This project uses some of the header files 
+    in the STL that is provided, but the Multiuser server extension Xtras do not 
+    require the STL.<br>
+    <i><b>Template</b></i> - Use these to build your own xtras from the ground 
+    up. How-To steps are provided in the Tempalte <a href="TemplateHowTo.htm">How-To</a> 
+    file. </font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif"><b>Known Issues</b></font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">--There is some inconsistency 
+    in the indexing - some methods use zero-based, others use one-based.<br>
+    --The SendMessageToGroup method has a formal parameter of recipient. This 
+    is in error but passing in a NULL value will produce an error. The code will 
+    be changed in a future release. In the meantime, any string will be accepted 
+    as the actual parameter.<br>
+    -- The MarsLogger is provided with some code not enabled and mainly server 
+    as an extensible example Xtra. </font></p>
+</blockquote>
+<h4><font face="Arial, Helvetica, sans-serif">Other Notes</font></h4>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">The supported development 
+    environments are Microsoft Visual C++ version 6.0 and MetroWerks CodeWarrior 
+    Pro version 5.0 (IDE version 4.01). The projects in the XDK are designed to 
+    open in those IDEs.</font></p>
+</blockquote>
+<h4><font face="Arial, Helvetica, sans-serif">Contact Information<br>
+  </font></h4>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">Any questions or issues 
+    regarding the XDK can be sent to mmxdk-l. Bugs should be logged in the Tron 
+    Beta Bugbase. This includes specific documentation suggestions and desired 
+    enhancements.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">Your participation in 
+    the Multiuser XDK Beta program is greatly appreciated!</font></p>
+  <p><font size="-1" face="Arial, Helvetica, sans-serif">The XDK team</font><font size="-4" face="Arial, Helvetica, sans-serif"><br>
+    <br>
+    <font size="-1">May, 2001</font></font></p>
+</blockquote>
+</body>
+</html>

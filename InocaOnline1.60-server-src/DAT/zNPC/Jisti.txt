@@ -1,0 +1,7 @@
+OWN|Gibblets
+BIO|Name: Jisti
+BIO|Class: Shopkeeper
+PRO|GLD|3277SEL|mage's head:300:1
+BUY|mage's head:50SEL|adventurer's head:300:7
+BUY|adventurer's head:80
+SEL|broad sword:900:46BUY|broad sword:100SEL|purple potion:45:485BUY|purple potion:15SEL|logs:30:2212BUY|logs:1

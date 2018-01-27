@@ -1,0 +1,1 @@
+OWN|DragonClawBIO|Name: RoloBIO|Class: ShopkeeperPRO|GLD|495SEL|broad sword:1400:4BUY|broad sword:750SEL|mage's head:450:20BUY|mage's head:200SEL|dark scimitar:1500:1BUY|dark scimitar:1100SEL|plate armor:3500:0BUY|plate armor:1500SEL|steel shield:700:2BUY|steel shield:500SEL|blue sand:10:54BUY|blue sand:2

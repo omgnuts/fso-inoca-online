@@ -1,0 +1,1 @@
+BIO|Name: DantanBIO|Class: Shop KeeperPRO|In semi-retirement. Do you wish to buy anything?FLG|PassiveSEL|Fishing Pole:100:9806BUY|Fishing Pole:50GLD|77237777

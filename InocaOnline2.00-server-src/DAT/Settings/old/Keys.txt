@@ -1,0 +1,5 @@
+Fire Key:1
+Emerald Key:1
+Wooden Key:1
+Gold Key5
+Steel Key:1

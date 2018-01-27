@@ -1,0 +1,6 @@
+OWN|Shawtee
+BIO|Name: Reghu
+BIO|Class: Shopkeeper
+PRO|GLD|54579SEL|Logs:25:340
+BUY|Logs:15
+SEL|Broad Sword:1300:1BUY|Broad Sword:750

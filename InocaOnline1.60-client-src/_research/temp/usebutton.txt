@@ -1,0 +1,442 @@
+on mouseUp
+  Global SelInventory, InvenNumSel, HP, HPMax, SP, SPMax, Instrument, KeyLockOut, Musicianship
+  Global SFX, CurHouse, HouseMode, LastDeedSelected, gConnect, ItemActionPause, LastItemUsed, CanMdfy
+  Global Hunger, AttackCounter, AttackBonus, theVERYlastItem, LeftHandE, RightHandE, Instrument, CanvasUse
+  Global Strength, Stamina, Dexterity, Intelligence, Wisdom, Speed, Aim, Agility, WereTakingPicture
+  Global Regged
+  
+  if SFX <> "OFF" then puppetsound 3, "Clicksound2"
+  set the locV of sprite 95 = - 5000
+  set the locV of sprite 96 = - 5000
+  set the locV of sprite 97 = - 5000
+  set the locV of sprite 98 = - 5000
+  set the locV of sprite 99 = - 5000
+  set the locV of sprite 100 = - 5000
+  
+  if ItemActionPause > 0 then exit
+  if CanMdfy = FALSE then exit
+  if the visible of sprite 6 = TRUE then exit
+  
+  set CurItttem = SelInventory & ":" & InvenNumSel
+  
+  if InvenNumSel <> 0 then
+    
+    set Ittms = field (member "ItemList" of castlib 2)
+    
+    if SelInventory contains "Key" then
+      RunKeyScript
+      exit
+    end if
+    
+    
+    if SelInventory = "Boat Deed" then
+      exit
+    end if
+    
+    if SelInventory = "Airship Deed" then
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.YourCompanyNameHere.com for more info!"
+        exit
+      end if
+      
+      set LastDeedSelected = "Airship"
+      RunAirshipDrop
+      exit
+    end if
+    
+    if SelInventory = "Battleship Deed" then
+      exit
+    end if
+    
+    if SelInventory = "Small House Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.YourCompanyNameHere.com for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Small House"
+      set ItsHouse = TRUE
+    end if
+    
+    if SelInventory = "Small Farm Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.YourCompanyNameHere.com for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Small Farm"
+      set ItsHouse = TRUE
+    end if
+    
+    if SelInventory = "Small Guild Hall Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.YourCompanyNameHere.com for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Small Guild Hall"
+      set ItsHouse = TRUE
+    end if
+    
+    if SelInventory = "Blue Cottage Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.firststaronline.net/pharaoh for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Blue Cottage"
+      set ItsHouse = TRUE
+    end if
+    
+    if SelInventory = "Small Shop Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.firststaronline.net/pharaoh for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Small Shop"
+      set ItsHouse = TRUE
+    end if
+    
+    if SelInventory = "Stone Guild Hall Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.firststaronline.net/pharaoh for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Stone Guild Hall"
+      set ItsHouse = TRUE
+    end if
+    
+    if SelInventory = "Fortress Guild Hall Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.firststaronline.net/pharaoh for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Fortress Guild Hall"
+      set ItsHouse = TRUE
+    end if
+    
+    if SelInventory = "Large House Deed" then
+      
+      if Regged = FALSE then
+        alert "You must register in order to use this feature! Go to http://www.firststaronline.net/pharaoh for more info!"
+        exit
+      end if
+      
+      set CurHouse = "Large House"
+      set ItsHouse = TRUE
+    end if
+    
+    if ItsHouse = TRUE then
+      set HouseMode = TRUE
+      set the member of sprite 360 = (member CurHouse of castlib "Houses")
+      set the locZ of sprite 360 = 3000
+      exit
+    end if
+    
+    if SelInventory contains "Film" then
+      if RightHandE <> "Camera" then
+        set TheText = "You must equip a camera to take a picture!"
+        AddToChat(TheText)  
+        exit
+      end if
+    end if
+    
+    if SelInventory = "Ocarina" then
+      ResetMusic
+      set Instrument = "Ocarina"
+      exit
+    end if
+    
+    if SelInventory = "Canvas" then
+      UseCanvas
+      if CanvasUse = TRUE then exit
+      set LastItemUsed = SelInventory & ":" & InvenNumSel
+      set TheDatt = SelInventory & ":" & InvenNumSel
+      errCode = gConnect.sendNetMessage([#recipients:"system.script", #subject:"RemItmInv",#content:TheDatt])
+      
+      exit
+    end if
+    
+    if SelInventory contains "Painting" then
+      ViewPainting
+      set KeyLockOut = TRUE
+      exit
+    end if
+    
+    if SelInventory contains "Photo" then
+      ViewPhoto
+      set KeyLockOut = TRUE
+      exit
+    end if
+    
+    if SelInventory = "Piano" then
+      set TheText = "You can't use this."
+      AddToChat(TheTExt)
+      exit
+    end if
+    
+    if SelInventory contains "Map" then
+      set TheText = "You open up the map and read it..."
+      AddToChat(TheText)
+      set TheMap = SelInventory & ".txt"
+      errCode = gConnect.sendNetMessage([#recipients:"system.script", #subject:"LoadMiniMap",#content:TheMap])
+      exit
+    end if
+    
+    
+    
+    
+    set EQType = "No"
+    if SelInventory = "Apple" then set EQType = "Yes"
+    if SelInventory contains " Potion" then set EQType = "Yes"
+    if SelInventory contains " photo" then set EQType = "Yes"
+    if SelInventory = "Steel Key" then set EQType = "Yes"
+    if SelInventory = "Wooden Key" then set EQType = "Yes"
+    if SelInventory = "Emerald Key" then set EQType = "Yes"
+    if SelInventory = "Fire Key" then set EQType = "Yes"
+    if SelInventory = "Gold Key" then set EQType = "Yes"
+    if SelInventory = "Pie" then set EQType = "Yes"
+    if SelInventory = "Nectar" then set EQType = "Yes"
+    if SelInventory = "Watermelon" then set EQType = "Yes"
+    if SelInventory = "Ale" then set EQType = "Yes"
+    if SelInventory = "Corn" then set EQType = "Yes"
+    if SelInventory = "Fish" then set EQType = "Yes"
+    if SelInventory = "Orc Meat" then set EQType = "Yes"
+    if SelInventory = "Cooked Pig" then set EQType = "Yes"
+    if SelInventory = "Cyclops Meat" then set EQType = "Yes"
+    if SelInventory = "Yeti Meat" then set EQType = "Yes"
+    if SelInventory = "Raw Fish" then set EQType = "Yes"
+    if SelInventory = "Fish Sticks" then set EQType = "Yes"
+    if SelInventory = "Orc Burger" then set EQType = "Yes"
+    if SelInventory = "Cyclops Burger" then set EQType = "Yes"
+    if SelInventory = "Yeti Burger" then set EQType = "Yes"
+    if SelInventory = "Orc Pot Pie" then set EQType = "Yes"
+    if SelInventory = "Trout" then set EQType = "Yes"
+    if SelInventory = "Catfish" then set EQType = "Yes"
+    if SelInventory = "Swordfish" then set EQType = "Yes"
+    if SelInventory = "Squid" then set EQType = "Yes"
+    if SelInventory = "Trout Fillet" then set EQType = "Yes"
+    if SelInventory = "Catfish Sandwich" then set EQType = "Yes"
+    if SelInventory = "Swordfish Steak" then set EQType = "Yes"
+    if SelInventory = "Squid Platter" then set EQType = "Yes"
+    if SelInventory contains "Seeds" then set EQType = "Yes"
+    if SelInventory contains "Book" then set EQType = "Yes"
+    if SelInventory contains "Film" then set EQType = "Yes"
+    
+    if EQType = "No" then
+      
+      set SInv = SelInventory
+      
+      if SelInventory contains "#" then
+        set SInv = item 1 of SelInventory
+      end if
+      
+      set TheText = "You cannot use the " & SInv & "."
+      AddToChat(TheText)
+      exit
+    end if
+    
+    sortvitals
+    
+    
+    if Hunger < 35000 then
+      if SelInventory = "Apple" then set HP = HP + 1 + random(3)
+      if SelInventory = "Pie" then set HP = HP + 5 + random(5)
+      if SelInventory = "Nectar" then set SP = SP + 4 + random(4)
+      if SelInventory = "Fish" then set HP = HP + 5 + random(4)
+      if SelInventory = "Corn" then set HP = HP + 4 + random(3)
+      if SelInventory = "Watermelon" then set HP = HP + 6 + random(4)
+      if SelInventory = "Ale" then set HP = HP + 1 + random(3)
+      if SelInventory = "Orc Meat" then set HP = HP + 3 + random(3)
+      if SelInventory = "Cyclops Meat" then set HP = HP + 3 + random(3)
+      if SelInventory = "Yeti Meat" then set HP = HP + 3 + random(3)
+      if SelInventory = "Raw Fish" then set HP = HP + 1 + random(2)
+      if SelInventory = "Fish Sticks" then set HP = HP + 6 + random(5)
+      if SelInventory = "Orc Burger" then set HP = HP + 9 + random(6)
+      if SelInventory = "Cyclops Burger" then set HP = HP + 12 + random(7)
+      if SelInventory = "Yeti Burger" then set HP = HP + 17 + random(8)
+      if SelInventory = "Orc Pot Pie" then set HP = HP + 9 + random(5)
+      if SelInventory = "Trout" then set HP = HP + 2 + random(3)
+      if SelInventory = "Catfish" then set HP = HP + 3 + random(3)
+      if SelInventory = "Swordfish" then set HP = HP + 4 + random(3)
+      if SelInventory = "Squid" then set HP = HP + 5 + random(3)
+      if SelInventory = "Trout Fillet" then set HP = HP + 3 + random(3)
+      if SelInventory = "Catfish Sandwich" then set HP = HP + 4 + random(4)
+      if SelInventory = "Swordfish Steak" then set HP = HP + 7 + random(4)
+      if SelInventory = "Squid Platter" then set HP = HP + 8 + random(5)
+      if SelInventory = "Blue Potion" then set HP = HP + 14 + random(8)
+      if SelInventory = "Red Potion" then set SP = SP + 8 + random(3)
+      if SelInventory = "Green Potion" then set HP = HP + 19 + random(5)
+      if SelInventory = "Yellow Potion" then set SP = SP + 14 + random(6)
+      if SelInventory = "Purple Potion" then set HP = HP + 19 + random(8)
+      if SelInventory = "Purple Potion" then set SP = SP + 19 + random(8)
+      if SelInventory = "White Potion" then set HP = HP + 30 + random(8)
+      if SelInventory = "White Potion" then set SP = SP + 30 + random(8)
+      if SelInventory = "Cooked Pig" then set HP = HP + 20 + random(8)
+    end if
+    
+    if Hunger < 35000 then
+      if SelInventory = "Cooked Pig" then set Hunger = Hunger + 7200
+      if SelInventory = "Apple" then set Hunger = Hunger + 1750
+      if SelInventory = "Pie" then set Hunger = Hunger + 2100
+      if SelInventory = "Nectar" then set Hunger = Hunger + 1300
+      if SelInventory = "Fish" then set Hunger = Hunger + 2400
+      if SelInventory = "Corn" then set Hunger = Hunger + 2500
+      if SelInventory = "Watermelon" then set Hunger = Hunger + 8500
+      if SelInventory = "Ale" then set Hunger = Hunger + 450
+      if SelInventory = "Orc Meat" then set Hunger = Hunger + 1700
+      if SelInventory = "Cyclops Meat" then set Hunger = Hunger + 1800
+      if SelInventory = "Yeti Meat" then set Hunger = Hunger + 1900
+      if SelInventory = "Raw Fish" then set Hunger = Hunger + 1900
+      if SelInventory = "Fish Sticks" then set Hunger = Hunger + 2300
+      if SelInventory = "Orc Burger" then set Hunger = Hunger + 3200
+      if SelInventory = "Cyclops Burger" then set Hunger = Hunger + 4300
+      if SelInventory = "Yeti Burger" then set Hunger = Hunger + 5400
+      if SelInventory = "Orc Pot Pie" then set Hunger = Hunger + 4300
+      if SelInventory = "Trout" then set Hunger = Hunger + 1300
+      if SelInventory = "Catfish" then set Hunger = Hunger + 1300
+      if SelInventory = "Swordfish" then set Hunger = Hunger + 1300
+      if SelInventory = "Squid" then set Hunger = Hunger + 1300
+      if SelInventory = "Trout Fillet" then set Hunger = Hunger + 2800
+      if SelInventory = "Catfish Sandwich" then set Hunger = Hunger + 3900
+      if SelInventory = "Swordfish Steak" then set Hunger = Hunger + 4100
+      if SelInventory = "Squid Platter" then set Hunger = Hunger + 5400
+      if SelInventory = "Blue Potion" then set Hunger = Hunger + 3200
+      if SelInventory = "Red Potion" then set Hunger = Hunger + 3200
+      if SelInventory = "Green Potion" then set Hunger = Hunger + 3500
+      if SelInventory = "Yellow Potion" then set Hunger = Hunger + 3500
+      if SelInventory = "Purple Potion" then set Hunger = Hunger + 3500
+      if SelInventory = "White Potion" then set Hunger = Hunger + 3500
+    end if
+    
+    if HP > HPMax then set HP = HPMax
+    if SP > SPMax then set SP = SPMax
+    
+    savevitals
+    loadthebars
+    
+    if SelInventory = "Cooked Pig" then set TheText = "You eat the cooked pig."
+    if SelInventory = "Apple" then set TheText = "You eat an apple."
+    if SelInventory = "Watermelon" then set TheText = "You eat the watermelon."
+    if SelInventory = "Pie" then set TheText = "You eat a pie."
+    if SelInventory = "corn" then set TheText = "You eat some corn."
+    if SelInventory = "nectar" then set TheText = "You eat the nectar."
+    if SelInventory = "fish" then set TheText = "You eat some raw fish. *yeck*"
+    if SelInventory = "ale" then set TheText = "You drink the ale. *burp*"
+    if SelInventory = "Orc Meat" then set TheText = "You eat some raw orc meat. You're disgusting."
+    if SelInventory = "Cyclops Meat" then set TheText = "You eat some raw cyclops meat. You're disgusting."
+    if SelInventory = "Yeti Meat" then set TheText = "You eat some raw yeti meat. You're disgusting."
+    if SelInventory = "Raw Fish" then set TheText = "You eat some raw fish. You're disgusting."
+    if SelInventory = "Fish Sticks" then set TheText = "You eat some fish sticks."
+    if SelInventory = "Orc Burger" then set TheText = "You eat an orc burger."
+    if SelInventory = "Cyclops Burger" then set TheText = "You eat a cyclops burger."
+    if SelInventory = "Yeti Burger" then set TheText = "You eat a yeti burger."
+    if SelInventory = "Orc Pot Pie" then set TheText = "You eat an orc pot pie."
+    if SelInventory contains " Potion" then set TheText = "You drink the " & SelInventory & "."
+    if SelInventory = "Trout" then set TheText = "You eat the trout."
+    if SelInventory = "Catfish" then set TheText = "You eat the catfish."
+    if SelInventory = "Swordfish" then set TheText = "You eat the swordfish."
+    if SelInventory = "Squid" then set TheText = "You eat the squid."
+    if SelInventory = "Trout Fillet" then set TheText = "You eat the trout fillet."
+    if SelInventory = "Catfish Sandwich" then set TheText = "You eat the catfish sandwich."
+    if SelInventory = "Swordfish Steak" then set TheText = "You eat the swordfish steak."
+    if SelInventory = "Squid Platter" then set TheText = "You eat the squid platter."
+    
+    if SelInventory contains "Book" then 
+      set ReqDex = 1
+      if SelInventory contains "Firesword" then set ReqDex = 25
+      if SelInventory contains "Meteor" then set ReqDex = 25
+      if SelInventory contains "Fireball" then set ReqDex = 15
+      if SelInventory contains "Hold" then set ReqDex = 15
+      if SelInventory contains "Major Heal" then set ReqDex = 22
+      if SelInventory contains "Argon's First" then set ReqDex = 10
+      if SelInventory contains "Stone Skin" then set ReqDex = 23
+      if SelInventory contains "Smoke bomb" then set ReqDex = 17
+      if SelInventory = "Bolt Book" then set ReqDex = 24
+      if SelInventory contains "Firebolt" then set ReqDex = 20
+      if SelInventory contains "Splash" then set ReqDex = 18
+      if SelInventory contains "Portal" then set ReqDex = 26
+      if SelInventory contains "Illusionary" then set ReqDex = 10
+      if SelInventory contains "Raise Dead" then set ReqDex = 15
+      if SelInventory contains "Magic Shield" then set ReqDex = 21
+      
+      set nCastNum  = the number of member SelInventory of castlib "Inventory"
+      
+      if (nCastNum = -1) or (nCastNum=999) then
+        exit
+      end if
+      
+      if ReqDex > Dexterity then
+        set TheText = "Your mysticism is not high enough to learn this spell."
+        AddToChat(TheText)
+        exit
+      end if
+      
+      set TheText = "You read the book..."
+    end if
+    
+    
+    if SelInventory = "Purple Potion" then
+      set AttackBonus = 1
+      set AttackCounter = AttackCounter + 400
+      set TheText = "The power of argon flows through your body."
+      AddToChat(TheText)
+    end if
+    
+    if SelInventory = "Seeds" then RunRegularSeeds
+    if SelInventory = "Magic Seeds" then RunMagicSeeds
+    if SelInventory = "Premium Seeds" then RunPremiumSeeds
+    if SelInventory = "Flower Seeds" then RunFlowerSeeds
+    if SelInventory = "Rose Seeds" then RunRosesSeeds
+    
+    if SelInventory contains "Key" then set DontFood = 1
+    if SelInventory contains "Seeds" then set DontFood = 1
+    if SelInventory contains "Book" then set DontFood = 1
+    if SelInventory contains "Film" then set DontFood = 1
+    
+    if TheText <> VOID then AddToChat(TheText)
+    
+    if DontFood <> 1 then
+      if TheText <> VOID then
+        if Hunger > 34999 then
+          set TheText = "You're stuffed!"
+          AddToChat(TheText)
+        end if
+      end if
+    end if
+    
+    if SelInventory contains "Book" then
+      set LastItemUsed = SelInventory & ":" & InvenNumSel
+      set TheDatt = SelInventory & ":" & InvenNumSel
+      errCode = gConnect.sendNetMessage([#recipients:"system.script", #subject:"Bookrd",#content:TheDatt])
+      set ItemActionPause = 425
+      set CanMdfy = FALSE
+      exit
+    end if
+    
+    if Selinventory = "Film" then
+      set the member of sprite 200 = (member "CameraLens")
+      updatestage
+      set the visible of sprite 200 = TRUE
+      set the locZ of sprite 200 = 9999
+      set WereTakingPicture = TRUE
+    end if
+    
+    set LastItemUsed = SelInventory & ":" & InvenNumSel
+    set TheDatt = SelInventory & ":" & InvenNumSel
+    errCode = gConnect.sendNetMessage([#recipients:"system.script", #subject:"RemItmInv",#content:TheDatt])
+    set ItemActionPause = 425
+    set CanMdfy = FALSE
+  end if
+  
+end

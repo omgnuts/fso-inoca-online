@@ -1,0 +1,52 @@
+***  Installation Started 03/21/2002 13:00  ***
+Title: Macromedia Shockwave Multiuser Server 3.0 Installation
+Source: C:\MUS INSTALLER\SMUS30INSTALLER\SMUS 3.0 INSTALLER.EXE
+Made Dir: C:\Shockwave Multiuser Server 3.0
+File Copy: C:\Shockwave Multiuser Server 3.0\UNWISE.EXE
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Macromedia Shockwave Multiuser Server 3.0
+RegDB Val: Macromedia Shockwave Multiuser Server 3.0
+RegDB Name: DisplayName
+RegDB Root: 2
+RegDB Old: Macromedia Shockwave Multiuser Server 3.0
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Macromedia Shockwave Multiuser Server 3.0
+RegDB Val: C:\SHOCKW~1.0\UNWISE.EXE C:\SHOCKW~1.0\INSTALL.LOG
+RegDB Name: UninstallString
+RegDB Root: 2
+RegDB Old: C:\FIRSTS~1\UNWISE.EXE C:\FIRSTS~1\INSTALL.LOG
+File Copy: C:\Shockwave Multiuser Server 3.0\c4dll.dll
+File Copy: C:\Shockwave Multiuser Server 3.0\Iml32.dll
+File Copy: C:\Shockwave Multiuser Server 3.0\Movie.cfg
+File Copy: C:\Shockwave Multiuser Server 3.0\msvcrt.dll
+File Copy: C:\Shockwave Multiuser Server 3.0\Multiuser.cfg
+File Copy: C:\Shockwave Multiuser Server 3.0\MultiuserServer.exe
+File Copy: C:\Shockwave Multiuser Server 3.0\Readme.htm
+Made Dir: C:\Shockwave Multiuser Server 3.0\DBObjectFiles
+Made Dir: C:\Shockwave Multiuser Server 3.0\Scripts
+File Copy: C:\Shockwave Multiuser Server 3.0\Scripts\Dispatcher.ls
+File Copy: C:\Shockwave Multiuser Server 3.0\Scripts\GlobalScripts.ls
+File Copy: C:\Shockwave Multiuser Server 3.0\Scripts\Scriptmap.ls
+Made Dir: C:\Shockwave Multiuser Server 3.0\Xtras
+File Copy: C:\Shockwave Multiuser Server 3.0\Xtras\DBObject.x32
+File Copy: C:\Shockwave Multiuser Server 3.0\Xtras\LingoVM.x32
+File Copy: C:\Shockwave Multiuser Server 3.0\Xtras\RuntimeAttr.x32
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\SWServerMOACache
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Appdata.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Appdata.dbf
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Applications.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Applications.dbf
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Attributes.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Attributes.dbf
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Attrlist.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Attrlist.dbf
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Idtable.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Idtable.dbf
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Players.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Players.dbf
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Rawdata.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Rawdata.dbf
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Rawdata.fpt
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Users.cdx
+File Copy: C:\Shockwave Multiuser Server 3.0\Shockwave Multiuser Server 3.0\DBObjectFiles\Users.dbf
+Shell Link: C:\WINDOWS\Start Menu\Programs\Macromedia Shockwave Multiuser Server 3.0\MultiuserServer.lnk
+Shell Link: C:\WINDOWS\Start Menu\Programs\Macromedia Shockwave Multiuser Server 3.0\Readme.lnk
+Delete in-use files: On

@@ -1,0 +1,2221 @@
+<html>
+<head>
+<title>Multiuser XDK Functional Specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h1><font face="Arial, Helvetica, sans-serif">Multiuser XDK Functional Specification</font></h1>
+<h4><font face="Arial, Helvetica, sans-serif">Table of Contents </font></h4>
+<p><font face="Arial, Helvetica, sans-serif"><a 
+href="#Overview"><font 
+size=2>XDK Overview</font></a> <font size=2><br>
+  <a 
+href="#Contents">Contents of the XDK</a> <br>
+  <a href="TemplateHowTo.htm">Building a simple Xtra using the Template</a><br>
+  <a 
+href="#ConfigurationFiles">How the server loads and uses Xtras </a>(Configuration 
+  files, Registry Data, and Message Routing)<br>
+  <a 
+href="#StandardMoaAPIs">Standard MOA Interfaces</a> <br>
+  <a 
+href="#ServerExtensionAPI">Server Extension APIs</a></font></font><br>
+  <font face="Arial, Helvetica, sans-serif" 
+size=2><a 
+href="#ServerCallbackAPIs">Server Callback APIs</a> - interfaces that xtras call 
+  on the server</font> </p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size=2><a 
+  href="#ISWServerObject">ISWServerObject </a>- base class interface used by server 
+    objects<br>
+    <a 
+  href="#ISWServer">ISWServer</a> - server object interface<br>
+    <a 
+  href="#ISWServerMovie">ISWServerMovie</a> - movie object interface<br>
+    <a 
+  href="#ISWServerGroup">ISWServerGroup</a> - group object interface<br>
+    <a 
+  href="#ISWServerUser">ISWServerUser</a> - user object interface<br>
+    <a 
+  href="#ISWServerContent">ISWServerContent </a>- message content interface</font></p>
+</blockquote>
+<hr>
+<h2><font face="Arial, Helvetica, sans-serif"><a name=Overview></a>XDK Overview 
+  </font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>Like Director Xtras, Multiuser 
+  Server Extension Xtras are based on MOA - Macromedia Open Architecture. Using 
+  the MOA interfaces it is possible to create Xtras that extend the functionality 
+  of the Multiuser Server. For an introduction to MOA see the MOA Developers Guide 
+  inside the Director XDK. </font></p>
+<p><font color="#000000" face="Arial, Helvetica, sans-serif" size="2">The Multiuser 
+  Server XDK contains the header files, libraries, Server Xtra Template (skeleton), 
+  sample Server xtra, example projects and documentation, that you need to begin 
+  creating Server Extension xtras for the Multiuser Server. For the alpha release 
+  of the Multiuser XDK, the Functional Specification serves as the documentation 
+  and provides a complete list of the API's (interfaces) and methods that are 
+  needed to create Server Extension xtras. It is intended to be a complete list 
+  and serve as a reference.</font></p>
+<h3><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"></font><font face="Arial, Helvetica, sans-serif" size=2><a 
+name=GettingStarted></a>Getting Started</font></h3>
+<p><font face="Arial, Helvetica, sans-serif" size=2>Server Extension Xtras must 
+  be able to access files in both the Multiuser Server XDK and the Director XDK.</font> 
+  <font color=#000000 face="Arial, Helvetica, sans-serif" size=2>To use this version 
+  of the Multiuser Server XDK, copy the folder you downloaded into the Examples 
+  folder inside of the Director XDK. </font><font 
+face="Arial, Helvetica, sans-serif" size=2><font color=#800080></font>When you 
+  create Server xtra projects you will need to change the project settings to 
+  point to the Director XDK Include folder.</font></p>
+<p><font color=#000000 face="Arial, Helvetica, sans-serif" size=2>For complete 
+  instructions on how to set up project files for Multiuser Server Extension xtras 
+  read the </font><font face="Arial, Helvetica, sans-serif" size="2"><a href="TemplateHowTo.htm">How 
+  To doc.</a></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The Xtras development for 
+  Windows is supported for Microsoft Visual C++ version 6.0. Xtras development 
+  for the Macintosh is supported in Metrowerks Code Warrior version 6.0.</font></p>
+<hr>
+<h3><font face="Arial, Helvetica, sans-serif"><a name=Contents></a>Contents of 
+  the Multiuser Server XDK download</font></h3>
+<table border=1 width="75%">
+  <tbody> 
+  <tr> 
+	<td width="14%"> 
+	  <h4 align="center"><font face="Arial, Helvetica, sans-serif" 
+    size=2><b>Directory</b></font></h4>
+	</td>
+	<td width="86%"> 
+	  <h4 align="center"><font face="Arial, Helvetica, sans-serif" 
+    size=2><b>Contents</b></font></h4>
+	</td>
+  </tr>
+  <tr> 
+	<td width="14%"><font face="Arial, Helvetica, sans-serif" size=2>Common</font></td>
+	<td width="86%"><font face="Arial, Helvetica, sans-serif" size=2>Header files 
+	  and code for server xtra development</font></td>
+  </tr>
+  <tr> 
+	<td width="14%"><font face="Arial, Helvetica, sans-serif" size=2>Docs</font></td>
+	<td width="86%"><font face="Arial, Helvetica, sans-serif" size=2>Documentation 
+      of the interfaces and methods used to write Multiuser server Xtras. For 
+      the alpha release this folder contains this Functional Specification, a 
+      <a href="TemplateHowTo.htm">How To</a> doc, and a <a href="ReadMe.htm">ReadMe</a>. 
+      </font></td>
+  </tr>
+  <tr> 
+	<td width="14%"><font face="Arial, Helvetica, sans-serif" size=2>Logger</font></td>
+	<td width="86%"><font face="Arial, Helvetica, sans-serif" size=2>Sample xtra 
+	  source code</font></td>
+  </tr>
+  <tr> 
+	<td width="14%"><font face="Arial, Helvetica, sans-serif" size=2>MoaXDK</font></td>
+	<td width="86%"><font face="Arial, Helvetica, sans-serif" size=2>Server objects. 
+	  This is not the same as the MOA in the standard XDK</font></td>
+  </tr>
+  <tr> 
+	<td width="14%"><font face="Arial, Helvetica, sans-serif" size=2>STL</font></td>
+	<td width="86%"><font face="Arial, Helvetica, sans-serif" size=2>Standard 
+	  Template Library - files containing common data structures<font color=#ff0080></font> 
+	  </font></td>
+  </tr>
+  <tr> 
+	<td width="14%"><font face="Arial, Helvetica, sans-serif" size=2>Template</font></td>
+	<td width="86%"><font face="Arial, Helvetica, sans-serif" size=2>Core file 
+	  set required to write server xtras</font></td>
+  </tr>
+  <tr> 
+	<td height="20" width="14%"><font face="Arial, Helvetica, sans-serif" size=2> 
+	  Xtras</font></td>
+	<td height="20" width="86%"><font face="Arial, Helvetica, sans-serif" size=2>Compiled 
+	  versions of the example xtras</font></td>
+  </tr>
+  </tbody> 
+</table>
+<p><font face="Arial, Helvetica, sans-serif" size=2>In addition to files contained 
+  in the Multiuser Server XDK, the Server Extension xtras you build need access 
+  to files contained in the Director XDK. <font color="#000000">See the</font><font color=#ff0080> 
+  <a 
+href="#GettingStarted">Getting Started</a> <font color="#000000">section of this 
+  document and the</font> <a href="TemplateHowTo.htm">How To</a> <font color="#000000">doc 
+  for more information. </font></font></font></p>
+<hr>
+<h3><font face="Arial, Helvetica, sans-serif"><b><a 
+name=ConfigurationFiles></a>Configuration Files</b></font> </h3>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The Server Extension xtras 
+  you create are loaded by commands in the server or movie configuration file. 
+  The server configuration file is named &quot;Multiuser.cfg&quot;; the default 
+  movie configuration file is named &quot;Movie.cfg&quot;. See the Server documentation 
+  for more information on how the configuration files are used to load xtras. 
+  <br>
+  <br>
+  Xtras loaded by the server configuration file are called "server level xtras", 
+  while xtras loaded by a movie configuration file are called "movie level xtras". 
+  In general, server level xtras should be used to add functionality across all 
+  movies, and movie level xtras should be used for functions that are only required 
+  by specific movies.</font></p>
+<p><font color=#000000 face="Arial, Helvetica, sans-serif" size=2>In the config 
+  file, use the following syntax for config file commands to load xtras: </font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><font 
+  size=-1><code>ServerExtensionXtras = xtraName anotherXtraName finalXtraName</code></font></font></p>
+  <p><code><font face="Arial, Helvetica, sans-serif" size=2>XtraConfigCommands 
+	for xtraName<br>
+	XtraCommand = "some string that will be passed to the xtra named above"<br>
+	XtraCommand = commandOne commandTwo commandThree</font></code></p>
+  <p>&nbsp;</p>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">Server Extension Xtra Registry Data</font></h3>
+<p><font face="Arial, Helvetica, sans-serif" size=2>When a Server Extension xtra 
+  is loaded, it stores the information in the following table in the Moa registry. 
+  </font></p>
+<blockquote> 
+  <table border=1 width="75%">
+    <tbody> 
+    <tr> 
+      <td width="27%"><font face="Arial, Helvetica, sans-serif" size=2><b>Reg 
+        Key</b></font></td>
+      <td width="73%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>Description</b></font></td>
+    </tr>
+    <tr> 
+      <td height=30 width="27%"><font face="Arial, Helvetica, sans-serif" size="1"><code>xSXName</code></font></td>
+      <td height=30 width="73%"><font face="Arial, Helvetica, sans-serif" size="1">Name 
+        of the xtra. This is the name that is used in the config file commands 
+        </font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="27%"><font face="Arial, Helvetica, sans-serif" size="1"><code>xSXUserIDs</code></font></td>
+      <td height=15 width="73%"><font color="#000000" face="Arial, Helvetica, sans-serif" size="1">Commands 
+        or names the server receives messages for. The userID acts as a command 
+        for processing and dispatching messages. The server uses the userID to 
+        route messages sent from clients to the xtra.</font></td>
+    </tr>
+    </tbody> 
+  </table>
+</blockquote>
+<h3>&nbsp;</h3>
+<h3><font face="Arial, Helvetica, sans-serif"><a name=MessageRouting></a>Message 
+  routing</font></h3>
+<p><font face="Arial, Helvetica, sans-serif" size=2>When a message is sent from 
+  a connected client to the Multiuser Server, it is first dispatched to the movie 
+  level xtra (specified in the movie.cfg file), and then to the server level xtra 
+  (specified in the multiuser.cfg file) if the message was not handled by the 
+  movie level xtra or if the movie level xtra sends the message to the server 
+  level xtra. If the message is not handled by either the movie or server level 
+  xtra, it is handled by the Multiuser Server (if sent to "System"), and dispatched 
+  to a group, or passed on to a connected client.</font></p>
+<hr>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=StandardMoaAPIs></a>Standard MOA Interfaces</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The Multiuser Server implements 
+  the following standard MOA interfaces. </font></p>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif" size=2><code>IMoaCalloc</code> 
+	- fixed memory </font><font face="Arial, Helvetica, sans-serif" 
+  size=2>allocation</font> 
+  <li><font face="Arial, Helvetica, sans-serif" size=2><code>IMoaHandle</code> 
+	- handle based memory allocation</font> 
+  <li><font face="Arial, Helvetica, sans-serif" size=2><code>IMoaAppInfo</code> 
+	- basic application information</font> </li>
+</ul>
+<p><font face="Arial, Helvetica, sans-serif" size=2>These interfaces are documented 
+  in the standard Director XDK documentation.</font></p>
+<hr>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=ServerExtensionAPI></a>Server Extension Xtra API</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The Server Extension API is 
+  implemented by Server Extension xtras that you create and add to the Multiuser 
+  Server. These are defined in SrVExtension.cpp. These are the four entry points 
+  for server xtra functions.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><font color=#800080><font 
+color=#000000><b>Server Extension API method summary</b></font></font></font><font face="Arial, Helvetica, sans-serif" 
+size=2><font color=#800080><font color=#000000><br>
+  </font></font></font><a 
+href="#Initialize"><font 
+face="Arial, Helvetica, sans-serif" size=2>MoaError Initialize </font></a>-<font 
+face="Arial, Helvetica, sans-serif" size=2> called at start up<br>
+  </font><font 
+face="Arial, Helvetica, sans-serif"><a 
+href="#ConfigCommand"><font 
+size=2>ConfigCommand </font></a>- <font size=2>called when the server reads the 
+  config file<br>
+  </font></font><font face="Arial, Helvetica, sans-serif"><a 
+href="#ServerEvent"><font 
+size=2>ServerEvent</font></a> -<font size=2> notifies xtra of events on the Server<br>
+  </font></font><font face="Arial, Helvetica, sans-serif"><a 
+href="#IncomingMessage"><font 
+size=2>IncomingMessage</font></a> -<font size=2> called when a message is sent 
+  to the xtra</font></font></p>
+<p>&nbsp;</p>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a name=Initialize><font 
+  face="Courier New, Courier, mono"><code>MoaError Initialize( PISWServerUser 
+	  <i>pUser</i>, PISWServerMovie <i>pMovie</i>, PISWServer <i>pServer</i> )</code></font></a></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b><font size=2>Description: </font></b></font><font face="Arial, Helvetica, sans-serif" size=2>This 
+	method is called when the Server Extension xtra is created. If the movie saves 
+	these interfaces, you need to use <code>AddRef()</code>and <code>Release() 
+	</code>otherwise the reference will not be saved. </font></p>
+  <h4><font face="Arial, Helvetica, sans-serif"><b><font 
+  size=2>Arguments</font></b></font></h4>
+  <p><font face="Arial, Helvetica, sans-serif" 
+  size=2><code><i><b>pUser</b></i></code> contains a pointer to a user interface 
+    for the Server Extension xtra. See <a 
+  href="#ISWServerUser">ISWServerUser</a> for a list of available methods. </font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size=2><code><i><b>pMovie </b></i></code>contains 
+    a pointer to a movie interface that the Server Extension xtra uses to send 
+    messages. See <a 
+  href="#ISWServerMovie">ISWServerMovie</a> for a list of available methods. If 
+    the xtra is loaded at the server level, <i><code>pMovie</code></i> is NULL. 
+    </font></p>
+  <p><font face="Arial, Helvetica, sans-serif" 
+  size=2><code><i><b>pServer</b></i></code> is a pointer to the server object 
+	where the Server Extension xtra is loaded. See <a 
+  href="#ISWServer">ISWServer</a> for a list of available methods.</font></p>
+  <p>&nbsp;</p>
+  <h2></h2>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=ConfigCommand><code>MoaError ConfigCommand( PMoaChar <i>pCommand</i> )</code></a></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b><font 
+  size=2>Description:</font></b><font size=2> This method is called when the server 
+    reads the movie configuration file and encounters an "XtraCommand" line for 
+    the xtra. The text from the configuration file is passed in<i><code> pCommand</code></i> 
+    and read by the xtra. See the <a 
+  href="#ConfigurationFiles">Configuration Files</a> section of this document 
+    for more information.</font></font></p>
+  <h4><font face="Arial, Helvetica, sans-serif" size=2>Arguments</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif" size=2><i><code><b><font 
+  color=#000000>pCommand</font></b></code></i> <font color=#000000>a pointer to 
+	the text in the configuration file that is passed to and and read by the xtra 
+	when the server encounters an Xtra Command line.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+    <h3><font face="Arial, Helvetica, sans-serif"><code><a 
+  name=ServerEvent></a>MoaError ServerEvent( MoaLong <i>eventCode</i>, PMoaVoid 
+      <i>data</i>, PMoaVoid <i>object</i> )</code></font></h3>
+    <p><font face="Arial, Helvetica, sans-serif"><b>Description</b>: <font 
+  size=2>This command notifies the Server Extension xtra of events on the server. 
+      By default, no events are sent to the xtra. To enable event notifications, 
+      see the EnableNotification command for the following objects: <a 
+  href="#ServerEnableNotification">ISWServer: EnableNotification</a>, <a 
+  href="#MovieEnableNotification">ISWServerMovie: EnableNotification</a>, and 
+      <a 
+  href="#GroupEnableNotification">ISWServerGroup: EnableNotification</a>. There 
+      are no event notifications for ISWServerUser. </font></font></p>
+  </li>
+</ul>
+<blockquote> 
+  <p>&nbsp;</p>
+  <table border=1 width="82%">
+    <tbody> 
+    <tr> 
+      <td width="18%"> 
+        <p><font face="Arial, Helvetica, sans-serif" size=2><b>Event code parameter</b></font></p>
+      </td>
+      <td width="18%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>Description</b></font></td>
+      <td width="21%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>object parameter</b></font></td>
+      <td width="22%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>container parameter</b></font></td>
+      <td width="21%"><font face="Arial, Helvetica, sans-serif" size=2><b>Call 
+        EnableNotification in interface</b></font></td>
+    </tr>
+    <tr> 
+      <td height=9 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvIdle</code></font></td>
+      <td height=9 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">Server 
+        idle</font></td>
+      <td height=9 width="21%"><font face="Arial, Helvetica, sans-serif" size="1">NULL</font></td>
+      <td height=9 width="22%"><font face="Arial, Helvetica, sans-serif" size="1">NULL</font></td>
+      <td height=9 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServer</code></font></td>
+    </tr>
+    <tr> 
+      <td height=9 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvUserLogon</code></font></td>
+      <td height=9 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        User has logged on</font></td>
+      <td height=9 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerUser 
+        </code>pointer</font></td>
+      <td height=9 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWMovie</code> 
+        pointer</font></td>
+      <td height=9 width="21%"> 
+        <p><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerMovie</code></font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td height=23 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvUserLogoff</code></font></td>
+      <td height=23 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        User has logged off or the connection has broken</font></td>
+      <td height=23 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerUser 
+        </code>pointer</font></td>
+      <td height=23 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWMovie</code> 
+        pointer</font></td>
+      <td height=23 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerMovie</code></font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvGroupCreated</code></font></td>
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        group has been created</font></td>
+      <td height=15 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerGroup</code> 
+        pointer</font></td>
+      <td height=15 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerMovie</code> 
+        pointer</font></td>
+      <td height=15 width="21%"><font size="1"><code><font 
+        face="Arial, Helvetica, sans-serif"><code>ISWServerMovie</code></font></code></font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvGroupDeleted</code></font></td>
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        group has been deleted</font></td>
+      <td height=15 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerGroup</code> 
+        pointer</font></td>
+      <td height=15 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerMovie</code> 
+        pointer</font></td>
+      <td height=15 width="21%"><font size="1"><code><font 
+        face="Arial, Helvetica, sans-serif"><code>ISWServerMovie</code></font></code></font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvJoinGroup</code></font></td>
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        User joined a group</font></td>
+      <td height=15 width="21%"> 
+        <p><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerUser</code><br>
+          pointer</font></p>
+      </td>
+      <td height=15 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code><code>ISWServerGroup</code></code> 
+        pointer</font></td>
+      <td height=15 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerGroup</code></font></td>
+    </tr>
+    <tr> 
+      <td height=16 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvLeaveGroup</code></font></td>
+      <td height=16 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">User 
+        left a group</font></td>
+      <td height=16 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerUser</code> 
+        pointer</font></td>
+      <td height=16 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code><code>ISWServerGroup</code></code> 
+        pointer</font></td>
+      <td height=16 width="21%"><font size="1"><code><font 
+        face="Arial, Helvetica, sans-serif"><code>ISWServerGroup</code></font></code></font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvMovieCreated</code></font></td>
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        movie has been created</font></td>
+      <td height=15 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerMovie</code> 
+        pointer</font></td>
+      <td height=15 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServer</code><br>
+        pointer</font></td>
+      <td height=15 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServer</code></font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvMovieDeleted</code></font></td>
+      <td height=15 width="18%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        movie has been deleted</font></td>
+      <td height=15 width="21%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServerMovie</code> 
+        pointer</font></td>
+      <td height=15 width="22%"><font face="Arial, Helvetica, sans-serif" size="1"><code>ISWServer</code> 
+        pointer</font></td>
+      <td height=15 width="21%"><font size="1"><code><font 
+        face="Arial, Helvetica, sans-serif"><code>ISWServer</code></font></code></font></td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><a name=#IncomingMessage></a><font 
+  face="Arial, Helvetica, sans-serif"><code>MoaError IncomingMessage(<br>
+	  ConstPMoaChar <i>recipientID</i>,<br>
+	  ConstPMoaChar <i>messageSubject</i>,<br>
+	  ConstPMoaChar <i>senderID</i>,<br>
+	  MoaLong <i>errorCode</i>,<br>
+	  MoaLong <i>timeStamp</i>,<br>
+	  MoaBool <i>isUDP</i>,<br>
+	  MoaLong <i>commandNumber</i>,<br>
+	  PISWServerContent <i>msgContents</i>,<br>
+	  PISWServerUser <i>sender</i>,<br>
+	  PISWServerMovie <i>movie</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b><font 
+  size=3>Description:</font></b> <font size=2><code>IncomingMessage</code> is 
+	called when a message is routed to the xtra. Messages are routed to the xtra 
+	when users send a messages addressed to the xtra, or when a system command 
+	(System.Group.Join, etc) generates a reply message to the xtra. </font><br>
+	</font><font face="Arial, Helvetica, sans-serif"></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>recipientID</b></i></code> i<font size=2>s 
+	the userID (command name) of the xtra that is receiving the message. This 
+	may be NULL.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><b><i>messageSubject</i></b></code> 
+	<font size=2>points to a null-terminated string containing the subject of 
+	the message.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><b><code><i>senderID</i></code></b> <font 
+  size=2>points to a null-terminated string containing the user name of the client 
+	that sent the message.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><b><i><code>errorCode</code></i></b> <font 
+  size=2>contains the error code encoded in the messa</font>ge.<br>
+	</font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><b><i><code>timeStamp</code></i></b> <font 
+  size=2>contains the server time stamp from the message.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><b><i><code>isUDP</code></i></b> 
+	<font size=2>is a flag that is true if the message arrived via UDP. This will 
+	be false for the normal TCP/IP messages.</font><br>
+	</font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><b><i><code>commandNumber</code></i></b> 
+	<font size=2>contains a number corresponding to the command registered by 
+	the xtra. This may be -1 if there is no obvious match.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><b><i><code>msgContents</code></i></b> <font size=2>a 
+	pointer to an ISWServerContent object containing the message contents. The 
+	xtra should call <code>AddRef()</code> and <code>Release()</code> if this 
+	value is used beyond this routine.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><b><code><i>sender</i></code></b> 
+	<font size=2>points to a ISWServerUser object that represents the user that 
+	sent the message. The xtra should call <code>AddRef()</code> and <code>Release()</code> 
+	if this value is used beyond this routine. Use this object to send replies 
+	directly back to the message sender.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><b><i><code>movie </code></i></b><font size=2>points</font> 
+	<font size=2>to the movie that is receiving the message. The xtra should call 
+	<code>AddRef()</code> and <code>Release(</code>) if this value is used beyond 
+	this routine. Use this object to get information about the movie that received 
+	the message.</font></font></p>
+  <p></p>
+  <p><font face="Arial, Helvetica, sans-serif" size=2>If the xtra does not handle 
+	the message, it should return <code>kMoaErr_FuncNotFound</code> as an error 
+	code. The server will try to find other xtras responding to the same name 
+	to handle the message. Any other error code indicates that the xtra has processed 
+	the message and it should not be passed to other xtras or system functions. 
+	</font></p>
+  <hr>
+</blockquote>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=ServerCallbackAPIs></a>Server Callback APIs</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The Server Callback APIs represent 
+  the server object model and are provided by the server to Server Extension xtras, 
+  allowing them to access and control servers, movies, groups and users. Each 
+  of these components is represented by an object in the ISWServerObject object 
+  model: <a 
+href="#ISWServer">ISWServer</a>, <a 
+href="#ISWServerMovie">ISWMovie</a>, <a 
+href="#ISWServerGroup">ISWServerGroup</a>, and <a 
+href="#ISWServerUser">ISWServerUser</a><code>.</code> All objects descend from 
+  ISWServerObject, and as such have access to all of the methods of <code>ISWServerObject</code> 
+  in addition to their own methods. The <a 
+href="#ISWServerContent">ISWServerContent</a> object does not descend from <code>ISWServerObject</code>.</font></p>
+<p>&nbsp;</p>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=ISWServerObject></a>ISWServerObject</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The methods of ISWServerObject 
+  are available to all Server, Movie, Group, and User objects on the server. Use 
+  the ISWServerObject interface to attach data to server objects and manipulate 
+  object properties. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2>You can store run-time information 
+  with an object, and read it as needed. This information is stored in memory 
+  (RAM) resident for faster access. There are no functions to save or read run-time 
+  data for an object from disk, but in theory it is possible to build an Xtra 
+  that provides this functionality. The <a 
+href="#ISWServerMovie">ISWServerMovie</a>, <a 
+href="#ISWServerGroup">ISWServerGroup</a>, and <a 
+href="#ISWServerUser">ISWServerUser</a> objects have specific predefined settings 
+  containing information about the object. A table listing the available predefined 
+  setting can be found in the entry for each object. These settings are read-only 
+  unless otherwise specified. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=3><b><font 
+size=2>ISWServerObject method summary</font></b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><a 
+href="#SetData">SetData</a><br>
+  <a 
+href="#DeleteData">DeleteData</a><br>
+  <a 
+href="#GetData">GetData </a><br>
+  <a 
+href="#GetDataAt">GetDataAt</a><br>
+  <a 
+href="#GetDataInfo">GetDataInfo</a><br>
+  <a 
+href="#GetLastModTime">GetLastModTime</a> <br>
+  <a 
+href="#ChangeSetting">ChangeSetting</a><br>
+  <a 
+href="#GetSetting">GetSetting </a></font></p>
+<p>&nbsp;</p>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=SetData></a><b><code>MoaError SetData( ConstPMoaChar <i>pDataTag</i>, PMoaChar 
+	  <i>pData</i>, MoaLong <i>dataSize</i> )</code></b></font> </h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description: </b><font 
+  size=2>This method sets the value for data attached to the object. If the data 
+	already exists, the old value is over written, if the data does not exist 
+	a new value is added. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>pDataTag</b></code></i> <font 
+  size=2>is a pointer to the buffer containing the name of the data (for example, 
+	username). The data can not exceed 32 bytes.</font> </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pData</b> </code></i><font size=2>is 
+	a pointer to a buffer containing data.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>dataSize</b> </code></i><font size=2>is 
+	the size of the data in bytes.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font color=#000000 face="Arial, Helvetica, sans-serif"><a 
+  name=DeleteData></a><code>MoaError DeleteData( ConstPMoaCha</code></font><font 
+  face="Arial, Helvetica, sans-serif"><code>r <i>pDataTag</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method deletes data attached to the object. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>pDataTag</b></code></i> <font 
+  size=2>is a pointer to the buffer containing the name of the data (for example, 
+	username). The data can not exceed 32 bytes. </font></font></p>
+  <p>&nbsp;</p>
+  <p> </p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetData></a><code>MoaError GetData( ConstPMoaChar <i>pDataTag</i>, PMoaChar 
+	  <i>pData</i>, MoaLong <i>dataSize</i>)</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description: </b><font 
+  size=2>This method reads the data attached to the object. The buffer at <i><code>pData</code></i> 
+	is filled in with the value of the data. The wide value at <code>pLastModTime</code> 
+	is filled in with the time the data was last modified, or the time the server 
+	was last started, which ever was most recent.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>pDataTag</b></code></i> <font 
+  size=2>is a pointer to the buffer containing the name of the data (for example, 
+	username). The data can not exceed 32 bytes. </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pData</b> </code></i><font size=2>is 
+	a pointer to a buffer containing data.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>dataSize </b></code></i><font size=2>is 
+	the size of the data in bytes. </font></font><br>
+  </p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetDataAt></a><code>MoaError GetDataAt( MoaLong <i>index</i>, PMoaChar 
+	  <i>pOutDataTag</i>, PMoaChar * <i>pData</i>, MoaLong <i>pDataSize</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method returns the Nth (index) data attached to the object. </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>index </b></i></code><font size=2>is 
+    the <font color="#000000">one-based</font> index of the data you wish to reprieve.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>outDataTag </b></i></code><font size=2>is 
+	the dataTag name attached to the piece of data. This parameter is filled in 
+	by the method and can be NULL.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pData</b> </code></i><font size=2>is 
+	a pointer to a buffer containing data. <font 
+  face="Arial, Helvetica, sans-serif">The buffer for this parameter is filled 
+	in with the data attached to the server object and can be NULL</font></font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>dataSize </b></code></i><font size=2>is 
+	the size of the data in bytes.</font></font></p>
+  <p>&nbsp;</p>
+  <p> </p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=CountData></a><code>MoaLong CountData( )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method returns the number of data pieces attached to the server 
+	object.</font></font></p>
+</blockquote>
+<p>&nbsp;</p>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetDataInfo></a><code>MoaError GetDataInfo( ConstPMoaChar <i>* pDataTag</i>, 
+      PMoaChar * <i>pData</i>, PMoaLong <i>* pDataSize</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method returns information about the data attached to the server 
+	object. Xtras can use this method to view the property buffer or examine the 
+	modification date. <code><i>pData</i></code> and <code><i>pDataSize</i></code> 
+	may be NULL if the information is not desired. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>pDataTag</b></code></i> <font 
+  size=2>is a pointer to the buffer containing the name of the data (for example, 
+	username). The data can not exceed 32 bytes. </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pData</b> </code></i><font size=2>is 
+	a pointer to a buffer containing data. <font 
+  face="Arial, Helvetica, sans-serif">The buffer for this parameter is filled 
+	in with the data attached to the server object and can be NULL.</font></font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>dataSize </b></code></i><font size=2>is 
+	the size of the data in bytes. </font></font><br>
+  </p>
+</blockquote>
+<h4></h4>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetLastModTime></a><code>MoaError GetLastModTime( PMoaChar pLastModTime 
+	  )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method fills in the string at <code>outModTime</code> with the last 
+	time the object was modified. The string buffer must be large enough to receive 
+	data in the format "YYYY/MM/DD HH:MM:SS.MICSEC". The string will contain the 
+	year, month, day, hour, minute, second and microsecond that data attached 
+	to the object was last changed. On the Macintosh, the microsecond value is 
+	not valid.</font></font><br>
+  </p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=ChangeSetting></a><code>MoaError ChangeSetting( ConstPMoaChar <i>settingTag</i>, 
+	  PMoaChar <i>pData</i>, MoaLong <i>dataSize</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method changes a setting for the server object. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>settingTag</b></code></i> <font size=2>one 
+	of the predefined values for the object. Settings that are not predefined 
+	will not work. See the object entries ISWServerMovie, ISWServerGroup, and 
+	ISWServerUser for </font><font 
+  face="Arial, Helvetica, sans-serif"><font size=2>a table containing the predefined 
+	object settings available for that object. </font></font><font 
+  size=2></font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>pData </b></i></code><font size=2>the 
+	buffer for this parameter is filled in with the data attached to the server 
+	object. This parameter can NOT be NULL for this method.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>dataSize </b></code></i><font size=2>is 
+	the size of the data in bytes. </font></font><br>
+  </p>
+</blockquote>
+<h4></h4>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetSetting></a><code>MoaError GetSetting( ConstPMoaChar <i>settingTag</i>, 
+      PMoaChar <i>* pData</i>, MoaLong <i>maxDataSize</i> ) </code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method reads a setting from the server object. <i><code>settingTag</code></i> 
+	must be one of the predefined settings for the object.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>settingTag</b></code></i> <font size=2>one 
+	of the predefined values for the object. Settings that are not predefined 
+	will not work. See the object entries ISWServerMovie, ISWServerGroup, and 
+	ISWServerUser for </font><font 
+  face="Arial, Helvetica, sans-serif"><font size=2>a table containing the predefined 
+	object settings available for that object. </font></font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pData</b> </code></i><font size=2>is 
+	a pointer to a buffer containing data. <font 
+  face="Arial, Helvetica, sans-serif">The buffer for this parameter is filled 
+	in with the data attached to the server object and can be NULL.</font></font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>maxdataSize<font 
+  size=2> </font></b></code></i><font size=2>is the maximum amount of data for 
+	the buffer in bytes.</font></font></p>
+  <hr>
+  <h2></h2>
+</blockquote>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=ISWServer></a>ISWServer</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The <code>I</code>SWServer 
+  interface is available to Server Extension xtras and has access to all of the 
+  methods of <a 
+href="#ISWServerObject">ISWServerObject.</a></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><b>ISWServer method summary</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><a 
+href="#DisplayMessage">DisplayMessage</a><br>
+  <a 
+href="#ServerEnableNotification">EnableNotification</a><br>
+  <a 
+href="#GetMovie">GetMovie</a><br>
+  <a 
+href="#GetMovieAt">GetMovieAt</a><br>
+  <a 
+href="#CreateMovie">CreateMovie</a><br>
+  <a 
+href="#DeleteMovie">DeleteMovie</a><br>
+  <a 
+href="#CreateContent">CreateContent</a> </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><code>ISWServer</code> has 
+  the following predefined settings. These settings can be accessed using the 
+  ISWServerObject <a 
+href="#ChangeSetting"><code>ChangeSetting()</code></a> and <a 
+href="#GetSetting"><code>GetSetting() </code></a>methods.</font></p>
+<blockquote> 
+  <table border=1 width="75%">
+    <tbody> 
+    <tr> 
+      <td width="29%"><font face="Arial, Helvetica, sans-serif"><b>Predefined 
+        settings</b></font></td>
+      <td width="56%"><font face="Arial, Helvetica, sans-serif"><b>pData Value</b></font></td>
+      <td width="15%"><font 
+        face="Arial, Helvetica, sans-serif"><b>Note</b></font></td>
+    </tr>
+    <tr> 
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1"><code>numMovies</code></font></td>
+      <td width="56%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to integer specifying the number of movies.</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    <tr> 
+      <td height=21 width="29%"><font face="Arial, Helvetica, sans-serif" size="1"><code>currentTime</code></font></td>
+      <td height=21 width="56%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to string buffer to get the time string</font></td>
+      <td height=21 width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    <tr> 
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1"><code>timeStamp</code></font></td>
+      <td width="56%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to integer specifying the current timestamp</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    <tr> 
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1"><code>language</code></font></td>
+      <td width="56%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to an integer specifying the language: 0=Engish. 1=French, 2=German, 9=Korean, 
+        10=Japanese</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    <tr> 
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1"><code>defaultUserLevel</code></font></td>
+      <td width="56%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to an integer</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read/Write</font></td>
+    </tr>
+    <tr> 
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1"><code>serverPath</code></font></td>
+      <td width="56%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a string</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    </tbody> 
+  </table>
+  <h3>&nbsp;</h3>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=DisplayMessage></a><code>MoaError DisplayMessage( ConstPMoaChar <i>messageText</i> 
+	  )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method displays the text of the message in the server console window. 
+	The message will also be added to the server log if one is active.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>messageText </b></code></i><font size=2>the 
+	text of the server message.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=ServerEnableNotification></a><code>MoaError EnableNotification( PMoaVoid 
+	  <i><font color="#000000">pXtra</font></i>, MoaLong <i>eventCode</i>, MoaBool 
+	  <i>enabled</i>)</code> </font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method turns notification messages about server events on and off. 
+	</font></font><font face="Arial, Helvetica, sans-serif" size=2>By default 
+	there are no events enabled when the Server Extension xtra is loaded; you 
+	must call<code> EnableNotification()</code> to start receiving events.</font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>eventCode</b></i></code> <font 
+  size=2>a code for a server event sent to an xtra (see table below). For a list 
+    of events as they are sent to the xtra, see <a 
+  href="#ServerEvent">ServerEvent</a>.</font> </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>enabled </b></i></code><font size=2>a 
+	Boolean specifying whether you want to enable notification (TRUE) or not (FALSE).</font> 
+	</font></p>
+  <table border=1 width="82%">
+    <tbody> 
+    <tr> 
+      <td width="20%"><font face="Arial, Helvetica, sans-serif"><b>Event code</b></font></td>
+      <td width="26%"><font 
+        face="Arial, Helvetica, sans-serif"><b>Description</b></font></td>
+    </tr>
+    <tr> 
+      <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvIdle</code></font></td>
+      <td width="26%"><font face="Arial, Helvetica, sans-serif" size="1">Server 
+        idle</font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="20%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvMovieCreated</code></font></td>
+      <td height=15 width="26%"><font face="Arial, Helvetica, sans-serif" size="1">Movie 
+        has been created</font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="20%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvMovieDeleted</code></font></td>
+      <td height=15 width="26%"><font face="Arial, Helvetica, sans-serif" size="1">Movie 
+        has been deleted</font></td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetMovie></a><code>ISWServerMovie GetMovie( ConstPMoaChar <i>movieName</i> 
+	  )</code></font></h3>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetMovieAt></a><code>ISWServerMovie GetMovieAt( MoaLong <i>index</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>These two methods return an interface pointer to a movie. The caller 
+	must <code>Release()</code> this interface when done with it.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>movieName </b></i></code><font size=2>the 
+	name of the movie to retrieve.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>Index</b> </i></code><font size=2>an 
+	integer specifying the index of the movie to retrieve.<br>
+	</font></font></p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=CreateMovie></a><code>ISWServerMovie CreateMovie( ConstPMoaChar <i>movieName</i> 
+	  )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method creates a new movie on the server. The caller must <code>Release()</code> 
+	this interface when done with it.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>movieName </b></i></code>t<font size=2>he 
+	name of the movie to create.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=DeleteMovie></a><code>MoaError DeleteMovie( ConstPMoaChar <i>movieName</i> 
+	  )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method deletes a movie on the server.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>movieName </b></i></code><font size=2>the 
+	name of the movie to delete.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=DeleteMovie></a><code>PMoaVoid CreateContent( void )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method creates a new server content object and returns an<a 
+  href="#ISWServerContent"> ISWServerContent</a> interface to it. The new interface 
+    is owned by the caller, who must call <code>Release()</code> when done with 
+    it.</font></font></p>
+</blockquote>
+<hr>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=ISWServerMovie></a>ISWServerMovie</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The ISWServerMovie interface 
+  has access to all of the methods of <a 
+href="#ISWServerObject">ISWServerObject</a><code>.</code> </font></p>
+<p><font face="Arial, Helvetica, sans-serif"><b><font 
+size=2>IS</font></b></font><font size=2><b><font 
+face="Arial, Helvetica, sans-serif">WServerMovie method summary</font></b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><a 
+href="#DisplayMessage">DisplayMessage</a><br>
+  <a 
+href="#MovieEnableNotification">EnableNotification</a><br>
+  <a 
+href="#MovieSendMessage">SendMessage</a><br>
+  <a 
+href="#SendMessageToList">SendMessageToList</a><br>
+  <a 
+href="#GetGroup">GetGroup</a><br>
+  <a 
+href="#GetGroupAt">GetGroupAt</a><br>
+  <a 
+href="#CreateGroup">CreateGroup</a><br>
+  <a 
+href="#DeleteGroup">DeleteGroup</a><br>
+  <a 
+href="#GetMoviesServer">GetMoviesServer</a> </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2>ISWServerMovie has the following 
+  predefined settings. These settings can be accessed using the ISWServerObject 
+  <a 
+href="#ChangeSetting"><code>ChangeSetting()</code></a> and <a 
+href="#GetSetting"><code>GetSetting()</code></a>methods.</font></p>
+<blockquote> 
+  <table border=1 width="75%">
+    <tbody> 
+    <tr> 
+      <td width="30%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>Predefined Setting</b></font></td>
+      <td width="55%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>pData Value</b></font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>Note</b></font></td>
+    </tr>
+    <tr> 
+      <td width="30%"><font face="Arial, Helvetica, sans-serif" size="1"><code>numGroups</code></font></td>
+      <td width="55%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to an integer specifying the number of groups.</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    <tr> 
+      <td width="30%"><font face="Arial, Helvetica, sans-serif" size="1"><code>numUsers</code></font></td>
+      <td width="55%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to integer specifying the number of users</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    <tr> 
+      <td height=14 width="30%"><font face="Arial, Helvetica, sans-serif" size="1"><code>movieID</code></font></td>
+      <td height=14 width="55%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to string specifying the movie name</font></td>
+      <td height=14 width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+        only</font></td>
+    </tr>
+    <tr> 
+      <td width="30%"><font face="Arial, Helvetica, sans-serif" size="1"><code>defaultUserLevel</code></font></td>
+      <td width="55%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to integer specifying the user level</font></td>
+      <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read/Write</font></td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=MovieDisplayMessage></a><code>MoaError DisplayMessage( ConstPMoaChar <i>messageText</i> 
+	  )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font size=2> 
+	This method displays the messageText in the console window. It will also be 
+	added to the server log if one is active. </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>messageText </b></i></code><font size=2>the 
+	message from the server. </font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=MovieEnableNotification></a><code>MoaError EnableNotification( PMoaVoid 
+	  <i>pXtra</i>, MoaLong <i>eventCode</i>, MoaBool <i>enabled</i> ) </code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method turns notification messages about movie events on and off. 
+	</font></font><font face="Arial, Helvetica, sans-serif" size=2>By default 
+	there are no events enabled when the Server Extension xtra is loaded; you 
+	must call<code> EnableNotification()</code> to start receiving events. </font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>eventCode</b></i></code> <font 
+  size=2>a code for a server event sent to an xtra (see table below). For a list 
+    of events as they are sent to the xtra, see <a 
+  href="#ServerEvent">ServerEvent</a>.</font> </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>enabled </b></i></code><font size=2>a 
+	Boolean specifying whether you want to enable notification (TRUE) or not (FALSE).</font> 
+	</font></p>
+  <table border=1 width="82%">
+    <tbody> 
+    <tr> 
+      <td width="20%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>Event code</b></font></td>
+      <td width="26%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><b>Description</b></font></td>
+    </tr>
+    <tr> 
+      <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvUserLogon</code></font></td>
+      <td width="26%"><font face="Arial, Helvetica, sans-serif" size="1">User 
+        has logged on to this movie</font></td>
+    </tr>
+    <tr> 
+      <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvUserLogoff</code></font></td>
+      <td width="26%"><font face="Arial, Helvetica, sans-serif" size="1">User 
+        has logged off or connection broken</font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="20%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvGroupCreated</code></font></td>
+      <td height=15 width="26%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        group has been created</font></td>
+    </tr>
+    <tr> 
+      <td height=15 width="20%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kSrvGroupDeleted</code></font></td>
+      <td height=15 width="26%"><font face="Arial, Helvetica, sans-serif" size="1">A 
+        group is about to be deleted</font></td>
+    </tr>
+    </tbody> 
+  </table>
+  <h3>&nbsp;</h3>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=MovieSendMessage></a><code>MoaError SendMessage(<br>
+	  ConstPMoaChar <i>recipient</i>,<br>
+	  MoaLong <i>errorCode</i>,<br>
+	  ConstPMoaChar <i>subject</i>,<br>
+	  ConstPMoaChar <i>sender</i>,<br>
+	  MoaBool <i>isUDP</i>,<br>
+	  PISWServerUser <i>senderInterface</i>, <br>
+	  PISWServerContent <i>msgContents</i> )</code></font></h3>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=SendMessageToList></a><code>MoaError SendMessageToList( <br>
+	  ConstPMoaChar * <i>recipientList</i>,<br>
+	  MoaLong <i>errorCode</i>,<br>
+	  ConstPMoaChar <i>subject</i>,<br>
+	  ConstPMoaChar <i>sender</i>,<br>
+	  MoaBool <i>isUDP</i>,<br>
+	  PISWServerUser <i>senderInterface</i>, <br>
+	  PISWServerContent <i>msgContents</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>The methods <code>SendMessage</code> and <code>SendMessageToList</code> 
+	dispatch a message to the appropriate client(s) connected to the server. Use 
+	<code>SendMessage</code> to send a message to one client and use <code>sendMessageToList</code> 
+	to send a message to several clients.<font 
+  color=#800080> </font></font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>recipient</b></i></code> <font 
+  size=2>a pointer to a null-terminated string specifying the userID of the intended 
+	recipient of the message. The userID can be a group or xtra name. This parameter 
+	identifies the destination of a message being sent to one client using the 
+	<code>sendMessage</code> method. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>recipientList</b></i></code> 
+	<font size=2>a pointer to a list of pointers to null-terminated strings containing 
+	valid userIDs of the intended recipients of the message. The recipient list 
+	parameter must terminate with a NULL entry. The recipients can be a combination 
+	of userIDs and group names. This is a parameter identifies the destination 
+	of a message being sent to several clients (using <code>SendMessageToList</code>). 
+	</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>errorCode</b></i></code> <font 
+  size=2>is the error code that is included in the message.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>subject</b></i></code> <font 
+  size=2>is a pointer to a null-terminated string containing the subject of the 
+	message.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>sender</b></i></code> 
+	<font size=2>is a pointer to a null-terminated string containing the user 
+	ID of the message sender. This would normally be one of the names registered 
+	to identify the xtra, but it could be a user, group, list or other string.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>isUDP</b></i></code><font 
+  size=2> is a flag indicating whether or not the message should be sent via a 
+	UDP packet. Messages sent by UDP must fit inside a single UDP packet. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>senderInterface</b></i></code> 
+    <font size=2>the <code>PISWServerUser</code> interface passed to the xtra 
+    in the <a 
+  href="#Initialize"><code>Initialize()</code></a> call. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>msgContents</b></i></code> <font size=2>a 
+	pointer to a <code>ISWServerContent</code> object that contains a valid encoded 
+	lingo value. If you do not wish to specify a value for the message, this parameter 
+	can be NULL. The caller owns the value and needs to call<code> Release()</code> 
+	when finished.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size=2>Server Extension xtras may 
+    send messages to "System, " which will be handled in the "normal" way: a reply 
+    is sent back to the sender and <b><font color="#000000">arrives</font></b> 
+    in the <code>IncomingMessage()</code> function. Messages can also be addressed 
+    to groups or other xtras. It is not possible for an xtra to send a message 
+    to itself.</font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetGroup></a><code>ISWServerGroup GetGroup( ConstPMoaChar <i>groupName</i> 
+	  )</code></font></h3>
+  <li> 
+	<h3><a name=GetGroupAt></a><font 
+  face="Arial, Helvetica, sans-serif"><code>ISWServerGroup GetGroupAt( MoaLong 
+	  <i><font color="#000000">index</font></i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>These methods return an interface pointer to a group.<font 
+  color=#800080> </font>The caller must call <code>AddRef()</code> and <code>Release()</code> 
+	on this interface if the information is saved in the xtra.</font> <font color=#ff0080 size=2><br>
+    </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>groupName </b></i></code><font size=2>is 
+	the name of the group to be retrieved.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>index </b></i></code><font size=2>the 
+    zero-based index of the group to be retrieved.</font> </font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=CreateGroup></a><code>ISWServerGroup CreateGroup( ConstPMoaChar <i>groupName</i> 
+	  </code>)</font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method creates a new group in the movie. The caller must call <code>AddRef()</code> 
+	and <code>Release()</code> on this interface if the information is cached 
+	in the xtra.</font> </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>groupName </b></i></code><font size=2>is 
+	the name of the group to be created. </font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=DeleteGroup></a><code>MoaError DeleteGroup( ConstPMoaChar <i>groupName</i> 
+	  )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method deletes a group on the server.</font> </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>groupName </b></i></code><font size=2>is 
+	the name of the group to be deleted.</font> </font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetMoviesServer></a><code>PMoaVoid <font color="#333333">GetMoviesServer</font>( 
+	  void )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>This method returns an interface pointer (<code>ISWServer</code>) to 
+	the server the movie is on.</font> </font></p>
+</blockquote>
+<hr>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=ISWServerGroup></a>ISWServerGroup</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The ISWServerGroup interface 
+  has access to all of the methods of <a 
+href="#ISWServerObject">ISWServerObject</a> . </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><b>ISWServerGroup method summary</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><a 
+href="#GroupEnableNotification">EnableNotification</a></font><font 
+size=2><br>
+  <font face="Arial, Helvetica, sans-serif"><a 
+href="#SendMessageToGroup">SendMessageToGroup</a><br>
+  <a 
+href="#GetUser">GetUser</a><br>
+  <a 
+href="#GetUserAt">GetUserAt</a><br>
+  <a 
+href="#AddUser">AddUser</a><br>
+  <a 
+href="#RemoveUser">RemoveUser </a></font></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2>ISWServerGroup has the following 
+  predefined settings that can be accessed using the ISWServerObject <a 
+href="#ChangeSetting"><code>ChangeSetting()</code></a> and <a 
+href="#GetSetting"><code>GetSetting()</code></a>methods .</font></p>
+<blockquote> 
+  <blockquote> 
+	<table border=1 width="88%">
+      <tbody> 
+      <tr> 
+        <td width="25%"><font face="Arial, Helvetica, sans-serif" 
+          size=2><b>Predefined Setting</b></font></td>
+        <td width="57%"><font face="Arial, Helvetica, sans-serif" 
+          size=2><b>pData Value</b></font></td>
+        <td width="18%"><font face="Arial, Helvetica, sans-serif" 
+          size=2><b>Note</b></font></td>
+      </tr>
+      <tr> 
+        <td width="25%"><font face="Arial, Helvetica, sans-serif" size="1"><code>numMembers</code></font></td>
+        <td width="57%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+          to an integer specifying the number of users in the group.</font></td>
+        <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+          only</font></td>
+      </tr>
+      <tr> 
+        <td width="25%"><font face="Arial, Helvetica, sans-serif" size="1"><code>groupID</code></font></td>
+        <td width="57%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+          to string specifying the group name</font></td>
+        <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+          only</font></td>
+      </tr>
+      <tr> 
+        <td width="25%"><font face="Arial, Helvetica, sans-serif" size="1"><code>groupPersists</code></font></td>
+        <td width="57%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+          to an integer flag</font></td>
+        <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1">Read/Write</font></td>
+      </tr>
+      <tr> 
+        <td width="25%"><font face="Arial, Helvetica, sans-serif" size="1"><code>sizeLimit</code></font></td>
+        <td width="57%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+          to an integer</font></td>
+        <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1">Read/Write</font></td>
+      </tr>
+      </tbody> 
+    </table>
+  </blockquote>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GroupEnableNotification></a><code>MoaError EnableNotification( PMoaVoid 
+	  <i>pXtra</i>, MoaLong <i>eventCode</i>, MoaBool <i>enabled</i> ) </code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method turns notification messages about group events on and off. 
+    For a list of events as they are sent to the xtra, see <a 
+  href="#ServerEvent">ServerEvent </a>. By default there are no events enabled 
+    when the Server Extension xtra is loaded; you must call<code> EnableNotification()</code> 
+    to start receiving events.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>eventCode</b></i></code> <font 
+  size=2>a code for a server event sent to an xtra (see table below). For a list 
+    of events as they are sent to the xtra, see <a 
+  href="#ServerEvent">ServerEvent</a>.</font> </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>enabled </b></i></code><font size=2>a 
+	Boolean specifying whether you want to enable notification (TRUE) or not (FALSE).</font> 
+	</font></p>
+  <p> </p>
+  <blockquote> 
+	<table border=1 width="75%">
+      <tbody> 
+      <tr> 
+        <td width="20%"><font size=2><b><font 
+          face="Arial, Helvetica, sans-serif">Event code</font></b></font></td>
+        <td width="26%"><font size=2><b><font 
+          face="Arial, Helvetica, sans-serif">Description</font></b></font></td>
+      </tr>
+      <tr> 
+        <td height=15 width="20%"><font size="1"><code>kSrvJoinGroup</code></font></td>
+        <td height=15 width="26%"><font face="Arial, Helvetica, sans-serif" size="1">User 
+          joins a group</font></td>
+      </tr>
+      <tr> 
+        <td height=15 width="20%"><font size="1"><code>kSrvLeaveGroup</code></font></td>
+        <td height=15 width="26%"><font face="Arial, Helvetica, sans-serif" size="1">User 
+          leaves a group</font></td>
+      </tr>
+      </tbody> 
+    </table>
+	<p>&nbsp;</p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li> 
+	<h3><code><font face="Arial, Helvetica, sans-serif"><a 
+  name=GroupSendMessage></a></font></code><font 
+  face="Arial, Helvetica, sans-serif"><code>MoaError SendMessageToGroup( <br>
+	  ConstPMoaChar <i>recipient</i>,<br>
+	  MoaLong <i>errorCode</i>,<br>
+	  ConstPMoaChar <i>subject</i>,<br>
+	  ConstPMoaChar <i>sender</i>,<br>
+	  MoaBool <i>isUDP</i>,<br>
+	  PISWServerUser <i>senderInterface</i>,<br>
+	  PISWServerContent <i>msgContents</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This methods dispatches messages to the group. Use the <code>SendMessage</code> 
+  method in the <code>ISWUser</code> interface to send a message to a user.</font></font><font face="Arial, Helvetica, sans-serif" 
+  size=2> </font> 
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>recipient </b></i></code> <font 
+  size=2>a pointer to a null-terminated string specifying the groupID of the intended 
+    recipient of the message. This parameter identifies the destination of a message 
+    being sent to group.<font color="#00CC00"> <font color="#000000">NOTE: this 
+    argument isn't used and will be removed in a future release; for the time 
+    being, you can pass in any string. NULL will return a bad parameter error.</font></font></font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>errorCode</b></i></code> <font 
+  size=2>is the error code to be included in the message.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>subject</b></i></code> <font 
+  size=2>is a pointer to a null-terminated string that specifies the subject of 
+	the message.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>sender</b></i></code> 
+	<font size=2>is a pointer to a null-terminated string containing the user 
+	ID of the message sender. This would normally be one of the names registered 
+	to identify the xtra, but it could be a user, group, list or other string. 
+	</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>isUDP</b></i></code> 
+	<font size=2>is a flag indicating whether or not the message should be sent 
+	via a UDP packet. Messages sent by UDP must fit inside a single UDP packet. 
+	</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>senderInterface</b></i></code> 
+    <font size=2>the <code>PISWServerUser</code> interface organdy passed to the 
+    xtra in the <a 
+  href="#Initialize"><code>Initialize()</code></a> call.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>msgContents</b></i></code> <font size=2>a 
+	pointer to a <code>ISWServerContent </code><font 
+  color=#800080></font>object that contains a valid encoded lingo value. If you 
+	do not wish to specify a value for the message, this parameter can be NULL. 
+	The caller owns the value and needs to call<code> Release()</code> when finished.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetUser></a><code>ISWServerUser GetUser( ConstPMoaChar <i>userName</i> 
+	  )</code></font></h3>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetUserAt></a><code>ISWServerUser GetUserAt( MoaLong <i><font color="#000000">index</font></i><font color=#ff99ff> 
+	  </font>)</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>These methods return an interface pointer to a user in the group group.<font color=#800080> 
+	</font>The caller must call <code>AddRef()</code> and <code>Release()</code> 
+	on this interface if the information is saved in the xtra. </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>userName </b></i></code>i<font size=2>s 
+	the name of the user to be retrieved.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b><font color="#000000">index</font><font 
+  color=#ff00cc> </font></b></i></code><font color=#000000 
+  size=2> the index of the group to be retrieved.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=AddUser></a><code>MoaError AddUser( ISWServerUser <i>pUser</i>, ConstPMoaChar 
+	  <i>userID</i> </code>)</font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This function adds a new user to the group. You can specify either or 
+	both of the parameters. </font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>user</b></code></i></font> <font face="Arial, Helvetica, sans-serif" size=2>is 
+	a pointer to the user object to add to the group. </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>userID</b></code></i> 
+	<font size=2>is the user's name as it appears in the group. </font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=RemoveUser></a><code>MoaError RemoveUser( ISWServerUser <i>user</i>, ConstPMoaChar 
+	  <i>userID</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This function removes a user from the group. </font><font 
+  face="Arial, Helvetica, sans-serif"><font size=2>You can specify either or both 
+	of the parameters.</font></font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>User</b></code></i></font> <font face="Arial, Helvetica, sans-serif" size=2>is 
+	the name of the user object to remove from the group.</font><font face="Arial, Helvetica, sans-serif"> 
+	</font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><i><code><b>userID</b></code></i><font 
+  size=2> is the user's name as it appears in the group. </font></font></p>
+</blockquote>
+<hr>
+<h2><font face="Arial, Helvetica, sans-serif"><a 
+name=ISWServerUser></a>ISWServerUser</font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The ISWServerUser interface 
+  is available to server xtras has access to all of the functions of <a 
+href="#ISWServerObject">ISWServerObject</a>.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><b>ISWServerUser method summary</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><a 
+href="#UserEnableNotification">EnableNotification</a><br>
+  <a 
+href="#UserSendMessage">SendMessage</a><br>
+  <a 
+href="#GetUsersMovie">GetUsersMovie </a></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2>ISWServerUser has the following 
+  predefined settings that can be accessed using the ISWServerObject <a 
+href="#ChangeSetting"><code>ChangeSetting()</code></a> and <a 
+href="#GetSetting"><code>GetSetting() </code></a>methods.</font></p>
+<blockquote> 
+  <blockquote> 
+	<table border=1 width="100%">
+      <tbody> 
+      <tr> 
+        <td width="32%"> 
+          <div align=left><font face="Arial, Helvetica, sans-serif" 
+          size=2><b>Predefined Setting</b></font></div>
+        </td>
+        <td width="53%"><font face="Arial, Helvetica, sans-serif" 
+          size=2><b>pData Value</b></font></td>
+        <td width="15%"><font face="Arial, Helvetica, sans-serif" 
+          size=2><b>Note</b></font></td>
+      </tr>
+      <tr> 
+        <td height=17 width="32%"><font face="Arial, Helvetica, sans-serif" size="1"><code>userLevel</code></font></td>
+        <td height=17 width="53%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+          to an integer specifying a User's command permission level.</font></td>
+        <td height=17 width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read/write</font></td>
+      </tr>
+      <tr> 
+        <td width="32%"><font face="Arial, Helvetica, sans-serif" size="1"><code>userID</code></font></td>
+        <td width="53%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+          to string with user's name</font></td>
+        <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+          only</font></td>
+      </tr>
+      <tr> 
+        <td width="32%"><font face="Arial, Helvetica, sans-serif" size="1"><code>creationTime</code></font></td>
+        <td width="53%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+          to integer specifying server timeStamp when created</font></td>
+        <td width="15%"><font face="Arial, Helvetica, sans-serif" size="1">Read 
+          only</font></td>
+      </tr>
+      </tbody> 
+    </table>
+	<font 
+    face="Arial, Helvetica, sans-serif"><br>
+	</font></blockquote>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=UserEnableNotification></a><code>MoaError EnableNotification( PMoaVoid 
+      <i>pXtra</i>, MoaLong <i>eventCode</i>, MoaBool <i>enabled</i> )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description: </b><font 
+  size=2>This method turns notification messages about user events on and off. 
+    For a list of events as they are sent to the xtra, see <a 
+  href="#ServerEvent">ServerEvent </a>. By default, no events are enabled when 
+    the Server Extension xtra is loaded; you must call <code>EnableNotification()</code> 
+    to start receiving events. <font color=#ff0080><br>
+    <br>
+    </font></font><code><i><b><font color="#000000">xtra</font><font 
+  color=#ff0080> </font></b></i></code><font color="#000000" size="2">a pointer 
+    to the Server Extension xtra.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>eventCode</b></i></code> <font 
+  size=2> a code for a server event sent to an xtra (see table below). For a list 
+    of events as they are sent to the xtra, see <a 
+  href="#ServerEvent">ServerEvent</a>.</font> </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>enabled </b></i></code><font size=2>a 
+    Boolean specifying whether you want to enable notification (TRUE) or not (FALSE).</font> 
+    </font><br>
+    <br>
+  </p>
+  <h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=UserSendMessage></a><code>MoaError SendMessage( <br>
+	ConstPMoaChar recipient,<br>
+	MoaLong errorCode,<br>
+	ConstPMoaChar subject,<br>
+	ConstPMoaChar sender,<br>
+	MoaBool isUDP,<br>
+	PISWServerContent msgContents )</code></font></h3>
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This methods dispatches messages to a user. Use the <code>SendMessageToGroup 
+	</code>method in the <code>ISWGroup</code> interface to send a message to 
+	a group.</font> </font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>recipient</b></i></code> <font 
+  size=2>to a null-terminated string with the proper userID. Identifying the message 
+	destination. If this parameter is NULL, the userID of this object will be 
+	used.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>errorCode</b></i></code> <font 
+  size=2>is the error code to be included in the message.</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>Subject</b></i></code> <font 
+  size=2>a pointer to a null-terminated string specifying the message subject.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>sender</b></i></code> 
+	<font size=2>is a pointer to a null-terminated string containing the user 
+	ID of the message sender. This would normally be one of the names registered 
+	to identify the xtra, but it could be a user, group, list or other string. 
+	</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>isUDP</b></i></code> 
+	<font size=2>is a flag indicating whether or not the message should be sent 
+	via a UDP packet. Messages sent by UDP must fit inside a single UDP packet. 
+	</font></font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif"><code><i><b>msgContents</b></i></code> <font size=2>a 
+	pointer to a <code>ISWServerContent</code> object that contains a valid encoded 
+	lingo value. If you do not wish to specify a value for the message, this parameter 
+	can be NULL. The caller owns the value and needs to call<code> Release()</code> 
+	when finished.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h3><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetUsersMovie></a><code>PMoaVoid GetUsersMovie( void )</code></font></h3>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method returns an interface pointer (<code>ISWServerMovie</code>) 
+	to a movie a user is connected to. It may be NULL if the user is in the middle 
+	of the log on sequence.</font></font></p>
+</blockquote>
+<blockquote> 
+  <hr>
+</blockquote>
+<h2><font face="Arial, Helvetica, sans-serif"><b><a 
+name=ISWServerContent></a>ISWServerContent</b></font></h2>
+<p><font face="Arial, Helvetica, sans-serif" size=2>The ISWServerContent interface 
+  methods allows Server Extension xtras to read and write content values into 
+  server messages. This is a stream-like memory buffer object that contains an 
+  encoded lingo value. </font><font face="Arial, Helvetica, sans-serif" 
+size=2>ISWServerContent<code> </code>descends from IUnknown. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><b>ISWServerContent method 
+  summary</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size=2><a 
+href="#GetPosition">GetPosition</a><br>
+  <a 
+href="#SetPosition">SetPosition</a><br>
+  <a 
+href="#ReserveSpace">ReserveSpace</a><br>
+  <a 
+href="#Reset">Reset</a><br>
+  <a 
+href="#GetBufferPointer">GetBufferPointer</a><br>
+  <a 
+href="#GetValueInfo">GetValueInfo</a><br>
+  <a 
+href="#ReadValue">ReadValue</a><br>
+  <a 
+href="#WriteValue">WriteValue</a><br>
+  <a 
+href="#SkipValue">SkipValue</a><br>
+  <a 
+href="#SkipListStart">SkipListStart </a></font></p>
+<p>&nbsp;</p>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetPosition></a><code>MoaError GetPosition( MoaLong * <i>pPosition</i> 
+	  )</code></font></h4>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=SetPosition></a><code>MoaError SetPosition( MoaLong <i>position</i> )</code></font></h4>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b> <font 
+  size=2>These two methods get and set the position offset used to read and write 
+	values from the buffer. The position must be set to a valid position in the 
+	data buffer in order for subsequent read/ write calls to function correctly. 
+	</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>pPosition </b></i></code><font size=2>the 
+	current position in the data buffer to be retrieved.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>position </b></i></code><font size=2>the 
+	position in the data buffer you wish to set.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=ReserveSpace></a><code>MoaError ReserveSpace( MoaLong <i>size</i> )</code></font></h4>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>Use this method to allocate enough buffer space for the content data. 
+	</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><code><i><b>size </b></i></code><font size=2>The 
+	amount of space to reserve. The amount of space you need depends on the amount 
+	of data. </font></font><br>
+  </p>
+</blockquote>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a name=Reset></a><code>MoaError 
+	  Reset( void )</code></font></h4>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method clears all content data and frees allocated buffer memory.</font></font><br>
+  </p>
+</blockquote>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetBufferPointer></a><code>PMoaVoid GetBufferPointer( void )</code></font></h4>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>This method returns the internal buffer pointer. The pointer is to the 
+	start of the data.</font></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<h4><font face="Arial, Helvetica, sans-serif">The following routines are used 
+  to read and write values in the content buffer. </font></h4>
+<ul>
+  <li> 
+	<h4 align=left><font face="Arial, Helvetica, sans-serif"><a 
+  name=GetValueInfo></a><code>MoaError GetValueInfo( MoaLong <i> * pValueType</i>, 
+	  MoaLong * <i>pValueSize</i>, MoaLong* </code><i><code><b>pValueStreamSize</b></code></i></font><font face="Arial, Helvetica, sans-serif" size=2></font><font face="Arial, Helvetica, sans-serif"><code> 
+	  )</code></font></h4>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b></font><font 
+  face="Arial, Helvetica, sans-serif" size=2>This method returns information about 
+	the current value in the content buffer in bytes. The xtra would typically 
+	call this method followed by <code>ReadValue(), </code>when it reads the message 
+	content and decodes the value stream of the content buffer<font 
+  color=#800080>. </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pValueType</b></code></i></font><font face="Arial, Helvetica, sans-serif" size=2> 
+	indicates the size of the data object. </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pValueSize</b></code></i></font><font face="Arial, Helvetica, sans-serif" size=2> 
+	indicates the size of the data object. </font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pValueStreamSize</b></code></i></font><font face="Arial, Helvetica, sans-serif" size=2> 
+	indicates the number of bytes as encoded in the content buffer.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size=2>Use the information in the 
+	following table to specify the <code><i>pValueType</i></code> parameter.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size=2>You can specify NULL for 
+	any of the parameters if the caller is not interested in the information. 
+	The item you point to determines the <i><code>pValueType</code></i> and <i><code>pDataSize</code></i> 
+	parameters. For example, if you point to a symbol, the <i><code>pValueType</code></i> 
+	is kMoaMmValueType</font><font 
+  face="Arial, Helvetica, sans-serif"><code>_Symbol</code></font>, <font 
+  face="Arial, Helvetica, sans-serif" size=2>and the <i><code>pDataSize</code></i> 
+	is a length for the symbol buffer including a null terminator.</font> </p>
+  <div align=center> 
+	<table border=1 width="90%">
+      <tbody> 
+      <tr> 
+        <td width="20%"> 
+          <h4><font face="Arial, Helvetica, sans-serif">Value in contents</font></h4>
+        </td>
+        <td width="28%"> 
+          <h4><font face="Arial, Helvetica, sans-serif">pValueType set to:</font></h4>
+        </td>
+        <td width="52%"> 
+          <h4><font face="Arial, Helvetica, sans-serif">pDataSize set to:</font></h4>
+        </td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Void</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Void</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">0</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Integer</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Integer</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">sizeof(int)</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Symbol</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Symbol</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">length 
+          for the symbol buffer including a null terminator.</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">String</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_String</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">length 
+          for the string buffer including a null terminator.</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Float</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Float</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">sizeof(double)</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">List</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_List</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">number 
+          of elements in the list</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Point</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Point</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">2 (number 
+          of coordinates)</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Rect</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Rect</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">4 (number 
+          of coordinates)</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">PropList</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_PropList</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">number 
+          of properties in the list</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Color</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Color</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">sizeof(<code>MoaMmColorSpec</code>)</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Date</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Date</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">sizeof(<code>MoaWide</code>)</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Media</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Media</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">number 
+          of bytes in the media data</font></td>
+      </tr>
+      <tr> 
+        <td width="20%"><font face="Arial, Helvetica, sans-serif" size="1">Picture</font></td>
+        <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Picture</code></font></td>
+        <td width="52%"><font face="Arial, Helvetica, sans-serif" size="1">number 
+          of bytes in the picture data</font></td>
+      </tr>
+      </tbody> 
+    </table>
+	<p>&nbsp;</p>
+  </div>
+  <blockquote> 
+	<div align=center></div>
+  </blockquote>
+</blockquote>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=ReadValue></a><code>MoaError ReadValue( PMoaVoid <i>pValueData</i> )</code></font></h4>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>Reads a value from the stream. The value at <i><code>pValue</code></i> 
+    is filled out with the current value from the contents. It is up to the xtra 
+    to provide a locked buffer of sufficient size to read the value. Call <a 
+  href="#GetValueInfo"><code>GetValueInfo()</code></a> first to determine the 
+    type and size of the value. </font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><i><code><b>pValueData </b></code></i><font size="-1">indicates 
+	the value being read from the stream.</font></font></p>
+  <p><font face="Arial, Helvetica, sans-serif"><font size=2>Do not call this function 
+    to read points, rects, lists, and proplists. Instead, you must first call 
+    <a 
+  href="#SkipListStart"><code>SkipListStart()</code></a>, then call <a 
+  href="#GetValueInfo"><code>GetValueInfo()</code></a> and <a 
+  href="#ReadValue"><code>ReadValue()</code></a> for each item in the point, rect, 
+    list, or proplist. Points have two coordinates, which may be integers or floats. 
+    Rects have four numeric values. Because Lists and proplists have varying number 
+    and types of entries, you must call <a 
+  href="#GetValueInfo"><code>GetValueInfo()</code></a> for each list or proplist 
+    in order to determine how to read it.</font></font></p>
+  <table align=center border=1 width="90%">
+    <tbody> 
+    <tr> 
+      <td height=15 width="9%"> 
+        <h4><font face="Arial, Helvetica, sans-serif">Data type</font></h4>
+      </td>
+      <td height=15 width="28%"><font 
+        face="Arial, Helvetica, sans-serif"><b>Current valueType</b></font></td>
+      <td height=15 width="29%"> 
+        <h4><font face="Arial, Helvetica, sans-serif">pValue meaning</font></h4>
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Void</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Void</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">ignored, 
+        nothing returned</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Integer</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Integer</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to an integer value</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Symbol</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Symbol</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a buffer to receive the symbol as a string.</font></td>
+    </tr>
+    <tr> 
+      <td height=14 width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>String</code></font></td>
+      <td height=14 width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_String</code></font></td>
+      <td height=14 width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a buffer to receive the string</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Float</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Float</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a float (double) value</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Color</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Color</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a <code>MoaMmColorSpec</code> structure</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Date</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Date</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a MoaWide structure</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Media</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Media</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a buffer to hold the media data</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Picture</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Picture</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Pointer 
+        to a buffer to hold the picture data</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Point</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Point</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Not supported 
+        - call <code>SkipListStart(</code>) and then call <code>ReadValue() </code>for 
+        the X and Y point coordinates. X and Y can be integers or doubles.</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>Rect</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_Rect</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Not supported 
+        - call <code>SkipListStart()</code> and then call ReadValue for the left, 
+        top, right and bottom coordinates. These can be integers or doubles.</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>List</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_List</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Not supported 
+        - <code>call SkipListStart()</code> and then call ReadValue for each item 
+        in the list.</font></td>
+    </tr>
+    <tr> 
+      <td width="9%"><font face="Arial, Helvetica, sans-serif" size="1"><code>PropList</code></font></td>
+      <td width="28%"><font face="Arial, Helvetica, sans-serif" size="1"><code>kMoaMmValueType_PropList</code></font></td>
+      <td width="29%"><font face="Arial, Helvetica, sans-serif" size="1">Not supported 
+        - call <code>SkipListStart()</code> and then call ReadValue for each symbol 
+        and value the list.</font></td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+</blockquote>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=WriteValue></a><code>MoaError WriteValue( MoaLong <i>valueType</i>, MoaLong 
+	  <i>valueSize</i>, PMoaVoid <i>pValueData</i> )</code></font></h4>
+	<p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>Writes a value into the content buffer and moves the current position. 
+	  </font></font></p>
+	<p><font face="Arial, Helvetica, sans-serif"><i><code><b>valueType</b></code></i></font><font face="Arial, Helvetica, sans-serif" size=2> 
+	  indicates the type of the data object. </font></p>
+	<p><font face="Arial, Helvetica, sans-serif"><i><code><b>valueSize</b></code></i></font><font face="Arial, Helvetica, sans-serif" size=2> 
+	  indicates the size of the data object. </font></p>
+	<p><font face="Arial, Helvetica, sans-serif"><i><code><b>pValueData</b></code></i></font><font face="Arial, Helvetica, sans-serif" size=2> 
+	  indicates the data to write. </font></p>
+	<p><code><font face="Arial, Helvetica, sans-serif" size="-1">The</font></code><i><code><b> 
+	  </b></code></i><font face="Arial, Helvetica, sans-serif" size="-1"><code><i>pvalueSize</i></code></font><b><code><font face="Arial, Helvetica, sans-serif" size=2> 
+	  </font></code></b><font face="Arial, Helvetica, sans-serif" size=2>parameter 
+	  varies depending on the data type</font><font face="Arial, Helvetica, sans-serif">. 
+	  <font size=2>Some data types require that you call </font><font face="Arial, Helvetica, sans-serif" 
+  size=2><code>WriteValue()</code></font><font size=2> more than once to completely 
+	  add the data to the content buffer; these data types are listed in the second 
+	  table.</font></font> </p>
+  </li>
+</ul>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size=2>Use 
+	the entries in the following table to specify the parameters for <code>WriteValue()</code>. 
+	</font></font></p>
+  <div align=center> 
+	<table border=1 width="90%">
+	  <tbody> 
+	  <tr> 
+		<td height=15 width="9%"> 
+		  <h4><font face="Arial, Helvetica, sans-serif">Data type</font></h4>
+		</td>
+		<td height=15 width="28%"><font 
+        face="Arial, Helvetica, sans-serif"><b>valueType</b></font></td>
+		<td height=15 width="34%"> 
+		  <h4><font face="Arial, Helvetica, sans-serif">valueSize meaning</font></h4>
+		</td>
+		<td height=15 width="29%"> 
+		  <h4><font face="Arial, Helvetica, sans-serif">pValue meaning</font></h4>
+		</td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Raw</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>-1</font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" size=2>number 
+		  of bytes to add</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>Pointer 
+		  to data buffer</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Void</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Void</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Integer</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Integer</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>Pointer 
+		  to an integer value</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Symbol</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Symbol</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored. </font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>The symbol 
+		  buffer must be null-terminated, and not start with a "#"</font></td>
+	  </tr>
+	  <tr> 
+		<td height=14 width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>String</font></td>
+		<td height=14 width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_String</code></font></td>
+		<td height=14 width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored. </font></td>
+		<td height=14 width="29%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Pointer to string. The string buffer must be null-terminated.</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Float</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Float</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>Pointer 
+		  to float (double) value</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>List</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_List</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" size=2>number 
+		  of elements to be added to the list</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Point</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Point</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Rect</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Rect</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>PropList</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_PropList</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" size=2>number 
+		  of properties to be added to the list</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Color</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Color</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>Pointer 
+		  to <code>MoaMmColorSpec</code> structure</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Date</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Date</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>ignored</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>Pointer 
+		  to <code>MoaWide</code> structure</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Media</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Media</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" size=2>number 
+		  of bytes in the media data</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>Pointer 
+		  to media data</font></td>
+	  </tr>
+	  <tr> 
+		<td width="9%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Picture</font></td>
+		<td width="28%"><font face="Arial, Helvetica, sans-serif" 
+        size=2><code>kMoaMmValueType_Picture</code></font></td>
+		<td width="34%"><font face="Arial, Helvetica, sans-serif" size=2>number 
+		  of bytes in the picture data</font></td>
+		<td width="29%"><font face="Arial, Helvetica, sans-serif" size=2>Pointer 
+		  to picture data</font></td>
+	  </tr>
+	  </tbody> 
+	</table>
+  </div>
+  <p>&nbsp;</p>
+  <p><font face="Arial, Helvetica, sans-serif" size=2>After calling <code>WriteValue()</code>, 
+	the data types in the following table require additional <code>WriteValue()</code> 
+	calls to completely add the data to the content buffer.</font></p>
+  <div align=center> 
+	<table border=1 width="89%">
+	  <tbody> 
+	  <tr> 
+		<td width="19%"> 
+		  <h4><font face="Arial, Helvetica, sans-serif">Data type</font></h4>
+		</td>
+		<td width="81%"> 
+		  <h4><font face="Arial, Helvetica, sans-serif">Additional <code>WriteValue()</code> 
+			calls required</font></h4>
+		</td>
+	  </tr>
+	  <tr> 
+		<td width="19%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>List</font></td>
+		<td width="81%"><font face="Arial, Helvetica, sans-serif" size=2>Call 
+		  <code>WriteValue()</code> N times to put each value into the list.</font></td>
+	  </tr>
+	  <tr> 
+		<td width="19%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Point</font></td>
+		<td width="81%"><font face="Arial, Helvetica, sans-serif" size=2>Call 
+		  <code>WriteValue()</code> two times to put an integer or float value 
+		  for the X and Y point coordinates into the list.</font></td>
+	  </tr>
+	  <tr> 
+		<td width="19%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>Rect</font></td>
+		<td width="81%"><font face="Arial, Helvetica, sans-serif" size=2>Call 
+		  <code>WriteValue()</code> four times to put an integer or float value 
+		  for the left, top, right, and bottom coordinates into the list.</font></td>
+	  </tr>
+	  <tr> 
+		<td width="19%"><font face="Arial, Helvetica, sans-serif" 
+        size=2>PropList</font></td>
+		<td width="81%"><font face="Arial, Helvetica, sans-serif" size=2>Call 
+		  <code>WriteValue()</code> to put N symbol:value pairs into the list. 
+		  Each symbol:value pair is added by calling <code>WriteValue()</code> 
+		  with a symbol, followed by <code>WriteValue() </code>with some other 
+		  value.</font></td>
+	  </tr>
+	  </tbody> 
+	</table>
+  </div>
+  <blockquote> 
+	<div align=center></div>
+	<p> </p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=SkipValue></a><code>MoaError SkipValue( void )</code></font></h4>
+	<p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>Moves the current position in the content buffer past the current value. 
+	  </font></font></p>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+  <li> 
+	<h4><font face="Arial, Helvetica, sans-serif"><a 
+  name=SkipListStart></a><code>MoaError SkipListStart( void )</code></font></h4>
+	<p><font face="Arial, Helvetica, sans-serif"><b>Description:</b><font 
+  size=2>Moves the current position in the content buffer past the start of a 
+      list, prop list, point, or rect. Use this method after calling <a 
+  href="#GetValueInfo"><code>GetValueInfo()</code></a> to move the position to 
+      the first element in a list, prop list, point, or rect value. You can then 
+      call <a 
+  href="#GetValueInfo"><code>GetValueInfo()</code></a> again to read information 
+      about the first element in the list, prop list, point, or rect</font></font></p>
+  </li>
+</ul>
+</body>
+</html>

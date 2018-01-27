@@ -1,0 +1,30 @@
+This is the list of spells:
+
+Meteor     - earth attack
+Fireball    - ranged fire attack
+Firebolt     - fire attack
+Minor Heal      - low level healing spell
+Major Heal      - high level healing spell
+Argon's Fist     - increases the rate in which your attack bar raises
+Create Food       - creates food in the inventory of the target
+Web                - creates a web that must be destroyed if you wish to pass through
+Summon Creature     - summons a pig or cow
+Diminish Hunger    - diminishes your hunger
+Dispell Illusions    - removes all illusions including spikes, morph, and nature shift
+Illusionary Spikes  - creates spikes that can be dispelled or killed
+Morph         - shifts you into a monster
+Nature Shift    - shifts you into a tree
+Stone Skin    - makes your skin hard, and difficult to pierce
+Crush     - earth attack
+Splash     - water attack
+Wind Wave    - ranged wind attack
+Whirlwind    - the whirlwind sucks the spell points out of a player
+Radar    - view various facts about a player
+Bolt     - electricity attack
+Portal      - warp to many different destinations set by the server
+Fire Sword   - causes your sword to emit fireballs when used
+Magic Shield   - protects against magical attacks
+Raise Dead   - spawns a zombie from a tombstone
+Smoke Bomb  - disappear (ninja spell)
+Inxition  - view how much experience someone needs to level
+Hold      - Hold's your opponent in place briefly

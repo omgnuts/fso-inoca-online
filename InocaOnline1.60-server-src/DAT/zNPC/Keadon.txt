@@ -1,0 +1,12 @@
+BIO|Name: Keadon
+BIO|Class: Wizard Extrodinnaire
+PRO|Dantan? Ha, you mean that imbred hedgewizard don't you?SEL|Hold Book:50000:99950
+BUY|Hold Book:25000SEL|Web Book:25000:99948
+BUY|Web Book:12500SEL|Magic Shield Book:50000:99979
+BUY|Magic Shield Book:25000SEL|Red Crystals:5:98361037
+BUY|Red Crystals:3SEL|Blue Crystals:2:97588746
+BUY|Blue Crystals:1SEL|Green Crystals:10:519439
+BUY|Green Crystals:5SEL|Yellow Crystals:15:789589
+BUY|Yellow Crystals:8SEL|Purple Crystals:20:674098
+BUY|Purple Crystals:10SEL|White Crystals:25:680074
+BUY|White Crystals:13GLD|232792442

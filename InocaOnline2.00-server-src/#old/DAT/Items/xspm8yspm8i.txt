@@ -1,0 +1,1 @@
+Blackjack Table:142-189|Slot Machine:174-285|Slot Machine:206-285|Slot Machine:142-285|Slot Machine:238-285|Slot Machine:366-285|Slot Machine:398-285|Slot Machine:430-285|Slot Machine:462-285|Blackjack Table:142-157||Blackjack Table:238-189|Checkers Table:366-189|Checkers Table:462-189|Checkers Table:462-157|Ring of Quickness:526-221|Exit:526-381|Exit2:78-381|||

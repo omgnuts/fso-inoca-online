@@ -1,0 +1,5 @@
+OWN|liz
+BIO|Name: Nostem
+BIO|Class: Shopkeeper
+PRO|GLD|39622
+SEL|logs:25:260BUY|logs:10SEL|chunk of iron:2000:0BUY|chunk of iron:500SEL|wind wave book:3000:0BUY|wind wave book:500

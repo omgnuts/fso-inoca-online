@@ -1,0 +1,19 @@
+BIO|Name: Andero
+BIO|Class: Waiter
+PRO|Come in, and stuff yourself with our delicious food.
+SEL|Corn:20:100000
+BUY|Corn:10
+SEL|Watermelon:25:100000
+BUY|Watermelon:12
+SEL|Nectar:30:100000
+BUY|Nectar:15
+SEL|Orc Meat:20:100000
+BUY|Orc Meat:10
+SEL|Orc Pot Pie:60:100000
+BUY|Orc Pot Pie:30
+SEL|Orc Burger:50:100000
+BUY|Orc Burger:25
+SEL|Fish Sticks:20:100000
+BUY|Fish Sticks:10
+BUY|Squid Platter:15
+GLD|999999

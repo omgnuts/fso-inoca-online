@@ -1,0 +1,22 @@
+RND|Welcome to my Emporium, hope you can find something you like!
+BIO|Name: Pob
+PRO|This is Pob, he runs this craaazy emporium.
+SEL|Knife:5:10
+SEL|Dagger:10:10
+SEL|Short Sword:250:5
+SEL|Long Sword:600:4
+SEL|Leather Cap:150:25
+SEL|Leather Boots:175:25
+SEL|Small Shield:200:25
+SEL|Leather Armor:250:25
+BUY|Knife:1:10
+BUY|Dagger:5:10
+BUY|Short Sword:100:5
+BUY|Long Sword:200:4
+BUY|Leather Cap:70:25
+BUY|Leather Boots:80:25
+BUY|Small Shield:90:25
+BUY|Leather Armor:100:25
+FLG|Passive
+INV|Short Sword:1
+GLD|100

@@ -1,0 +1,7 @@
+BIO|Name: Crushto
+BIO|Class: Weaponry Dealer 
+PRO|Come in!  I have only the best weaponry in Asherah.SEL|Knife:30:100753
+BUY|Knife:15SEL|Dagger:50:100278
+BUY|Dagger:25SEL|Short Sword:100:104342
+BUY|Short Sword:50SEL|Long Sword:500:101967
+BUY|Long Sword:250GLD|263447326

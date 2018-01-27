@@ -1,0 +1,179 @@
+@:Amulet of Power:Neck:1
+@:Knight's Gift:Neck:2
+@:Devil's Bind:Belt:1
+@:Girdle of Defence:Belt:2
+@:Girdle of Truth:Belt:3
+@:Leather Belt:Belt:4
+@:Chain Boots:Feet:1
+@:Leather Boots:Feet:3
+@:Plate Boots:Feet:4
+@:BlueEyed Shield:RightHand:1
+@:Chain Shield:RightHand:2
+@:Champions Shield:RightHand:3
+@:Coldon's Right Fist:RightHand:4
+@:Crusader Shield:RightHand:5
+@:Fire Shield:RightHand:6
+@:Flamor's Right Fist:RightHand:7
+@:Flank of Gond:RightHand:8
+@:Gazer Shield:RightHand:9
+@:Gold Shield:RightHand:10
+@:Gold Shield:RightHand:11
+@:Grand Buckler:RightHand:12
+@:Ice Shield:RightHand:13
+@:Iconia's Right Fist:RightHand:14
+@:Inoca's Honor:RightHand:15
+@:Knight Shield:RightHand:16
+@:Magical Shield:RightHand:17
+@:Murder Shield:RightHand:18
+@:Myoan Gong:RightHand:19
+@:Neo Shield:RightHand:20
+@:Orbe Shield:RightHand:21
+@:Pharaoh Shield:RightHand:22
+@:Rose Shield:RightHand:23
+@:Small Shield:RightHand:24
+@:Steel Shield:RightHand:25
+@:Tarbard's Blessed:RightHand:26
+@:Viper Shield:RightHand:27
+@:Argon's Ring:Ring:1
+@:Gauntlets:Ring:2
+@:Ninja Gloves:Ring:3
+@:Ring of Cold Resistance:Ring:4
+@:Ring of Energy:Ring:5
+@:Ring of Fire Resistance:Ring:6
+@:Ring of Magic:Ring:7
+@:Ring of Power:Ring:8
+@:Ring of Protection:Ring:9
+@:Ring of Quickness:Ring:10
+@:Ruby Ring:Ring:11
+@:Wedding Ring:Ring:12
+@:Forest Wings:Ring:13
+@:Blood Wings:Ring:14
+@:Purple Wings:Ring:15
+@:Rock Wings:Ring:16
+@:Sun Wings:Ring:17
+@:Sky Wings:Ring:18
+@:Devil Wings:Ring:19
+@:Fire Wings:Ring:20
+@:Ice Wings:Ring:21
+@:Golden Wings:Ring:22
+@:Poison Wings:Ring:23
+@:Fairy Dragon Wings:Ring:24
+@:Flame Dragon Wings:Ring:25
+@:Mist Dragon Wings:Ring:26
+@:Mystic Dragon Wings:Ring:27
+@:Nymph Dragon Wings:Ring:28
+@:Shade Dragon Wings:Ring:29
+@:Silver Dragon Wings:Ring:30
+@:Vampric Dragon Wings:Ring:31
+@:Fairy Wings:Ring:32
+@:Elven Wings:Ring:33
+@:Spirit Wings:Ring:34
+@:Admin Wings:Ring:35
+@:Angel Wings:Ring:36
+@:Blood Sword:LeftHand:1
+@:Bo:LeftHand:2
+@:Broad Sword:LeftHand:3
+@:Club:LeftHand:4
+@:Coldon's Left Fist:LeftHand:5
+@:Dagger:LeftHand:6
+@:Dark Scimitar:LeftHand:7
+@:Dark Staff:LeftHand:8
+@:Dark Sword:LeftHand:9
+@:Fire Hammer:LeftHand:10
+@:Fire Staff:LeftHand:11
+@:Fire Sword:LeftHand:12
+@:Flamor's Left Fist:LeftHand:13
+@:Gold Staff:LeftHand:14
+@:Gold Sword:LeftHand:15
+@:Golden Axe:LeftHand:16
+@:Holy Grail:LeftHand:17
+@:Ice Sword:LeftHand:18
+@:Iconia's Left Fist:LeftHand:19
+@:Katana:LeftHand:20
+@:Knife:LeftHand:21
+@:Knight's Sword:LeftHand:22
+@:Long Sword:LeftHand:23
+@:Lord's Staff:LeftHand:24
+@:Mace:LeftHand:25
+@:Pharaoh Sword:LeftHand:26
+@:Sabre:LeftHand:27
+@:Scimitar:LeftHand:28
+@:Short Sword:LeftHand:29
+@:Silver Crossbow:LeftHand:30
+@:Solarix's Channel:LeftHand:31
+@:Star Sword:LeftHand:32
+@:Steel Bow:LeftHand:33
+@:Steel Scimitar:LeftHand:34
+@:Steel Staff:LeftHand:35
+@:Studded Club:LeftHand:36
+@:Sword of Hope:LeftHand:37
+@:The Enscriptor:LeftHand:38
+@:Thor's Hammer:LeftHand:39
+@:Unholy Lance:LeftHand:40
+@:War Hammer:LeftHand:41
+@:Wooden Bow:LeftHand:42
+@:Wooden Crossbow:LeftHand:43
+@:Wooden Staff:LeftHand:44
+@:Celestial Rock:Head:1
+@:Chain Helm:Head:2
+@:Demon Helm:Head:3
+@:Dragon Helm:Head:4
+@:Dragon's Eye:Head:5
+@:Fire Crown:Head:6
+@:Fire Helm:Head:7
+@:General's Helm:Head:8
+@:Gold Crown:Head:9
+@:Gold Helm:Head:10
+@:Golden Dragon Helm:Head:11
+@:Golden Helm:Head:12
+@:Grand Crown:Head:13
+@:Ice Helm:Head:14
+@:Knight Helm:Head:15
+@:Leather Cap:Head:16
+@:Lord Crown:Head:17
+@:Lord's Helm:Head:18
+@:Murder Helm:Head:19
+@:Pharaoh Helm:Head:20
+@:Plate Helm:Head:21
+@:Poison Helm:Head:22
+@:Rose Helm:Head:23
+@:Silver Crown:Head:24
+@:Silver Helm:Head:25
+@:Snake Helm:Head:26
+@:War Helm:Head:27
+@:Wolf Helm:Head:28
+@:Argon's Plate:Body:1
+@:Armor of Absolute Self:Body:2
+@:Celestial Aura:Body:3
+@:Ceramic Armor:Body:4
+@:Chain Armor:Body:5
+@:Dragon Armor:Body:6
+@:Fire Armor:Body:7
+@:Fur Robe:Body:8
+@:General's Armor:Body:9
+@:Gold Armor:Body:10
+@:Ice Armor:Body:11
+@:Inoca's Cast:Body:12
+@:Invisible Cloak:Body:13
+@:KungFu Robe:Body:14
+@:Leather Armor:Body:15
+@:Lord's Armor:Body:16
+@:Lucky Suit:Body:17
+@:Mitril Armor:Body:18
+@:Necromancer's Robe:Body:19
+@:Ninja Uniform:Body:20
+@:Plate Armor:Body:21
+@:Power Robe:Body:22
+@:Robe of Invisibility:Body:23
+@:Rose Armor:Body:24
+@:Royal Uniform:Body:25
+@:Rune Armor:Body:26
+@:Rusty Armor:Body:27
+@:Samurai Armor:Body:28
+@:Titanium Armor:Body:29
+@:Tuxedo:Body:30
+@:Valor's Storm:Body:31
+@:Veltic Armor:Body:32
+@:Wedding Gown:Body:33
+@:White Robe:Body:34
+@:Wizard's Robe:Body:35

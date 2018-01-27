@@ -1,0 +1,5 @@
+KEYBOARD COMMANDS
+Tab - wields weapons and tools. Use it to attack, to fish, to mine... etc. You must have an item equipped in order to use it.
+Arrow Keys - controls the direction of your character or vessel. Right, left, up or down.
+Ctrl - enables you to pick up items. You must be standing next to the item to grab it. Also enables you to board/unboard vessels.
+Alt -allows you to change direction while standing still, when held down in conjunction with the corresponding arrow key of the direction you wish to face. 

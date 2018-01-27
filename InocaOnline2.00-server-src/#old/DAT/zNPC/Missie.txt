@@ -1,0 +1,6 @@
+BIO|Name: Missie
+BIO|Class: Blacksmith
+PRO|Welcome to my smithery.  Make and repair all of your items here!
+SEL|Blacksmith Hammer:200:100000
+BUY|Blacksmith Hammer:100
+GLD|99999

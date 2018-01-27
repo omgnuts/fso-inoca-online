@@ -1,0 +1,1 @@
+BIO|Name: BelgarionBIO|Class: Lumber JackerPRO|Just love the scent of wood. Lovely isn't it?SEL|Axe:250:9921SEL|Logs:15:10758BUY|Axe:125BUY|Logs:5GLD|928912003

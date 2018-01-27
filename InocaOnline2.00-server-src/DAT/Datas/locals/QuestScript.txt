@@ -1,0 +1,12 @@
+wenslas:leather cap:pardon
+Ariel:mushroom:giveItem|dentures|1
+Agavar:dentures:getPass|Avenda
+Ogre Fool:short sword:giveItem|mushroom|1
+Cindy:gold coin:barber
+
+NPCname:apple:warp|x1000y992 5 5
+NPCname:squid:giveItem|squid|1
+NPCname:squid:multiItem|crab-1|squid-1%crab-1
+NPCname:crab:getPass|aaaaa
+NPCname:gold coin:barber
+NPCname:gold coin:rental

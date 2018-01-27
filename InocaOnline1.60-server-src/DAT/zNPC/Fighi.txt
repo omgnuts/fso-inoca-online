@@ -1,0 +1,4 @@
+OWN|Lordkok
+BIO|Name: Fighi
+BIO|Class: Shopkeeper
+PRO|GLD|292124SEL|wind wave book:5000:0BUY|wind wave book:1SEL|logs:20:52BUY|logs:1

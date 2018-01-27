@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h2>Introduction</h2>
+This package contains sample source code for the Shockwave Multiuser Server's 
+Object DB xtra. This is the xtra that implements the object database server commands.
+<p>This code is provided as an example of a server xtra for your education and 
+  modification. Macromedia is not able to answer technical support questions concerning 
+  the use of this code.</p>
+<p>&nbsp;</p>
+<h2>Code Summary<br>
+</h2>
+<p>The xtra uses the Sequiter Codebase engine as a back-end database. This database 
+  contains information about the attributes, users, applications, and the actual 
+  stored information. Since this is a 3rd-party licensed product, the actual library 
+  and include files are not part of this distribution. If you are interested, 
+  you may purchase the Codebase library from Sequiter.</p>
+<p>The main server/xtra interface is in the SrvExtension.cpp file.</p>
+<p>The back-end databases contain the following information: </p>
+<blockquote> 
+  <p>Applications - maps between an application name and ID number<br>
+    AppData - maps between an data ID and application ID<br>
+    AttrList - maps between an attribute name and ID<br>
+    Attributes - has info about attributes (owner ID, size, etc)<br>
+    IDTable - keeps track of the internal ID numbers<br>
+    Players - maps user ID &amp;amp; application ID to a player ID<br>
+    RawData - has actual attribute data<br>
+    Users - has User's name, internal ID and password</p>
+</blockquote>
+<p>The ODB*.cpp files are abstract implementation of these tables, while the DBCB_*.cpp 
+  files are the actual tables using the Codebase library.</p>
+<p>This table architecture and lookup methods are excellent candidates for improvement 
+  and replacement with a modern back-end database such as an SQL system.</p>
+<p><br>
+</p>
+<h2>Compiling</h2>
+<p>To build the object database, use the instructions provided with the server 
+  XDK. Some of the files included here are the same as the common ones from the 
+  XDK; they are provided to make a more complete package.</p>
+<p>For compiling, the following values are #defined for all builds:</p>
+<blockquote>
+  <p><code>WINDLL<br>
+    _WINDLL</code></p>
+  <p><code>WINVER=0x0400<br>
+    _WINVER=0x0400<br>
+    WINDOWS<br>
+    _WINDOWS<br>
+    WIN32<br>
+    _WIN32</code></p>
+  <p><code>WIN32_LEAN_AND_MEAN</code></p>
+</blockquote>
+<p><br>
+  For debug builds, the following additional values are #defined:</p>
+<blockquote>
+  <p><code>DEBUG<br>
+    _DEBUG<br>
+    TEST<br>
+    _TEST<br>
+    XDEBUG=1</code></p>
+</blockquote>
+<p><br>
+  For release builds, the following additional values are #defined:</p>
+<blockquote> 
+  <p><code>RELEASE<br>
+    _RELEASE<br>
+    NDEBUG<br>
+    _NDEBUG<br>
+    XDEBUG=0</code></p>
+</blockquote>
+<h2><br>
+  Legal Disclaimer<br>
+</h2>
+<p>Copyright &copy; 1994-2001 Macromedia, Inc. All Rights Reserved</p>
+<p>THE CODE IS PROVIDED TO YOU ON AN &quot;AS IS&quot; BASIS AND &quot;WITH ALL 
+  FAULTS,&quot; WITHOUT ANY TECHNICAL SUPPORT OR WARRANTY OF ANY KIND FROM MACROMEDIA. 
+  YOU<br>
+  ASSUME ALL RISKS THAT THE CODE IS SUITABLE OR ACCURATE FOR YOUR NEEDS AND YOUR 
+  USE OF THE CODE IS AT YOUR OWN DISCRETION AND RISK. MACROMEDIA DISCLAIMS ALL 
+  EXPRESS AND IMPLIED WARRANTIES FOR CODE INCLUDING, WITHOUT LIMITATION, ANY WARRANTY 
+  OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. ALSO, THERE IS NO WARRANTY 
+  OF NON-INFRINGEMENT, TITLE OR QUIET<br>
+  ENJOYMENT.</p>
+<p>YOUR USE OF THIS CODE IS SUBJECT TO THE TERMS, CONDITIONS AND RESTRICTIONS 
+  SET FORTH IN THE CORRESPONDING LICENSE AGREEMENT BETWEEN YOU AND MACROMEDIA.</p>
+<p>&nbsp;</p>
+</body>
+</html>

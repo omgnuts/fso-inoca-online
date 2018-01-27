@@ -1,0 +1,1 @@
+OWN|AsherRangerBIO|Name: HameBIO|Class: ShopkeeperPRO|GLD|9188SEL|plate helm:2000:0BUY|plate helm:1SEL|broad sword:1000:0BUY|broad sword:1SEL|chunk of iron:9999:133BUY|chunk of iron:800SEL|adventurer's head:195:0BUY|adventurer's head:20SEL|logs:35:1613BUY|logs:1SEL|mage's head:9999:157BUY|mage's head:1

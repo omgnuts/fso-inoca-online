@@ -1,0 +1,10 @@
+//=============================================================
+// Strings for Mars / Windows
+//
+// Automatically generated from source text.
+
+
+#if !(defined( WINDOWS ))
+#define WINDOWS 1
+#endif
+

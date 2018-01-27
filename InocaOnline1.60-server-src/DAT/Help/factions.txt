@@ -1,0 +1,6 @@
+FACTIONS
+There are 3 factions: warrior, mage, and adventurers. You can join a faction by killing an opposing faction member and taking their head to the faction you want to join. Each faction has a leader. They are Trianus (Warrior), Corin (Adventurers), and Angela (Mage)....to ask how their current power is, you say "who is in power?" to them or "how is our power?" You must bring them a head and be over 50 hit points to join.
+
+For each head of an opposing faction member you return, your faction becomes more powerful, and the other becomes weaker. You'll also receive more time in the faction for each head you return. If you dont bring another head peroidically, you might get kicked out of the faction. If your HP drops below 50 you will also get kicked out of the faction.
+
+Once one faction has been diminished to nothing they can no longer be weakened, thus bringing heads of that faction to your faction will not strengthen yours.

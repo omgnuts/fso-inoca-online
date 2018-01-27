@@ -1,0 +1,1 @@
+BIO|Name:AgavarBIO|GateKeeperGLD|8395552FLG|PassiveRND|<muffled>How I wish I could eat my bacon and pie ... =(RND|<muffled>Hey I lost my teeth. Did you see them?RND|Give me my teeth and I'll reward you.PRO|<muffled>Hey I lost my teeth. Did you see them?PRO|Give me my teeth and I'll reward you.FLG|Passive

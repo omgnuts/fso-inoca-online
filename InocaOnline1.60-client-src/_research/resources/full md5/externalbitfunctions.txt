@@ -1,0 +1,65 @@
+--Tools &
+--Utilities
+--v.0.1
+
+--( public:
+--(  <#integer> CoBitLeft    (<#integer>,<#integer>)
+--(  <#integer> CoBitRight   (<#integer>,<#integer>)
+--(  <#integer> CoBitRightZF (<#integer>,<#integer>)
+--(
+--( abstract:
+--(   Dirty bit shifting operations implemented with lingo.
+--(   These functions do not work correctly with negative
+--(   shiftings! Not completely tested. You've been warned!
+--(   ©Joni Huhmarniemi (21/2/2004)
+
+--( public )-- -- -- -- -- -- -- -- -- -- -- -- --//
+
+--( Left shift.
+--( i:<#integer>,<#integer>
+--( o: -
+--( r:<#integer>
+
+on CoBitLeft(n, s)
+  return(integer(n * power(2, (s mod 32))))
+end
+
+--( Right shift.
+--( i:<#integer>,<#integer>
+--( o: -
+--( r:<#integer>
+
+on CoBitRight(n, s)
+  s = s mod 32
+  if(n > 0) then
+    return(bitOr(n / power(2, s), 0))
+  else
+    f = n / power(2, s)
+    i = integer(f)
+    if(i > f) then
+      return(i - 1)
+    else
+      return(i)
+    end if
+  end if
+end
+
+--( Zero filling right shift.
+--( i:<#integer>,<#integer>
+--( o: -
+--( r:<#integer>|<#float>
+
+on CoBitRightZF(n, s)
+  s = s mod 32
+  if(n < 0) then
+    if(s = 0) then
+      return((float(the maxInteger) * 2) + 2 + n)
+    else
+      return(bitOr((n + the maxInteger + 1) / power(2, s), power(2, (31 - s))))
+    end if
+  else
+    return(bitOr(n / power(2, s), 0))
+  end if
+end
+
+--( end )-- -- -- -- -- -- -- -- -- -- -- -- -- --//

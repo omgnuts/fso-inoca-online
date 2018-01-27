@@ -1,0 +1,2 @@
+AIRSHIPS
+An airship can only be built or boarded on a landing pad, so after you purchase your deed you will need to locate the designated airship landing pad in order to build your vessel. The landing pad will be made up of numerous grey tiles marked with an A. You will need to stand in front of one of these tiles to use your deed. Standing on top of it or beside it will not work. 

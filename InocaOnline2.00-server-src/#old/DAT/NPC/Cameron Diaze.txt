@@ -1,0 +1,7 @@
+BIO|Name: Cameron Diaze
+BIO|Class: Farmer girl
+PRO|I was raised on the farm. How about you?SEL|Seeds:4:99987SEL|Magic seeds:10:99985SEL|Premium seeds:8:99987SEL|Flower seeds:5:99963SEL|Rose seeds:10:99944SEL|Watering bucket:250:9982SEL|Roses:20:9995SEL|Flowers:20:10006SEL|Corn:6:9857SEL|Nectar:10:9946
+BUY|Roses:10
+BUY|Flowers:10
+BUY|Corn:3
+BUY|Nectar:5GLD|932250036

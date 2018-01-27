@@ -1,0 +1,1392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://www.pocketplane.net/tutorials/simscript.html -->
+<HTML><HEAD><TITLE>Complete Scripting Guide</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ISO-8859-1">
+<STYLE type=text/css>BODY {
+	FONT-SIZE: 12px; FONT-FAMILY: verdana
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY>
+<CENTER>
+<H1><U>Complete Scripting Guide</U></H1>
+<H3>by SimDing0</H3></CENTER>
+<HR>
+
+<H3><U>Contents</U></H3><B>
+<UL>
+  <LI><A 
+  href="http://www.pocketplane.net/tutorials/simscript.html#Introduction">Part 
+  I: Introduction</A> 
+  <LI><A 
+  href="http://www.pocketplane.net/tutorials/simscript.html#Structure">Part II: 
+  The Structure of a Script</A> 
+  <LI><A 
+  href="http://www.pocketplane.net/tutorials/simscript.html#Essential">Part III: 
+  Essential Knowledge</A> 
+  <UL>
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssProcess">1) The 
+    way scripts are processed in the game</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssInteract">2) 
+    The way scripts interact at different levels</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssResponses">3) 
+    Multiple responses</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssComments">4) 
+    Comments</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssORBlocks">5) 
+    Use of OR blocks</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssNesting">6) 
+    Nesting</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssVariables">7) 
+    Variables</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssLastSeenBy">8) 
+    LastSeenBy()</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssObjectTypes">9) 
+    Object Types</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssTrueFalse">10) 
+    Use of True() and False() triggers</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssTimers">11) 
+    Timers</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssShouts">12) 
+    Shouts</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssTokens">13) 
+    Tokens</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#EssDefaultScripts">14) 
+    Default scripts</A> </LI></UL>
+  <LI><A 
+  href="http://www.pocketplane.net/tutorials/simscript.html#IDSFiles">Part IV: 
+  Understanding IDS Files</A> 
+  <LI><A 
+  href="http://www.pocketplane.net/tutorials/simscript.html#Organising">Part V: 
+  Organising AI Scripts</A> 
+  <LI><A 
+  href="http://www.pocketplane.net/tutorials/simscript.html#Cutscenes">Part VI: 
+  Cutscenes</A> 
+  <LI><A 
+  href="http://www.pocketplane.net/tutorials/simscript.html#Techniques">Part 
+  VII: Useful Scripting Techniques</A> 
+  <UL>
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#TechCustomSpells">1) 
+    Using custom spells in scripts</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#TechDetectableSpells">2) 
+    Detectable Spells</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#TechTargetting">3) 
+    Priority targetting</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#TechRandomwalking">4) 
+    Randomwalking</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#TechCastnAttack">5) 
+    Cast 'n' Attack</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#TechItemUsage">6) 
+    Item usage and handling</A> 
+    <LI><A 
+    href="http://www.pocketplane.net/tutorials/simscript.html#TechInvisibleCre">7) 
+    The Invisible Creature Trick</A> </LI></UL>
+  <LI><A href="http://www.pocketplane.net/tutorials/simscript.html#FAQs">Part 
+  VIII: FAQs</A> </LI></UL>
+<P></B>
+<H4><A 
+href="http://www.pocketplane.net/tutorials/simscript.html#Credits">Credits</A></H4>
+<HR>
+<A name=Introduction>
+<H3><U>Part I: Introduction</U></H3></A>
+<P>Scripting is one of the most powerful aspects of IE editing. You can do 
+countless things with it, and it can even be used to work around things which 
+are otherwise hardcoded. <BR>In this guide, I will cover everything from the 
+basics of scripting to somewhat more advanced aspects and techniques. The later 
+sections are geared primarily towards creature AI scripting; however, much of 
+the information can be applied to all types. 
+<P>Before I begin, there are three utilities which I would recommend you 
+consider for scripting (instead of simply the game's compiler): 
+<P><A href="http://www.teambg.com/?page=tools/aidialogue">Infinity Script 
+Editor</A> <BR>A nice little utility specifically designed for scripting 
+(commonly called 'ISE'). Uses the game's script compiler and the script compiler 
+IDS files, which can be an advantage or a disadvantage depending on your view. 
+Unfortunately, it has some issues with decompiling and multiple actions with the 
+same ID currently, which can cause problems with RES actions and such. 
+<P><A href="http://www.idi.ntnu.no/~joh/ni//">Near Infinity</A> <BR>A general IE 
+file structure editing utility (commonly called 'NI'), but with a powerful 
+script editor and compiler too. Does not use the game's script compiler, nor the 
+script compiler IDS files. Requires the Java Runtime Environment. 
+<P><A href="http://www.weidu.org/main.html#weidu">WeiDU</A> <BR>Primarily a 
+dialogue editor and mod distribution tool, but also functions as a command line 
+script compiler. WeiDU offers some functions which the other tools do not allow, 
+such as spaces in death variables, and more importantly, the ability to add 
+strings to the TLK file within scripts, rather than using strrefs manually. In 
+addition, <A 
+href="http://www.dragonlancetc.com/forums/index.php?board=5;action=display;threadid=19">DLTCEP</A> 
+provides a GUI for the WeiDU script compiler. 
+<P>You'll adapt to one of these utilities later, but take a look at both and see 
+which you prefer. 
+<P>
+<HR>
+<A name=Structure>
+<H3><U>Part II: The Structure of a Script</U></H3></A>A script will always 
+consist of one or more blocks. A block will always have the following structure: 
+
+<P><CODE><PRE>IF
+    Triggers(s)
+THEN
+    RESPONSE #100
+        Action(s)
+END
+</PRE></CODE>
+<P>The logic behind this is: IF the triggers are true, THEN perform the actions. 
+<BR>All triggers which can be used in scripts are listed in TRIGGER.IDS. All 
+actions can be found in ACTION.IDS. 
+<P>For example: 
+<P><CODE><PRE>IF
+    See(NearestEnemyOf(Myself)) // If I see my nearest enemy
+THEN
+    RESPONSE #100
+        Attack(NearestEnemyOf(Myself)) // Then attack my nearest enemy
+END</CODE></PRE>
+<P>There are, however, other aspects of scripts apart from actions and triggers. 
+One other key part is objects, listed in OBJECT.IDS. They are used as part of 
+both actions and triggers. <BR>In the above script, both Myself and 
+NearestEnemyOf() are objects. However, Myself is 'nested' inside NearestEnemyOf. 
+Together, these form the more specific object: NearestEnemyOf(Myself), which, as 
+above, can be used in both actions and triggers. 
+<P>An ! before a trigger means 'not'. So !See([ANYONE]) would return true if 
+nobody is seen. <BR>There are two key types of triggers: those which respond to 
+an event, and those which respond to a state of affairs. Those which respond to 
+an event are only true for the AI cycle after the event has occured, and 
+therefore sometimes must be used with care. Those which respond to a state of 
+affairs are true as long as the state is in effect. 
+<P>Other parts of scripts are listed in the other IDS files. 
+<P>There are 3 types of file related to scripts: <BR>BAF - this is an uncompiled 
+script, in plain text format <BR>BCS - this is a compiled script usable ingame 
+for various purposes, and placed in the override folder or a BIF <BR>BS - this 
+is a compiled character script (the format is the same as a BCS file), which is 
+placed in the scripts folder, and is selectable via the character record 
+<P>To compile a BAF file, you can either use one of the utilities given about 
+(Near Infinity has its own compiler), or use the game script compiler directly 
+from the command line. <BR>In the script compiler directory, there should be a 
+number of IDS files (if you are using this compiler, remember to update these 
+files as well as the game files with any necessary changes), a quick reference 
+document, a compiler EXE and a compiler BAT file. This BAT file is what you will 
+use to compile. <BR>From the command line in the script compiler directory, 
+type: 
+<P>compile script.baf 
+<P>Where script.baf is the name of the BAF file you wish to compile. The script 
+will be compiled to a BS file in the compiled directory. Any errors will be 
+listed in an ERR file in the errors directory. 
+<P>Scripts are not stored in the cache, and as such, any script changes will 
+take place immediately. You can even make changes to scripts while the game is 
+running in some cases (generally not recommended), although the script may have 
+to be re-assigned if it is running. 
+<P>
+<HR>
+<A name=Essential>
+<H3><U>Part III: Essential Knowledge</U></H3></A>There are a few things I 
+consider important to know in being able to write more complex scripts. <A 
+name=EssProcess>
+<H4>1) The way scripts are processed by the game:</H4></A>A script is parsed 
+through from the beginning. Each block in a script is tested to each line; if it 
+is found to be false, the script continues to the next block. If it is found to 
+be true, the block is executed, and the script restarts from the beginning 
+<U>unless</U> the Continue() action is used at the end of the block. When a 
+block is executed, most actions are added to the creature's action list 
+(anything running a script has an action list); others, however, are performed 
+instantly, and are listed in INSTANT.IDS. <BR>It is important to avoid cutting 
+off sections of a script undesirably by having it restart; such cutoffs can be 
+useful in some circumstances, however. 
+<P>Continue() is an extremely useful action in that it allows greater control 
+over the flow of the script, as it means the script is not forced to restart 
+every time a block is executed. <BR>A good example of the use of Continue() is 
+in using the RandomWalk action in combat, an explanation of which can be found 
+in the <A 
+href="http://www.pocketplane.net/tutorials/simscript.html#TechRandomwalking">Useful 
+Scripting Techniques</A> section. 
+<P>This diagram demonstrates how scripts are parsed in the game: 
+<P>
+<CENTER><IMG alt="Unable to display image..." 
+src="Complete Scripting Guide_files/flow1.jpg"></CENTER>
+<P>Again, however, as noted above, <B>the Continue() action will cause the 
+script to continue to the next block instead of restarting.</B> <A 
+name=EssInteract>
+<H4>2) The way scripts interact at different levels:</H4></A>There are 7 script 
+levels which can be assigned to every creature: Override, Area, Specifics, 
+Class, Race, General and Default. They are processed in that order; the first 
+script is parsed, and if nothing in it executes, the game moves onto the next 
+script, and so on. If anything is executed, a new cycle begins. <BR>It is 
+largely down to common sense and personal choice which slots are used for what. 
+The default slot it used for generic scripts, for example WTASIGHT, while the 
+override slot is used for the most specialised scripts, for example those 
+specific to a single creature. The override script always takes priority over 
+the other script levels. 
+<P>With this new information, the diagram above can now be extended: 
+<P>
+<CENTER><IMG alt="Unable to display image..." 
+src="Complete Scripting Guide_files/flow2.jpg"></CENTER>
+<P><A name=EssResponses>
+<H4>3) Multiple responses:</H4></A>You are not limited to simply using a single 
+RESPONSE #100 in scripts. You can have numerous responses. The actual response 
+#s only matter relative to each other (they do not need to total 100), as they 
+act as a weighting. <BR>So, you could have, for example: 
+<P><CODE><PRE>IF
+    // Triggers
+THEN
+    RESPONSE #100
+        // Action 1
+    RESPONSE #100
+        // Action 2
+END</PRE></CODE>
+<P>This will theoretically execute either action 1 or action 2 with equal chance 
+of each when the block is executed. However, in practice, there is a bias 
+towards the first response (see <A 
+href="http://www.teambg.net/forum/?board=20;action=display;threadid=5998">this</A> 
+post). Truly random responses, if essential, can be achieved using the RandomNum 
+trigger. 
+<P><A name=EssComments>
+<H4>4) Comments:</H4></A>A very simple concept, but these help greatly in 
+organising your uncompiled scripts, and, as they should be, are ignored by the 
+compiler. They are denoted by two forward slashes, so: <BR><CODE>// This is a 
+comment.</CODE> 
+<P>Note, however, that comments cannot be used inside script blocks in IWD. 
+<P><A name=EssORBlocks>
+<H4>5) Use of OR blocks:</H4></A>Normally, all the triggers in a block must be 
+true for it to execute. However, OR can be used to prevent this. <BR>In a 
+script, OR will be always take the form OR(#), where # is a number greater than 
+one. The # determines the number of alternative responses following. So, for 
+example: 
+<P><CODE><PRE>IF
+    OR(3)
+      Global("global1","GLOBAL",1)
+      Global("global2","GLOBAL",1)
+      Global("global3","GLOBAL",1)
+    Global("global4","GLOBAL",1)
+THEN
+    RESPONSE #100
+        // Actions
+END</PRE></CODE>
+<P>This will return true and be executed if either global, global2, or global3 
+is 1, AND global4 is 1. <BR>It is worth noting that even if one item in an OR 
+block is found true, the rest will still be checked. While normally irrelevant, 
+this is useful for objects such as LastSeenBy(). Additionaly, the general rule 
+of parsing of triggers applies: they are evaluated in the order they appear, so 
+the last trigger in an OR block will always be checked last. 
+<P>OR blocks cannot be used in BG1 or PST. 
+<P><A name=EssNesting>
+<H4>6) Nesting:</H4></A>Objects can be 'nested' inside one another, as explained 
+above. However, there is a limit to the level of nesting possible. You can have 
+up to four objects nested inside each other. 
+<P>So, this would be the maximum valid level of nesting: 
+<P><CODE>NearestEnemyOf(LastAttackerOf(LastHeardBy(LastSeenBy(Myself))))</CODE> 
+<P><A name=EssVariables>
+<H4>7) Variables:</H4></A>Variables can be used to 'record' things in scripts. 
+You can set their values, and later check them. One of the main purposes of this 
+is to prevent something happenning more than once. 
+<P>To set a variable, you would use the action 
+SetGlobal(S:Name*,S:Area*,I:Value*). To later read it, you would generally use 
+the trigger Global(S:Name*,S:Area*,I:Value*), to check the exact value of the 
+variable. However, there are also triggers GlobalGT(S:Name*,S:Area*,I:Value*) 
+and GlobalLT(S:Name*,S:Area*,I:Value*), which will check if the value of the 
+variable is greater than or less than the specified value respectively. 
+<P>There are 3 different types of variables that can be used: global variable, 
+local variables and area variables. Globals take the form 
+Global("variable","GLOBAL",1), and are readable by anything. There can only be 
+one value for a single global. <BR>Locals take the form 
+Global("variable","LOCALS",1), and are only readable by the creature they are 
+set by (although they are settable with ActionOverride). Every creature can have 
+a different value assigned to the same local. Area variables take the form 
+Global("variable","######",1), where ###### is the name of an area. They are 
+assigned specifically to that area, and each area can have a different value 
+assigned to the same variable. 
+<P>So, for example: 
+<P><CODE><PRE>IF
+    Global("myvariable","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("myvariable","GLOBAL",1)
+END</PRE></CODE>
+<P>Will set the global 'myvariable' to 1 if is has a value of 0. 
+<P>It is worth noting that because variables have to be added to the savegame, 
+they take a short time to set. As such, it is best to avoid using too many of 
+them in a section of a script which must be performed quickly. In addition, 
+variables are only set at then end of a script 'cycle'. Therefore, you cannot 
+set a variable and use it later on in the same cycle, as the script must be 
+restarted. 
+<P>Variable names are best kept short, as shorter names result in greater 
+efficiency and quicker parsing of the script. 
+<P><A name=EssLastSeenBy>
+<H4>8) LastSeenBy():</H4></A>The staple of any good targetting system. One of 
+the features of the See trigger is that it stores the last object seen as 
+LastSeenBy. <BR>So, for example, you could use: 
+<P><CODE><PRE>IF
+    See([ANYONE])
+THEN
+    RESPONSE #100
+        Attack(LastSeenBy(Myself))
+END</PRE></CODE>
+<P>Will attack anyone seen. The advantage of this, however, becomes more 
+apparant with more advanced targetting systems. 
+<P>Priority targetting takes advantage of the setting of LastSeenBy. For a 
+detailed explanation of it, see the <A 
+href="http://www.pocketplane.net/tutorials/simscript.html#TechTargetting">Useful 
+Scripting Techniques</A> section. <BR>There are also other similar objects, such 
+as LastHeardBy(), with their own specific triggers. These are discussed further 
+in the OBJECT.IDS documentation. 
+<P><A name=EssObjectTypes>
+<H4>9) Object Types:</H4></A>These can be used to cut down the range of objects 
+that return as valid from a trigger. They take the form 
+[EA.GENERAL.RACE.CLASS.SPECIFIC.GENDER.ALIGN]. So, for example, instead of 
+See([ANYONE]), you could use See([0.0.HUMAN.MAGE_ALL.0.0.MASK_GOOD]) to return 
+any human good aligned mages. 
+<P><A name=EssTrueFalse>
+<H4>10) Use of True() and False() triggers:</H4></A>The True() trigger, when 
+used alone, will always return true, and hence the block will always be executed 
+if reached. The False() trigger will never return true when used in a block. 
+It's primary use is in targetting, to ensure that LastSeenBy is stored 
+correctly, but the script does not execute blocks unnecessarily or restart (see 
+above). 
+<P><A name=EssTimers>
+<H4>11) Timers:</H4></A>Global timers are used in scripting to cause something 
+to occur after a certain time. While either real or ingame timers can be set, 
+ingame are generally the more useful type. Timers are treated as variables which 
+count down (indeed, you can set a timer value with SetGlobal as well as 
+SetGlobalTimer, making it essential to use different names for variables and 
+timers), and can be either GLOBAL or LOCALS. <BR>For example, to set a global 
+timer, you would use something like: 
+<P><CODE><PRE>IF
+    // Triggers
+THEN
+    RESPONSE #100
+        SetGlobalTimer("timer1","GLOBAL",3600)
+END</PRE></CODE>
+<P>There are also a number of techniques possible to check for timers. 
+<P>GlobalTimerExpired will return true if the timer has expired. 
+<BR>!GlobalTimerExpired will return true if the timer has not expired or has not 
+been set <BR>GlobalTimerNotExpired will return true if the timer has not expired 
+<BR>!GlobalTimerNotExpired will return true if the timer has not been set or has 
+expired. 
+<P>So having used the block above, you could then use: 
+<P><CODE><PRE>IF
+    GlobalTimerExpired("timer1","GLOBAL")
+THEN
+    RESPONSE #100
+        // Actions
+END</PRE></CODE>
+<P>Which would perform the specified actions when timer1 has expired. 
+<P>One very common use of timers in AI scripts is in cast 'n' attack routines, 
+where the timer is used to keep track of the pause between spellcasting and 
+allow the creature to attack intermittantly. For a more detailed explanation of 
+this, refer to the <A 
+href="http://www.pocketplane.net/tutorials/simscript.html#techcastnattack">Useful 
+Scripting Techniques</A> section. 
+<P>However, for a quicker response that global timers, simple timers can also be 
+used, via the StartTimer action, and the TimerExpired trigger. The lack of a 
+TimerNotExpired trigger, however, means that they must be "initialized" with an 
+OnCreation() block: 
+<P><CODE><PRE>IF
+	OnCreation() // Either when the creature is created or the savegame is loaded
+THEN
+	RESPONSE #100
+		StartTimer(101,1) // Cast 'n' Attack
+		StartTimer(102,1) // Attack
+		StartTimer(103,1) // Movement
+END</PRE></CODE>
+<P>It is also worth bearing in mind two other things: firstly, regular timers 
+are not stored in the save (making them unsuitable for things such as quests), 
+hence the need of OnCreation(), and secondly, the ID of a timer cannot exceed 
+255. Therefore, TimerExpired(256) would always return true. 
+<P><A name=EssShouts>
+<H4>12) Shouts:</H4></A>Shouts are almost a form of communication between 
+scripts. Shouts are effectively numbers, but liked to an IDS file for better 
+identification. <BR>So, in one script, if you use: 
+<P><CODE><PRE>IF
+    // Triggers
+THEN
+    RESPONSE #100
+        Shout(1001)
+END</PRE></CODE>
+<P>The shout 1001 will be used. With an IDS entry, this can of course be changed 
+to something like MY_SHOUT. 
+<P>In a completely separate script, a shout can then be picked up: 
+<P><CODE><PRE>IF
+    Heard([ANYONE],1001)
+THEN
+    RESPONSE #100
+        // Actions
+END</PRE></CODE>
+<P>However, note that a shout can only be 'heard' within the same script cycle 
+as it occurs; as such, the two scripts must also be running simultaneously. 
+<P>This allows communication between different creatures. Shouts are intended to 
+be realistic, and the range of a Shout() action is slightly greater than visual 
+range. A GlobalShout() action, however, can be Heard() throughout the entire 
+area. 
+<P><A name=EssTokens>
+<H4>13) Tokens:</H4></A>Tokens are interesting things. As well as the basic 
+ingame tokens, you can also use custom tokens. They enable you to assign text 
+from one string to another 'on the fly'. <BR>For example, let's say: <BR>string1 
+= "<TOKEN1> and <TOKEN2>" <BR>string2 = "test1" <BR>string3 = "test2" 
+<P>The script: 
+<P><CODE><PRE>IF
+    // Triggers
+THEN
+    RESPONSE #100
+        SetToken("TOKEN1",#####) // string2
+        SetToken("TOKEN2",#####) // string3
+        DisplayString(Myself,#####) // string1
+END</PRE></CODE>
+<P>Will display the string "test1 and test2". <BR>In this example, the first 
+action sets <TOKEN1>to string1. The second action sets <TOKEN2>to string2. The 
+third action displays string 3. If string 3 is "<TOKEN1> and <TOKEN2>", then 
+whatever tokens 1 and 2 have been set to will be displayed: "string1 and 
+string2". The strings must be present in the TLK file, and you specify a strref 
+with the action. 
+<P>Note that you cannot assign different value to the same token for different 
+creatures. SetToken is a 'global' action. 
+<P>However, tokens also have further use. You can use SetTokenGlobal to set the 
+value of a token to that of a global, which can be useful in some situations. 
+<BR>One use of SetTokenGlobal might be for debugging: you can use it to check 
+the value of globals with a hotkey via a script, which might be more convenient 
+than the console. Simply create a string in the TLK with the token to be used, 
+and have a hotkey triggered script assign the value of the variable you are 
+checking to this token. Of course, you can use multiple tokens and variables. 
+<P>You can also use tokens for targetting, with SetTokenObject. <BR>If you use 
+the action SetTokenObject("TARGET",Myself), you can then use [TARGET] as an 
+object in subsequent blocks/scripts. 
+<P>Bear in mind that tokens are not stored in the savegame; therefore, for them 
+to be used, they must be reinitialized every time the game is loaded. 
+<P><A name=EssDefaultScripts>
+<H4>14) Default scripts</H4></A>There are a several 'default' scripts which run 
+all the time in the various games. <BR>In all games, the DPLAYER scripts are 
+present. Of these, the important ones are DPLAYER2.BCS, which is assigned to all 
+party members on joining, and DPLAYER3.BCS, which runs on the protragonist. 
+However, these scripts are deactivated when the party AI is turned off. <BR>In 
+the Baldur's Gate games, BALDUR.BCS (and BALDUR25.BCS in ToB) are also present. 
+They have no specific object (and as such, local variables do not work in them), 
+but run all the time. <BR>Finally, PLAYER1D.BCS runs whenever the party rests, 
+in a similar way to the NPC entries in PDIALOG.2DA. 
+<P>
+<HR>
+<A name=IDSFiles>
+<H3><U>Part IV: Understanding IDS Files</U></H3></A>The IDS files are used both 
+by the game's internal compiler (for DLG files) and by the normal script 
+compiler. Their purpose is to link a numeric (either decimal or hexadecimal) 
+value to a descriptive string. 
+<P>Upon first inspection, the ACTION.IDS and TRIGGER.IDS files often appear 
+somewhat incomprehensible. However, when used properly, they can tell you the 
+syntax used with each action or trigger. 
+<P><CODE>0x400F Global(S:Name*,S:Area*,I:Value*)</CODE> 
+<P>This is an example of an entry in TRIGGER.IDS. <BR>The 0x400F part is the 
+trigger ID, and is not important in writing scripts. However, it is worth 
+understanding that when the script is compiled, this is the number to which the 
+compiler converts the action or trigger you used. 
+<P>Inside the brackets, the parameters for the trigger are given. These are 
+separated by commas, and always take the form X:Something* or 
+X:Something*Something. 
+<P>In the first case, the X indicates the type of argument. <BR>This can be: 
+<P><B>O - object</B> <BR>This can be: <BR>
+<UL>
+  <LI>1) A death variable or object name (such as door name/trap name). Its 
+  length is maximum 32 characters 
+  <LI>2) An object type in the form of 
+  [EA.GENERAL.RACE.CLASS.SPECIFIC.GENDER.ALIGN]. In this form the values are 
+  integer types (decimal, hexadecimal or IDS lookup). It is not necessary to 
+  specify all values, and any omitted values will be counted as zero. 
+  <LI>3) An object from OBJECT.IDS, possibly nested. An omitted parameter in an 
+  object defaults to 'Myself'. </LI></UL>
+<P><B>P - point</B> <BR>In the form of [X.Y] where X and Y are numbers. A point 
+of [-1,-1] used to mean the actual position of the actor 
+<P><B>A - action</B> <BR>Used only with ActionOverride, this is an action to 
+perform 
+<P><B>S - string</B> <BR>This may be an area name (strictly 6 characters), death 
+variable (theoretically up to 32 characters, but in practice, should not be over 
+18, to allow for 'sprite_is_dead'), a resref (filename, up to 8 characters long) 
+or in IWD2 a spell string (which consists of a string of spell numbers, each 
+made up from 3 letters). 
+<P><B>I - integer</B> <BR>Either a decimal, hexadecimal or IDS lookup value. TLK 
+strrefs are integers. 
+<P>In the above example, the something is a brief explanation of the purpose of 
+this argument; this is meaningless to the compiler, but can give an indication 
+of what the argument should be. <BR>In the second case, it is the same, but the 
+something after the asterisk indicates that entries from an IDS file are used. 
+So, in the above example, the first parameter is the global name (a name), the 
+second is the area (a name), and the third is a value (integer). 
+<P>It is also worth noting that strings are always written in quotes. 
+<P>Other IDS files simply provide identifiers for use in scripts. 
+<P>IDS files can be changed, and the script compiler and game will respond to 
+this; however, it is important to fully understand them before attempting any 
+changes. ACTION.IDS and TRIGGER.IDS in particular require understanding, and the 
+main use for changes to point an action or trigger to another custom IDS file. 
+<BR>For exmaple, changing the range trigger to: 
+<P><CODE>0x4018 Range(O:Object*,I:Range*Range)</CODE> 
+<P>Will allow identifier values from a RANGE.IDS file to be used with this 
+trigger. 
+<P>
+<HR>
+<A name=Organising>
+<H3><U>Part V: Organising AI Scripts</U></H3></A>There is no set way in which AI 
+scripts should be organised. It is much a matter of personal style, and as such, 
+this section is largely my personal style of structuring scripts. It works 
+fairly effectively, but is obviously not the only method to use. <BR>Here is the 
+order I place my sections in AI scripts: 
+<P>1) 'Header' - sets any initial variables once only, and handles the turning 
+hostile of neutral creatures. <BR>2) Weapon handling - sets globals to indicate 
+later on what types of weapon are available: this only occurs once normally 
+(although setting globals should allow for it to cope with running out of ammo); 
+good weapon handling is crucial, and this is done early on <BR>3) Priority 
+actions - includes all manner of behavior which is important to perform; this 
+includes hiding in shadows, moving to the player if they are unseen, running 
+from area spells, and coping with low hit points <BR>4) Item usage - items are 
+placed in order, with the most preferable to use at the top <BR>5) Target 
+acquisition - selects the target as appropriate for later attacking blocks; the 
+See or Detect triggers are not used beyond here, to avoid disrupting the 
+targetting process <BR>6) Movement - maneuvering as a result of the presence of 
+a target or other enemy nearby, or in preparation for an attack <BR>7) Further 
+item usage - semi-random usage of offensive items such as wands on the selected 
+target <BR>8) Spellcasting - casts spells semi-randomly on the selected target, 
+with appropriate checks performed <BR>9) Physical attacks - attack the target 
+physically, taking into account distance and the weapons available (which are 
+stored in globals); also includes support for later randomwalking <BR>10) 
+Randomwalking - a last resort block, which helps in target selection and makes 
+combat more interesting 
+<P>This is simply an outline, and can obviously be adapted to suit personal 
+preference. However, the crucial thing to bear in mind is that the most 
+important blocks should always be placed towards the top of the script; so long 
+as this is done, the rest is optional. <BR>For more information on what some of 
+these sections I have listed actually consist of, see the <A 
+href="http://www.pocketplane.net/tutorials/simscript.html#Techniques">Useful 
+Scripting Techniques</A> section. 
+<P>It is often best to plan out what a script needs to do, and how this should 
+be organised within it before starting. When you begin writing a script, stick 
+rigidly to the structure and use comments to organise it; section headings, 
+block headings, and contents are all useful. <BR>Remember that a well structured 
+script is more fluent, and will prevent slowdown due to size. 
+<P>
+<HR>
+<A name=Cutscenes>
+<H3><U>Part VI: Cutscenes</U></H3></A>Cutscenes are a special type of script. 
+They are run via StartCutScene("script"), and all blocks are parsed once (normal 
+script parsing rules do not apply). <BR>Ingame, cutscenes are usually seen when 
+the interface disappears; characters perform pre-scripted actions without 
+interference from the player. 
+<P>A cutscene can be called either from another script, or from dialog. A block 
+to call a cutscene might look like: 
+<P><PRE><CODE>IF
+	// Triggers
+THEN
+	RESPONSE #100
+		ClearAllActions() // This ensures that all action lists are cancelled before beginning the cutscene
+		StartCutSceneMode() // This action removes the player interaction from the game
+		StartCutScene("cutscene") // Starts the cutscene 'cutscene.bcs'
+END</CODE></PRE>
+<P>Then, cutscene.bcs might contain: 
+<P><CODE><PRE>IF
+	True() // Cutscene conditions are always read as true anyway
+THEN
+	RESPONSE #100
+		CutSceneID(Player1) // This must be specified in every cutscene block, and specified who 'performs' the actions
+		// Actions
+		EndCutSceneMode() // This reverses the StartCutSceneMode() action
+END</PRE></CODE>
+<P>CutSceneID sets who performs the actions in the cutscene. Therefore, anything 
+intended to affect characters other than the CutSceneID must be performed via 
+ActionOverride. <BR>However, each ActionOverride must be completed before the 
+next action is executed. Therefore, ActionOverride(Object,PlayDead(180)) would 
+also cause a delay in the CutSceneID's actions. To solve this, multiple blocks, 
+and hence multiple CutSceneIDs are possible. All blocks will be executed 
+simultaneously, but the problem with actions delaying one another is removed. 
+<P>Another action commonly used in cutscenes is MultiplayerSync(). This will 
+wait for all participants in a game to reach the same point before the script 
+continues. 
+<P>There is an additional action, SetCutSceneLite(TRUE), which functions 
+similarly to StartCutSceneMode(). However, crucially, it allows other scripts 
+besides the cutscene script to remain running. This opens up a number of 
+possibilities, allowing for conditions to be checked during cutscenes. 
+SetCutSceneLite(FALSE) functions for this as EndCutSceneMode() would. 
+<P>
+<HR>
+<A name=Techniques>
+<H3><U>Part VII: Useful Scripting Techniques</U></H3></A>There are a number of 
+common/useful techniques that can be used in scripts and are worth knowing. 
+Here, I will explain a few of them. 
+<P><A name=TechCustomSpells><U>
+<H4>1) Using Custom Spells in Scripts</H4></U></A>Once you have created a spell, 
+there are three alternative ways to go about using it in scripts. 
+<P><B>Method 1</B> <BR>This method should apply to all IE games. <BR>To allow 
+you to use spells with this method, they must be in the standard naming 
+convention: <BR>SPPR### for priest spells <BR>SPWI### for wizard spells 
+<BR>SPIN### for innate spells <BR>SPCL### for class spells <BR>The first number 
+should be the level of the spell. The other two can be anything, but be sure not 
+to overwrite an existing spell. 
+<P>Having ensured that your spells are in this format, you then need to 
+determine the number of the spell. This is a four digit number. <BR>The number 
+is dependant on the filename of the spell. <BR>- The first number denotes the 
+type of spell: 1 for priest, 2 for wizard, 3 for innate, 4 for class <BR>- The 
+last 3 numbers correspond to the numeric suffix of the SPL file. 
+<P>You can then use this number in the scripting action (or trigger) for your 
+spell. 
+<P>For example, if we have a spell called SPWI999.SPL, and we want to use it 
+with ApplySpell() on whoever is running the script, in a script, we could write: 
+<BR><CODE>ApplySpell(Myself,2999) </CODE>
+<P>Since 2999 in the number that would be associated with SPWI999.SPL. 
+<P><B>Method 2</B> <BR>This method should also apply to all IE games. It works 
+the same as the above method, but can be easier to use, as it allows you to 
+assign a name to your spell which can be referred to in scripts. 
+<P>Using the standard spell scripting actions, such as ApplySpell(), you can add 
+your spell to SPELL.IDS. To be able to add the spell to SPELL.IDS, it must be in 
+the standard naming convention, as explained above. 
+<P>If you look at SPELL.IDS, you will notice that the spells are listed with 
+first a number, then a name. When you add your own spell, you can choose any 
+name you like; this name will be what you use to refer to the spell in your 
+scripts if you choose to use this method. The number, however, does matter, and 
+cannot be chosen. It must be the number of your spell, according to the 
+filename, as explained above. 
+<P>For example, using the example of SPWI999.SPL, first we would add the 
+following line to SPELL.IDS: <BR><CODE>2999 Example_Custom_Spell</CODE> 
+<P>Then, in a script, we could write: 
+<BR><CODE>ApplySpell(Myself,Example_Custom_Spell) </CODE>
+<P>This performs exactly the same function as the action in Method 1, but can 
+make spells easier to remember, since they are assigned a name of your choice, 
+rather than a fixed number. 
+<P><B>Method 3</B> <BR>The method definitely applies to BG2: SoA and ToB; it may 
+work with other IE games, but has not been tested. It has, however, been 
+confirmed that does not work with BG1. <BR>In BG2:ToB, there are a number of RES 
+actions that can be used in scripts: 
+<P><CODE><PRE>31 SpellRES(S:RES*,O:Target*) 
+95 SpellPointRES(S:RES*,P:Target*)
+113 ForceSpellRES(S:RES*,O:Target) 
+114 ForceSpellPointRES(S:RES*,P:Target) 
+160 ApplySpellRES(S:RES*,O:Target) 
+181 ReallyForceSpellRES(S:RES*,O:Target) 
+191 SpellNoDecRES(S:RES*,O:Target*) 
+192 SpellPointNoDecRES(S:RES*,P:Target*) 
+240 ReallyForceSpellDeadRES(S:RES*,O:Target) 
+318 ForceSpellRangeRES(S:RES*,O:Target) 
+319 ForceSpellPointRangeRES(S:RES*,P:Target)
+337 ReallyForceSpellPointRES(S:RES*,P:Target*)</PRE></CODE>
+<P>To be usable in scripts, these must be present in ACTION.IDS. They will only 
+be present if you have ToB installed. However, they also work with just SoA; 
+simply copy and paste the above list into ACTION.IDS, and save it. 
+<P>In addition to these actions, HaveSpellRES(S:Spell*) is also a valid trigger 
+which can be used in the same way. 
+<P>With the RES actions, the spell does not have to be added to SPELL.IDS; the 
+filename of the spell can be used instead. Note, however, that with these 
+actions, the order of spell and target is reversed from what it is normally in 
+the spell actions. 
+<P>Based on this, with the now infamous example spell, SPWI999, we would simply 
+use the following action to do the same as the example in the method above: 
+<BR><CODE>ApplySpellRES("SPWI999",Myself) </CODE>
+<P>The RES actions are a far more efficient way of using spells in scripts than 
+to add each one to SPELL.IDS. 
+<P>
+<P>It is up to you which method you use, but I would strongly recommend the RES 
+actions if you have BG2. 
+<P>--- 
+<P>BG2 has, in addition to those mentionned above, several other spell prefixes: 
+
+<P>SPWM### - Wild Mage <BR>SPDR### - Druid <BR>SPRA### - Ranger 
+<P>The last two are used by non-mage kits which are able to cast mage spells. 
+<P>Spells named in this way cannot be added to SPELL.IDS, and hence cannot be 
+used without the RES actions. There is no number for use in either the IDS of 
+actions/triggers associated with either SPWM, SPDR or SPRA. <BR>The RES actions 
+and triggers, however, can be used with these spells. 
+<P>
+<P>It is also worth noting that the RES actions are not case sensitive, so 
+either SPDR### or spdr### is fine. 
+<P><A name=TechDetectableSpells><U>
+<H4>2) Detectable Spells</H4></U></A>Firstly, an explanation. Normally, there is 
+no way of detecting whether a creature is under the effect of some spells with a 
+script (if there is not already a state or stat assigned to that spell). 
+<BR>However, the Detectable Spells system, developed by Kensai Ryu and Vulgar 
+Zildrah, enables spells to be detected (hence the name) through scripts, using 
+the CheckStat trigger and a Scripting State Modify effect. <BR>The detectable 
+spells pack can be found on <A 
+href="http://home.earthlink.net/~cirerrek/">Cirerrek's page</A>. However, the 
+system can also be put to use in mods and TCs, allowing for more effective AI 
+for creatures, and that is the emphasis here. 
+<P>In the STATS.IDS, there are a number of SCRIPTINGSTATES. The value of these 
+can be read, like anything else in STATS.IDS, with the CheckStat trigger. 
+Detectable Spells work by assigning each spell a scripting state, and modifying 
+the scripting state for the duration of the spell. 
+<P>To begin making a spell detectable, it is necessary to add an extra effect to 
+the spell. You need to use the 'Scripting State Modify' effect. The parameters 
+of this effect are listed as unknown. The first unknown is the value to set the 
+specified scripting state to. The second is the scripting state to modify; this 
+starts (confusingly) with 0 corresponding to SCRIPTINGSTATE1, 1 to 
+SCRIPTINGSTATE2, and so on. <BR>The duration of the effect should be the same as 
+that of the spell. 
+<P>Having done this, you can then use 
+CheckStat(O:Object*,I:Value*,SCRIPTINGSTATE) to determine the value of a 
+scripting state, and hence the spell that is in effect. 
+<P>STATS.IDS can be extended, adding further scripting states, up to a limit of 
+31. This limit makes it necessary, if many spells need to be detectable, to 
+assign multiple spells to one scripting state (hence each spell setting the 
+scripting state to a different value). In choosing which spells go together, it 
+is best to choose spells that will not be cast at the same time. 
+<P>Based on this, you can make enemies react more effectively to any spells in 
+effect on the party in your mod or TC. 
+<P><A name=TechTargetting><U>
+<H4>3) Priority Targetting</H4></U></A>Priority targetting allows for better 
+choice of targets in AI scripts, and can be applied to both melee attacks, 
+ranged attacks, and spellcasting. <BR>It is usually best to have the targetting 
+section at the end of the script, as it is usually the lowest priority section 
+present, and this makes it easier to avoid disrupting LastSeenBy(). <BR>There 
+are three basic alternative ways of implementing priority targetting. 
+<P><B>Method 1: A Large OR() Block</B> <BR>The first stage in any priority 
+targetting system is to set the target as LastSeenBy() in one or more blocks. 
+<BR>As the name suggests, in this first method, the target is set in a single 
+large OR() block. Something like: 
+<P><CODE><PRE>IF
+    OR(4)
+      See(NearestEnemyOfType([GOODCUTOFF])) // Lowest priority (any enemy)
+      See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+      See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+      See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER])) // Highest priority (sorcerer)
+    False()
+THEN
+    RESPONSE #100
+END</PRE></CODE>
+<P>While this block looks unusual, after it has been assessed, LastSeenBy() will 
+be left as the highest priority target found, since the block is assessed line 
+by line, and LastSeenBy() will be changed every time a valid target is 
+encountered. The False() trigger ensures that the block is never actually 
+executed, so that the script can continue to the attacking blocks when 
+LastSeenBy() has been set appropriately. 
+<P>A basic attacking block might look something like: 
+<P><CODE><PRE>IF
+    Range(LastSeenBy(Myself),10)
+THEN
+    RESPONSE #100
+        EquipMostDamagingMelee()
+        Attack(LastSeenBy(Myself))
+END</PRE></CODE>
+<P>However, spellcasting can also be done using LastSeenBy(). Spellcasting 
+blocks are always best placed above basic attacking blocks, simply because they 
+are usually preferable to attacking. It is also often good to use a RandomNum 
+trigger with spellcasting blocks to randomise the use of spells somewhat 
+(although this can also apply to other attacks). 
+<P>The main disadvantage of this method is that extra conditions for each target 
+are not possible. In this method, extra checks on LastSeenBy() should not be 
+added to the targetting block, as LastSeenBy() will be set regardless of whether 
+they are true or not. 
+<P><B>Method 2: Multiple Blocks</B> <BR>This second method, as above, relies on 
+setting LastSeenBy(). However, it is done in multiple blocks, rather than a 
+single OR block. This addresses the main shortcoming of this first block, as 
+better control is available over the conditions for targetting. <BR>The initial 
+blocks, for setting LastSeenBy(), with this method, would appear similar to: 
+<P><CODE><PRE>IF
+    !StateCheck(ThirdNearestEnemyOf(Myself),STATE_STUNNED)
+    See(ThirdNearestEnemyOf(Myself))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    !StateCheck(FourthNearestEnemyOf(Myself),STATE_STUNNED)
+    See(SecondNearestEnemyOf(Myself))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    !StateCheck(NearestEnemyOf(Myself),STATE_STUNNED)
+    See(NearestEnemyOf(Myself))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    !StateCheck(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]),STATE_STUNNED)
+    See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    !StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]),STATE_STUNNED)
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END
+
+IF
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+    False()
+THEN
+    RESPONSE #100
+END</PRE></CODE>
+<P>Again, the lowest priority target is at the top, while the highest is at the 
+bottom. False() plays the same role as previously. <BR>However, conditions 
+(which in this case vary for different target types) are present for targetting. 
+So, for example, in: 
+<P><CODE><PRE>IF
+    !StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]),STATE_STUNNED)
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+    False()
+THEN
+    RESPONSE #100
+END</PRE></CODE>
+<P>LastSeenBy() will only be assigned to the target if it is not STATE_STUNNED. 
+<BR>In all blocks, the extra conditions should always be above the See() 
+trigger. If they are not, LastSeenBy() will be set regardless, since the See() 
+trigger has already returned true. 
+<P>Attacking blocks can then be used in the same way as the previous method. 
+<P><B>Method 3: 'False Conditions'</B> <BR>While the name I have invented for it 
+gives away little about this targetting method, it is superior in terms of 
+efficiency to the previous two mentionned. This method uses a single targetting 
+block, and cuts off the remaining targets once a valid one has been found, hence 
+the improved efficiency. <BR>A basic block using this method might appear as 
+follows: 
+<P><PRE><CODE>IF
+    !See([GOODCUTOFF.0.0.SORCERER]) // Highest priority
+    !See([GOODCUTOFF.0.0.MAGE_ALL])
+    !See([GOODCUTOFF.0.0.CLERIC_ALL])
+    !See([GOODCUTOFF.0.0.DRUID_ALL])
+    !See([GOODCUTOFF.0.0.BARD_ALL]) // Default target
+    !See([GOODCUTOFF])
+THEN
+    RESPONSE #100
+END</CODE></PRE>
+<P>This time, the highest priority target is at the top. The logic of this block 
+can be quite hard to follow at first, but basically, the block first checks for 
+a sorceror. If one is seen, LastSeenBy is set due to the See() trigger (in spite 
+of the !), and the block returns false, so it moves on to the next one. If no 
+sorceror is seen, the trigger returns true, so the second one is evaluated, 
+looking for a mage. In the same way, all of the triggers are evaluated until one 
+is found false, indicating a valid target. <BR>In this particular case, the 
+block is also acting as a cutoff; the final condition evaluated is 
+!See([GOODCUTOFF]). If this returns true (meaning no GOODCUTOFFs are in sight), 
+the entire block returns true, and the lack of actions causes the script to 
+restart. However, if this is not wanted, a False() condition can also be added 
+at the bottom. 
+<P>This can be extended slightly to allow OR blocks to be used to perform other 
+checks on the validity of the target. An OR() block with all the possible 
+triggers to make a target invalid in can be used, as follows: 
+<P><PRE><CODE>IF
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+      RandomNumGT(20,5)
+    OR(3)
+      StateCheck(SecondNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]),STATE_HELPLESS)
+      !See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+      RandomNumGT(20,7)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+      RandomNumGT(20,9)
+    OR(3)
+      StateCheck(SecondNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]),STATE_HELPLESS)
+      !See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+      RandomNumGT(20,11)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+      RandomNumGT(20,13)
+    OR(3)
+      StateCheck(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]),STATE_HELPLESS)
+      !See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+      RandomNumGT(20,14)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+      RandomNumGT(20,15)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]))
+      RandomNumGT(20,16)
+    !See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+END</CODE></PRE>
+<P>This block is rather more complex. However, the basic principle is the same. 
+When the block is parsed, the first OR block is assessed. If any of the 
+conditions are true, making the target invalid, then this OR block returns true, 
+and the next one is assessed. If none of the triggers in the OR block are true, 
+then the target is valid, LastSeenBy() is set, and the next script block will be 
+evaluated. 
+<P>When using this method of targetting, it is important to consider not only 
+the use of NearestEnemyOfType() targets, but also NearestEnemy() objects too. 
+These must be treated slightly differently, since placing 
+!See(NearestEnemyOf(Myself)) at the top of a block will cause it to be assessed 
+only if no enemies are present (therefore, no other targets will be considered). 
+<BR>To avoid this problem, See() checks can be performed outside OR blocks. For 
+example: 
+<P><CODE><PRE>IF
+    See(NearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(SecondNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,4)
+    See(ThirdNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,5)
+    See(FourthNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(FifthNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(SixthNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(TenthNearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+END</PRE></CODE>
+<P>When this block is evaluated, it will return false immediately unless an 
+enemy is seen (possibly meaning another cutoff is required). If an enemy is 
+seen, however, LastSeenBy() is set, and unless one of the conditions in the 
+first OR block is true (invalidating the target), the block returns false. All 
+other conditions are assessed in the same way. <BR>This type of block cannot be 
+used with NearestEnemyOfType type objects, as 
+See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER])) will return true only if a 
+sorcerer is seen, meaning that a sorcerer must be seen for the other targets to 
+be evaluated at all. 
+<P>This means that there are two basic logics here for NearestEnemyOf and 
+NearestEnemyOfType. These can of course be combined into a single block. For 
+example: 
+<P><CODE><PRE>IF
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+      RandomNumGT(20,5)
+    OR(3)
+      StateCheck(SecondNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]),STATE_HELPLESS)
+      !See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+      RandomNumGT(20,7)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+      RandomNumGT(20,9)
+    OR(3)
+      StateCheck(SecondNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]),STATE_HELPLESS)
+      !See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+      RandomNumGT(20,11)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+      RandomNumGT(20,13)
+    OR(3)
+      StateCheck(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]),STATE_HELPLESS)
+      !See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+      RandomNumGT(20,14)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+      RandomNumGT(20,15)
+    OR(3)
+      StateCheck(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]),STATE_HELPLESS)
+      !See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]))
+      RandomNumGT(20,16)
+    See(NearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(SecondNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,4)
+    See(ThirdNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,5)
+    See(FourthNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(FifthNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(SixthNearestEnemyOf(Myself))
+    OR(2)
+      StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+      RandomNumGT(10,3)
+    See(TenthNearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+END</CODE></PRE>
+<P><A name=TechRandomwalking>
+<H4><U>4) Randomwalking</U></H4></A>This is best used in combination with a 
+priority targetting system, and can help in selection of new targets. It is 
+often the very last block in a script. <BR>You simply add an extra RESPONSE and 
+a Continue() to your attacking block(s), which will lead onto the randomwalking 
+block. 
+<P>So, you might have: 
+<P><CODE><PRE>IF
+	!Range(LastSeenBy(Myself),10)
+	Global("d0hasranged","LOCALS",1)
+THEN
+	RESPONSE #100
+		EquipRanged()
+		Attack(LastSeenBy(Myself))
+	RESPONSE #10
+		Continue()
+END</PRE></CODE>
+<P>You would then have a block: 
+<P><CODE><PRE>IF
+	True()
+THEN
+	RESPONSE #100
+		RandomWalkContinuous()
+END</PRE></CODE>
+<P>In this case, the RESPONSE #10 leads on to the randomwalking block 
+occasionally, so the creature randomwalks instead of attacking. <BR>It is worth 
+bearing in mind that randomwalking can be dangerous, as creatures can 
+potentially become 'stuck' on such actions, preventing it running any scripts at 
+all. 
+<P><A name=TechCastnAttack>
+<H4><U>5) Cast 'n' Attack</U></H4></A>This is a technique used to account for 
+the pause between spellcasting. It cuts off spellcasting actions when they 
+cannot be performed, allowing other attacks to occur instead. <BR>The basic idea 
+is to use a timer to keep track of the spellcasting pause. It is set whenever a 
+spell is cast in the script, and no other spellcasting blocks are cast while it 
+is active. 
+<P>So, you might have the following block: 
+<P><CODE><PRE>IF
+    !GlobalTimerNotExpired("castnattack","LOCALS")
+    HaveSpellRES("spwi999",Myself)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("castnattack","LOCALS",6) // Timer always set to 6, as that is the duration of the pause
+        SpellRES("spwi999",LastSeenBy(Myself))
+END</PRE></CODE>
+<P>If similar lines are added to each spellcasting block to check for expiration 
+of the timer, and set it when the spell is cast, then no spellcasting will be 
+attempted when it is not possible, and this will allow other attacking blocks to 
+be executed, such as: 
+<P><CODE><PRE>IF
+    True() // Note that this requires this block to be placed below all others
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+END</PRE></CODE>
+<P>In addition to this, you can also account for aura cleansing (alacrity) in 
+cast 'n' attack routines. This is done simply with an OR block, in which the 
+timer and another condition is used. You can either 
+CheckStat(Myself,1,AURACLEANSING), or implement aura cleansing as a detectable 
+spell and check for it. <BR>So your triggers would be: 
+<P><CODE><PRE>OR(2)
+  CheckStat(Myself,1,AURACLEANSING)
+  !GlobalTimerNotExpired("castnattack","LOCALS")</PRE></CODE>
+<P><A name=TechItemUsage>
+<H4><U>6) Item usage and handling</U></H4></A>Item usage can be very long in 
+scripts, as each item has to be handled individually. Items are used with the 
+UseItem action. Cast 'n' attack should also be applied to item usage blocks, as 
+using an item counts the same as casting a spell in this respect. <BR>The 
+triggers for an item usage block should always include a check for posession of 
+the item, a check on a cast 'n' attack timer, and checks relevant to the actual 
+item itself. <BR>For example, a healing potion usage block might look like: 
+<P><CODE><PRE>IF
+    !GlobalTimerNotExpired("castnattack","LOCALS")
+    HPPercentLT(Myself,75)
+    HasItem("potn08",Myself) // Minor healing potion
+THEN
+    RESPONSE #100
+        SetGlobalTimer("castnattack","LOCALS",6)
+        UseItem("potn08",Myself)
+END</CODE></PRE>
+<P>This block will use a minor healing potion when hit points have dropped below 
+75%. <BR>Remember at this point that higher priority actions should come earlier 
+in the script. Therefore, shouting for a cleric to cast a healing spell might be 
+preferable to using a potion, in which case the block would appear earlier on. 
+<P><CODE><PRE>IF
+    !GlobalTimerNotExpired("castnattack","LOCALS")
+    HasItem("potn10",Myself) // Potion of invisibility
+    See([GOODCUTOFF])
+    !StateCheck(Myself,STATE_INVISIBLE)
+    !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+THEN
+    RESPONSE #100
+        SetGlobalTimer("castnattack","LOCALS",6)
+        UseItem("potn10",Myself)
+END</PRE></CODE>
+<P>This block will use a potion of invisibility when the party is in sight and 
+the creature is not invisible. Notice the two statechecks, which account for 
+both forms of invisibility. 
+<P>
+<P>Passing items between creatures is also possible. <BR>Shouts are useful to 
+achieve a realistic result here; however, specifics (or internals in IWD) can 
+also be used if this is not wanted. 
+<P><CODE><PRE>IF
+    !HasItem("potn08",Myself)
+    HPPercentLT(Myself,50)
+    !GlobalTimerNotExpired("shouted","LOCALS") // Only shout so often
+THEN
+    RESPONSE #100
+        SetGlobalTimer("shouted","LOCALS",10)
+        Shout(NEED_POTION) // Shout for help
+END
+
+IF
+    Heard([EVILCUTOFF],NEED_POTION) // If someone shouted for help
+    !HasItem("potn08",LastHeardBy(Myself)) // Ensures they have not already been given an item
+    HasItem("potn08",Myself)
+    HPPercentGT(Myself,50)
+THEN
+    RESPONSE #100
+        GiveItem("potn08",LastHeardBy(Myself)) // Pass them the item
+END</PRE></CODE>
+<P><A name=TechInvisibleCre>
+<H4><U>7) The Invisible Creature Trick</U></H4>The invisible creature trick is a 
+method of running a script from a spell, item, or effect when required, as an 
+alternative to changing a script level or interaction with the default scripts. 
+This is useful to perform actions which can only be done in a script (and not 
+with effects alone). <BR>The basic principle is that a creature, with effects 
+making it both invisible and invulnerable, is summonned when needed, which runs 
+an AI script to perform the required actions. Very often, this involves the use 
+of LastSummonnerOf(Myself). 
+<P>Firstly, it is necessary to create a new creature. This can be of any type, 
+but is generally best kept small. Since it only exists for a very short time, it 
+is generally not necessary to take extensive precautions to protect it. <BR>To 
+make the creature immortal and invisible, add the item 'minhp1' to it, and a 
+permanent invisibility effect to the CRE file. Change the creature's script 
+(override is usually best) to the script you need to run. 
+<P>Next, write the required script. This should perform all of the desired 
+actions, be it on the surrounding area, on the player to summon the creature, or 
+something else. The final action should be DestroySelf(). 
+<P><CODE><PRE>IF
+	LevelGT(LastSummonerOf(Myself),10)
+THEN
+	RESPONSE #100
+		ApplySpellRES("spell",LastSummonnerOf(Myself))
+		DestroySelf()
+END</PRE></CODE>
+<P>Finally, you can use an effect to summon this invisible creature, and run the 
+script. 
+<P>
+<HR>
+<A name=FAQs>
+<H3><U>Part VIII: FAQs</U></H3></A>In this section, I will attempt to document 
+some common scripting questions which I have seen asked. Hopefully, this will be 
+of some use to people. 
+<P><A name=FAQ1><B>1) How can I have an item level up with the wielder?</B></A> 
+<BR>Firstly, you would need to create several items, one for each evolutionary 
+stage. <BR>Next, several blocks need to be added to DPLAYER2.BCS and 
+DPLAYER3.BCS, one for each level-up of the weapon. <BR>For example: 
+<P><CODE><PRE>IF
+	HasItem("weapon1",Myself)
+	CheckStatGT(Myself,3,LEVEL)
+THEN
+	RESPONSE #100
+		TakeItemReplace("weapon2","weapon1",Myself)
+END</PRE></CODE>
+<P>This will swap the item for the newer one when the specified level is 
+reached. <BR>Note that TakeItemReplace does not exist in earlier games; 
+therefore, two actions are needed: one to remove the old item, and one to create 
+the new one. 
+<P>The problem with this is that the DPLAYER scripts are deactivated with the 
+party AI. Therefore, it is usually better to use BALDUR.BCS. <BR>Since this is a 
+global script, each player must be accounted for individually in a separate 
+block. <BR>For example: 
+<P><CODE><PRE>IF
+	HasItem("weapon1",Player1)
+	CheckStatGT(Player1,3,LEVEL)
+THEN
+	RESPONSE #100
+		TakeItemReplace("weapon2","weapon1",Player1)
+END
+
+IF
+	HasItem("weapon1",Player2)
+	CheckStatGT(Player2,3,LEVEL)
+THEN
+	RESPONSE #100
+		TakeItemReplace("weapon2","weapon1",Player2)
+END
+
+IF
+	HasItem("weapon1",Player3)
+	CheckStatGT(Player3,3,LEVEL)
+THEN
+	RESPONSE #100
+		TakeItemReplace("weapon2","weapon1",Player3)
+END
+
+IF
+	HasItem("weapon1",Player4)
+	CheckStatGT(Player4,3,LEVEL)
+THEN
+	RESPONSE #100
+		TakeItemReplace("weapon2","weapon1",Player4)
+END
+
+IF
+	HasItem("weapon1",Player5)
+	CheckStatGT(Player5,3,LEVEL)
+THEN
+	RESPONSE #100
+		TakeItemReplace("weapon2","weapon1",Player5)
+END
+
+IF
+	HasItem("weapon1",Player6)
+	CheckStatGT(Player6,3,LEVEL)
+THEN
+	RESPONSE #100
+		TakeItemReplace("weapon2","weapon1",Player6)
+END</PRE></CODE>
+<P><A name=FAQ2><B>2) How can I use strings in scripts?</B></A> <BR>Strings are 
+not actually stored in the BS or BCS files, but are instead found in the 
+DIALOG.TLK file. Therefore, you will need to use a TLK editor to add or find the 
+desired string, and note its 'strref' number, which is what you will refer to in 
+scripts. 
+<P><A name=FAQ3><B>3) How can I cause random item placement via scripts?</B></A> 
+<BR>For placement in areas, you would need to modify the area scripts, and add a 
+block to randomly spawn the items. <BR>For example: 
+<P><CODE><PRE>IF
+    Global("addtreasure","AR9999",0)
+THEN
+    RESPONSE #100
+        SetGlobal("addtreasure","AR9999",1)
+        ActionOverride("container",CreateItem("item1",1,0,0))
+    RESPONSE #100
+        SetGlobal("addtreasure","AR9999",1)
+        ActionOverride("container",CreateItem("item2",1,0,0))
+    RESPONSE #100
+        SetGlobal("addtreasure","AR9999",1)
+        ActionOverride("container",CreateItem("item3",1,0,0))
+END</PRE></CODE>
+<P>Alternatively, to randomly spawn items on creatures, you could add something 
+similar to a creature script, using a local variable. 
+<P><A name=FAQ4><B>4) Can a STATE be changed in a script?</B></A> <BR>No, you 
+cannot change a state directly from a script. You must deal with the effect that 
+is causing that state. 
+<P><A name=FAQ5><B>5) Can I create a random maze or randomly link areas?</B></A> 
+Yes. Firstly, you would use an initial script, which would run when the game was 
+started. 
+<P><CODE><PRE>IF
+	Global("link1","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("link1","GLOBAL",1)
+	RESPONSE #100
+		SetGlobal("link1","GLOBAL",2)
+	RESPONSE #100
+		SetGlobal("link1","GLOBAL",3)
+END</PRE></CODE>
+<P>You would then have a trigger region in an area, which would run a script 
+similar to the following: 
+<P><CODE><PRE>IF
+	Global("link1","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ActionOverride(Player1,LeaveAreaLUA("area1","",[100.100],1))
+		ActionOverride(Player2,LeaveAreaLUA("area1","",[100.100],1))
+		ActionOverride(Player3,LeaveAreaLUA("area1","",[100.100],1))
+		ActionOverride(Player4,LeaveAreaLUA("area1","",[100.100],1))
+		ActionOverride(Player5,LeaveAreaLUA("area1","",[100.100],1))
+		ActionOverride(Player6,LeaveAreaLUA("area1","",[100.100],1))
+END
+
+IF
+	Global("link1","GLOBAL",2)
+THEN
+	RESPONSE #100
+		ActionOverride(Player1,LeaveAreaLUA("area2","",[100.100],1))
+		ActionOverride(Player2,LeaveAreaLUA("area2","",[100.100],1))
+		ActionOverride(Player3,LeaveAreaLUA("area2","",[100.100],1))
+		ActionOverride(Player4,LeaveAreaLUA("area2","",[100.100],1))
+		ActionOverride(Player5,LeaveAreaLUA("area2","",[100.100],1))
+		ActionOverride(Player6,LeaveAreaLUA("area2","",[100.100],1))
+END
+
+IF
+	Global("link1","GLOBAL",3)
+THEN
+	RESPONSE #100
+		ActionOverride(Player1,LeaveAreaLUA("area3","",[100.100],1))
+		ActionOverride(Player2,LeaveAreaLUA("area3","",[100.100],1))
+		ActionOverride(Player3,LeaveAreaLUA("area3","",[100.100],1))
+		ActionOverride(Player4,LeaveAreaLUA("area3","",[100.100],1))
+		ActionOverride(Player5,LeaveAreaLUA("area3","",[100.100],1))
+		ActionOverride(Player6,LeaveAreaLUA("area3","",[100.100],1))
+END</PRE></CODE>
+<P><A name=FAQ6><B>6) What are some common scripting pitfalls?</B></A> <BR>As 
+suggested by a number of people in chat, here are some of the most common: 
+<P>
+<UL>
+  <LI>Using RESPONCE #100 instead of RESPONSE #100, or not using it at all 
+  <LI>Forgetting to use a creature's death variable when it is needed 
+  <LI>Placing the terms in the wrong order 
+  <LI>Forgetting to use quotes when required, or using them incorrectly 
+  <LI>Using the wrong number of brackets (particularly closing brackets) 
+  <LI>Using "LOCAL" instead of "LOCALS" </LI></UL>
+<P><A name=FAQ7><B>7) How can I link a script with an item?</B></A> <BR>There 
+are several ways you can run a script from an item or spell, and the most 
+appropriate one will depend on what you want to do. 
+<P>The first method it to use the 'change AI script' effect on the user to have 
+them run an appropriate script on themselves. You can then change the script 
+back when required via the script itself. The problems with this are that having 
+a character run the script on himself can potentially cause stuttering, and also 
+that it can interfere with other modifications which assign scripts to 
+characters. 
+<P>The second way is to summon an invisible creature. For more information on 
+this, see the <A 
+href="http://www.pocketplane.net/tutorials/simscript.html#TechInvisibleCre">Invisible 
+Creature</A> section. The only disadvantage of this is that creating large 
+numbers of creatures can be problematic, so it may be inappropriate in some 
+situations. 
+<P>The final way is to use either DPLAYER2/3.BCS or BALDUR.BCS. The latter is 
+usually preferable, since the DPLAYERs are deactivated with party AI; however, 
+in some circumstances, it cannot be used. The appropriate blocks in the script 
+can be activated from the item by setting a variable. 
+<P><A name=FAQ8><B>8) Why does the game crash when I cast some of the class 
+spells like SET_SNARE_TRAP through scripting?</B></A> <BR>Class spells (SPCL###) 
+should have their level set to 1. If it isn't and you check to see if you have 
+the spell via the trigger HaveSpell() before casting it, the game will crash. 
+There are ways to script around this problem, but the most effective solution is 
+to edit the spell using Spell Maker in IEEP or Near Infinity to set the spell 
+level to one and then place the fixed spell file in your override directory. 
+Fixed SPL files can also be found at <A 
+href="http://home.earthlink.net/~cirerrek/">Cirerrek's page</A>. 
+<P><I><B>More will be added as they become apparant or are asked.</B></I> 
+<P>
+<HR>
+<A name=Credits>
+<H4>Credits</H4></A>
+<UL>
+  <LI>Me, for writing this rubbish :) 
+  <LI>Max and Kensai Ryu, for pointing out mistakes and providing helpful input 
+  <LI>Cirerrek, for additional information in several areas 
+  <LI>Xyx, for general suggestions, and an additional targetting method 
+  <LI>Dyara, for the debugging application of tokens 
+  <LI>Avenger, for much input on the structure of IDS files 
+  <LI>Japheth, for feedback, I think 
+  <LI>Gimble, for his helpful and interesting posts on the Interplay boards 
+  <LI>Daxziz, Goran and Max, for their tutorials 
+  <LI>Deano, for webpage-related advice </LI></UL></BODY></HTML>

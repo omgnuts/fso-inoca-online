@@ -1,0 +1,200 @@
+Here is the current list of items, note that items are listed from weakest to strongest, in the case where they have strengths. I have also put an * beside any item i do NOT suggest you sell in a shop (keep these as prizes for events or rare monster drops). I have also put comments in () for you.
+
+
+WEAPONS (bladed)
+-----------------
+Knife
+Dagger
+Short Sword
+Dark Sword (necromancer blade)
+Dark Scimitar (necromancer blade)
+Unholy Lance (necromancer weapon)
+Long Sword
+Katana (ninja weapon)
+Steel Scimitar (ninja weapon)
+Bo (ninja weapon)
+Broad Sword
+Ice Sword
+Fire Sword
+Knight's Sword
+Star Sword
+Sword of Hope *
+
+
+WEAPONS (staff)
+----------------
+Wooden Staff
+Steel Staff
+Gold Staff
+Lord's Staff
+Fire Staff
+
+WEAPONS (hammer)
+----------------
+War Hammer
+Thor's Hammer *
+Blacksmith Hammer
+Mining Hammer
+Fire Hammer
+Ice Hammer
+
+WEAPONS (ranged)
+----------------
+Wooden Bow
+Steel Bow
+Wooden Crossbow
+Silver Crossbow
+Blue Arrows
+Red Arrows
+Yellow Arrows
+Green Arrows
+Purple Arrows
+White Arrows
+
+
+ARMOR (feet)
+----------------
+Leather Boots
+Chain Boots
+Plate Boots
+
+
+ARMOR (clothing)
+-----------------
+Tuxedo
+Ninja Outfit
+Royal Ninja Uniform
+
+ARMOR (helmets)
+-----------------
+Leather Cap
+Chain Helm
+Plate Helm
+War Helm
+Murder Helm
+Demon Helm
+Ice Helm
+Fire Helm
+
+HANDS
+------------------
+Ninja Gloves
+Gauntlets
+
+
+ARMOR (body armor)
+------------------
+Leather Armor
+White Robe
+Wizard's Robe
+Necromancer's Robe
+Robe of Invisibility
+Chain Armor
+Plate Armor
+Titanium Armor
+Ceramic Armor
+Argon's Plate
+Ice Armor
+Fire Armor
+
+ARMOR (shields)
+-----------------
+Small Shield
+Steel Shield
+Magical Shield
+Pharaoh Shield
+Knight Shield *
+Ice Shield
+Fire Shield
+
+ARMOR (rings)
+---------------
+Ruby Ring
+Ring of Quickness
+Argon's Ring
+Ring of Experience
+Mage's Ring
+Bowmaster's Ring
+
+
+FOOD (edibles)
+----------------
+Fish
+Pie
+Nectar
+Apple
+Watermelon
+Corn
+Ale
+Orc Meat
+Cyclops Meat
+Yeti Meat
+Raw Fish
+Fish Sticks
+Cyclops Burger
+Orc Burger
+Orc Pot Pie
+
+
+MISC ITEMS
+---------------
+Ocarina
+Trumpet
+Dragon Wing
+Mirror
+Water Orb
+Fire Orb
+Earth Orb
+Wind Orb
+Fishle
+Argon's Medal
+Herb
+Silver Token
+Potion Bottle
+Red Potion
+Red Sand
+Blue Potion
+Blue Sand
+Green Potion
+Green Sand
+Yellow Potion
+Yellow Sand
+Purple Potion
+Purple Sand
+White Potion
+White Sand
+Boat Deed
+Small House Deed
+Blue Cottage Deed
+Small Guild Hall Deed
+Small Farm Deed
+Table
+Stool
+Chest
+Cabinet
+Wind Cabinet
+Red Crystal
+Blue Crystal
+Green Crystal
+Yellow Crystal
+Purple Crystal
+White Crystal
+Blacksmith Hammer
+Mining Hammer
+Axe
+Saw
+Watering Bucket
+Hoe
+Seeds
+Magic Seeds
+Premium Seeds
+Flower Seeds
+Rose Seeds
+Flowers
+Roses
+Oraku's Orb
+Chunk of Steel
+Chunk of Iron
+Chunk of Star
+Chunk of Ice
+Chunk of Fire

@@ -1,0 +1,1 @@
+Fountain:174-125|Fountain:430-125|Fountain:78-349|Fountain:526-349|Exit:270-285|Exit:302-285|Exit:334-285||||||||||||||

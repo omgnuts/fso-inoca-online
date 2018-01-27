@@ -1,0 +1,5 @@
+OWN|Destiny
+BIO|Name: Hughib
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

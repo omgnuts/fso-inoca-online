@@ -1,0 +1,8 @@
+BIO|Name: Amber
+BIO|Class: Small Arms Dealer
+PRO|Hey! You have some thing to sell? Cool!PRO|I deal mainly with small weapons.& armorSEL|Dagger:10:1003BUY|Dagger:4SEL|Leather Armor:350:998
+BUY|Leather Armor:175SEL|Chain Armor:1000:962
+BUY|Chain Armor:300SEL|Chain Helm:500:965
+BUY|Chain Helm:250SEL|Leather Cap:200:1014
+BUY|Leather Cap:100SEL|Leather Boots:200:1004
+BUY|Leather Boots:100GLD|20381129

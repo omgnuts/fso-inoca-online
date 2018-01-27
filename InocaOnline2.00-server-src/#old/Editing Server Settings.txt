@@ -1,0 +1,33 @@
+You can change some of your server settings by opening up the /DAT/SETTINGS/System.txt file
+
+When you first open this file you'll see this...
+
+Speed Hack Protection:ON
+Char Edit Protection:ON
+Admin Attack Protection:ON
+Experience Req (suggested is 250):250
+Jail Sentence Time (1800 = 1 minute):8000
+Chars Drop Items On Death:ON
+Monsters Give Auto-Gold:OFF
+
+
+Change the item after the : to change the values. For example, to turn Speed Hack Protection off, add this line...
+
+Speed Hack Protection:OFF
+
+
+In my testing, there's a chance some things may be buggy, this lets you turn them off until I can test them more. Here's a list of each of these current system settings:
+
+Speed Hack Protection - will attempt to catch speed hackers and ban them.
+
+Char Edit Protection - will analyze hacked characters and ban them if any arise
+
+Admin Attack Protection - when set to ON, admins can't be harmed
+
+Experience Req - this is the amount of exp needed per level. 200 is a good amount. 
+
+Jail Sentence Time - this is how long someone will stay in jail. 30 = 1 second, 1800 = 1 minute, if you want someone to stay in jail forever, just set it to a really high value like 99999999999999. The sentence starts over every time they log in, so they have to sit through it ALL.
+
+Chars Drop Items On Death - this makes characters drop an item or gold at random on death. even with death penalty off on a screen they will drop an item. I suggest leaving this ON at all times to cut down on PKers (people won't PK as much if they realize they can be killed for a reward).
+
+Monsters Give Auto-Gold - When you kill a monster, it can give you gold automatically. Turning this off will make it to where you can't get gold via monsters. This allows you to use the monster item dropper to set the gold or items monsters drop. This lets you manage your game's economy better. I suggest turning this OFF.

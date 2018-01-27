@@ -1,0 +1,1 @@
+Exit:78-349|Fire Pot:270-61|Fire Pot:334-61|Blackjack Table:206-317|Blackjack Table:302-253|Checkers Table:366-349|Checkers Table:462-285|OFF Switch:238-29|OFF Switch:366-29|Switch Door:302-29|Exit2:526-349||||||||||

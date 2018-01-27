@@ -1,0 +1,1 @@
+BIO|Name: KatksBIO|Class: FletcherPRO|Bows, Crossbows, I have it all.SEL|Wooden Bow:20:99955SEL|Steel Bow:2200:999916SEL|Wooden Crossbow:100:99935SEL|Silver Crossbow:4000:999384SEL|Blue Arrows:20:799078SEL|Red Arrows:50:999801SEL|Yellow Arrows:900:999910SEL|Green Arrows:1500:99869SEL|White Arrows:8000:99923GLD|107561299

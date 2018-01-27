@@ -1,0 +1,6 @@
+BIO|Name: Police Inspector
+BIO|Class: Officer
+PRO|For justice!!RND|Halt! A burglary has occurred. Do not step on any evidence. Leave immediately
+RND|Halt! A burglary has occurred. Do not step on any evidence. Leave immediately
+RND|Halt! A burglary has occurred. Do not step on any evidence. Leave immediately
+GLD|932243003

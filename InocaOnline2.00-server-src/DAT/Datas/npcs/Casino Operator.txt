@@ -1,0 +1,6 @@
+BIO|Name: Casino Operator
+BIO|Class: Gambler
+RND|Welcome to Mallet Town Casino. Good luck with your bets.
+RND|Hey man, you look great today. Try your luck and make some gold.
+PRO|Make easy money, try your luck
+GLD|932243003

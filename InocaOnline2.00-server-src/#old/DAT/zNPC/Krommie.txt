@@ -1,0 +1,4 @@
+BIO|Name: Krommie
+BIO|Class: Black Market Dealer
+PRO|I don't sell anything anymore!
+GLD|430000

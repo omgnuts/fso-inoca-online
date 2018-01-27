@@ -1,0 +1,4 @@
+BIO|Name: Dwiach
+BIO|Class: Photographer
+PRO|See? This is a camera!SEL|Camera:160000:9985SEL|Film:1500:999432
+BUY|Camera:80000GLD|131821631

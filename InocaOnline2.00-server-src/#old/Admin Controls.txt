@@ -1,0 +1,25 @@
+to kick a user off the server temporarily type this: /kick name
+
+for example, to kick the user "Faty" you could type Kick Faty
+
+to BAN a user, type /ban name, to jail them them /jail name
+
+to check a user's IP use this: /IPLookup name, to ban that IP use this: /BanIP Name, to unban the name use this: /UnbanIP name
+
+Admins have their own chat channel (which is represented in a teal color). To type in this channel begin each line with a -, for example, to say "hello" to all the admins online, type this:
+
+-hello
+
+
+
+to warp a player to a selected map and position type this into chat...
+
+warp name map x y
+
+for example, to warp "Faty" to map x1000y992 at position x 5, y 5...type this...
+
+warp Faty x1000y992 5 5
+
+
+
+to drop an item on the map type /drop itemname, for example /drop short sword

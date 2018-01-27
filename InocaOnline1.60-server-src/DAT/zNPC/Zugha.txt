@@ -1,0 +1,5 @@
+OWN|Agasajo
+BIO|Name: Zugha
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

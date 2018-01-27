@@ -1,0 +1,1400 @@
+---------------------------------------
+-- // Check Blocks
+---------------------------------------
+
+if fullMsg.subject contains "Broadcast" then
+
+	----------------------------------
+	-- // Broadcast messages
+	----------------------------------
+
+	set ReturnMSG = MuteBroadcastCheck(user,movie) -- // Check Mute - For individuals only
+	if ReturnMSG = "Block" then exit
+
+	----------------------------------------------------------------
+	-- "Wedding Mute"
+	----------------------------------------------------------------
+
+	if WeddingStatus > 0 then
+
+		if string(user.name) = Groom or string(user.name) = Bride or string(user.name) = Priest then
+			-- // continue
+		else
+			if checkAdminAccess(user.name, 8) = FALSE then
+				sendMovieMessage(movie, user.name, "sqa", "There is a wedding ceremony going on at the moment. Please wait a while before broadcasting.")
+		 		exit
+			end if
+	  	end if
+
+	    ----------------------------------------------------------------
+	    -- "Wed Spouses"
+	    ----------------------------------------------------------------
+	  	if string(fullmsg.content) contains "@Wed Spouses" then
+	  		if (WeddingStatus = 1) or (WeddingStatus = 3) then WedSpouses(movie, user)
+	  		exit
+	  	end if
+
+	    ----------------------------------------------------------------
+	    -- "I do"
+	    ----------------------------------------------------------------
+	  	if string(fullmsg.content) = "I do" then
+	  		if (WeddingStatus = 2) and string(user.name) = Groom then
+	  			MarAgreed(movie, user, "Groom")
+	  			exit
+	  		end if
+	  		if (WeddingStatus = 4) and string(user.name) = Bride then
+	  			MarAgreed(movie, user, "Bride")
+	  			exit
+	  		end if
+		end if
+
+	end if
+
+	----------------------------------------------------------------
+	-- "Start Wedding "
+	----------------------------------------------------------------
+	if string(fullmsg.content) contains "@Begin Wedding " then
+
+		if WeddingStatus = 0 then
+			set fullmsg.content = string(fullmsg.content)
+			set groomName = word 3 of fullmsg.content
+			set brideName = word 4 of fullmsg.content
+
+			StartMarriage(movie, user, groomName, brideName)
+
+			exit
+		else
+			sendMovieMessage(movie, user.name, "sqa", "There is already a wedding going on.")
+			exit
+		end if
+
+	end if
+
+	if string(fullmsg.content) contains "@Reset Wedding" then
+		if checkAdminAccess(user.name, 2) then ResetWedding()
+	end if
+
+	----------------------------------------------------------------
+	-- "Divorce Wedding "
+	----------------------------------------------------------------
+	if string(fullmsg.content) contains "@Divorce " then
+
+		set fullmsg.content = string(fullmsg.content)
+		set groomName = word 2 of fullmsg.content
+		set brideName = word 3 of fullmsg.content
+
+		divorceMe(movie, user, groomName, brideName)
+		exit
+
+	end if
+
+  -----------------------------------------------------
+  -- "Badword Filter"
+  -----------------------------------------------------
+
+   set TheName = string(user.name)
+   set TheBCast = fullMsg.content
+
+	if BadWord(movie, user, TheBCast) then exit
+
+	set powerRank = ""
+	set the itemdelimiter = "|"
+	set guildd = item 2 of fullMsg.subject
+	if guildd <> "" then set guildd = " of the " & guildd
+
+	if (listAdmins contains "*" & user.name & "*") then set powerRank = "Admin "
+	if (listAdmins contains "@*" & user.name & "*@") then set powerRank = "Host Admin "
+	if (listAdmins contains "+*" & user.name & "*+") then set powerRank = "Chief Admin "
+	if (listAdmins contains ">*" & user.name & "*<") then set powerRank = "Security Admin "
+	if (listOfficers contains "*" & user.name & "*") then set powerRank = "Officer "
+	if (listOfficers contains "@*" & user.name & "*@") then set powerRank = "Trade Officer "
+	if (listOfficers contains "+*" & user.name & "*+")  then set powerRank = "Chief Officer "
+	if (listMappers contains "*" & user.name & "*") then set powerRank = "Mapper "
+	if (listMappers contains "+*" & user.name & "*+") then set powerRank = "Chief Mapper "
+	if (listMappers contains "@*" & user.name & "*@") then set powerRank = "Asst.Chief Mapper "
+	if (listMappers contains ">*" & user.name & "*<") then set powerRank = "Practice Mapper "
+
+-- 4 bright yellow
+-- 120 cyan
+-- 16 / 19 orange
+-- 7 / 8 / 86 light grey
+
+	if (powerRank <> "") and (powerRank <> "Practice Mapper ") then
+		set BCastDat = powerRank & TheName & " broadcasts " & QUOTE & TheBCast & QUOTE
+		if powerRank contains "officer" then
+			sendMovieMessage(movie, "@AllUsers", "broadcast|120" , BCastDat)
+		else
+			sendMovieMessage(movie, "@AllUsers", "broadcast|16" , BCastDat)
+		end if
+	else  --// normal users
+		if globalMute = 1 then exit
+
+		set BCastDat =  powerRank & TheName & guildd & " broadcasts " & QUOTE & TheBCast & QUOTE
+		sendMovieMessage(movie, "@AllUsers", "broadcast|7" , BCastDat)
+	end if
+
+   exit
+
+end if
+
+case fullMsg.subject of
+
+--------------------------------
+-- // Update Player Last Login
+--------------------------------
+   "TodaysMonth":
+   set TodaysMonth = fullMsg.content
+   set MyName = string(user.name)
+   UpdateLastLogin(MyName)
+
+   exit
+
+----------------------------------
+-- // Update player respawn point
+----------------------------------
+
+   "WriteDeathMap":
+   if random(1000) = 1 then RunBoss(me, movie, group, user, fullMsg)
+   set MyName = string(user.name)
+   set DMap = fullMsg.content
+   file("DAT\DM\" & MyName & ".txt").write(DMap)
+
+   exit
+
+----------------------------------
+-- // Create new character
+----------------------------------
+
+   "QueryCreate":
+
+	if CheckForBlockedIP(User.Name, movie) = "Block" then
+		sendMovieMessage(movie, user.name, "455934785938712364852348", "x") -- Tell Player that IP has been banned
+		movie.sendmessage("system.user.delete", "x", user.name)
+		exit
+	end if
+
+   CharCreate(me, movie, group, user, fullMsg, CDKeys)
+
+   exit
+
+----------------------------------
+-- // Reset password character
+----------------------------------
+
+	"resetpassword":
+
+	set the itemdelimiter = ":"
+	set uname = string(item 1 of fullmsg.content)
+	set uemail = (item 2 of fullmsg.content)
+	set myPass = (item 3 of fullmsg.content)
+	set myIP = Iplogger(user, uname, movie)
+
+	if checkAdminAccess(uname, 5) then
+		AuditLog("ADMIN RESET: " & user.name & " resetted " & uname & "from  IP = " & myIP, "resetPass")
+		exit
+	end if
+
+	set myFile = file("DAT\CHAR\" & uname & ".txt").read
+	set the itemdelimiter = "`"
+	set aCodes = string(item 3 of myFile)
+
+	set the itemdelimiter = ":"
+	-- set myPass = item 2 of myFile
+	set myEmail = item 1 of aCodes
+
+	if myEmail <> uemail then
+		AuditLog("EMAIL MISMATCH: " & user.name & " resetted " & uname & "from  IP = " & myIP, "resetPass")
+		exit
+	end if
+
+	AuditLog("OK: " & user.name & " resetted " & uname & "from  IP = " & myIP, "resetPass")
+	resetEmailPassword(movie, user, uname, uemail, myPass, myIP)
+	exit
+
+--"--------------------------------
+-- // Allow admin to write files
+----------------------------------
+
+   "FileTransToYou":
+   set FileAdmins = file("DAT\ACCESSLIST\File Admins.txt").read
+   set MyNamee = "*" & string(user.name) & "*"
+   set the itemdelimiter = "~"
+   set TheFolder = item 1 of fullmsg.content
+   set TheFileName = item 2 of fullmsg.content
+   set MyNewFileContent = item 3 of fullmsg.content
+   set FullPathx = TheFolder & "\" & TheFileName
+
+	if FileAdmins contains MyNamee then
+
+		if (FullPathx contains "../" or FullPathx contains "..\") then exit
+
+     	set the itemdelimiter = ":"
+		set n = 1
+     	repeat while line n of FileAdmins <> ""
+       	if item 1 of line n of FileAdmins = MyNamee then
+				if item 2 of line n of FileAdmins = "*" then
+					file("DAT\" & FullPathX).write(MyNewFileContent)
+					sendMovieMessage(movie, user.name, "sqa", "File has been uploaded.")
+				else
+					set nn = 2
+					repeat while item nn of line n of FileAdmins <> ""
+						if item nn of line n of FileAdmins = TheFolder then
+							file("DAT\" & FullPathX).write(MyNewFileContent)
+							sendMovieMessage(movie, user.name, "sqa", "File has been uploaded.")
+							exit
+						end if
+						set nn = nn + 1
+					end repeat
+				end if
+       		exit repeat
+       	end if
+       	set n = n + 1
+     	end repeat
+
+   end if
+
+   exit
+
+----------------------------------
+-- // Allow admin to read files
+----------------------------------
+
+   "FileTransToMe":
+   set FileAdmins = file("DAT\ACCESSLIST\File Admins.txt").read
+   set MyNamee = "*" & string(user.name) & "*"
+   set the itemdelimiter = ":"
+   set TheFolder = item 1 of fullmsg.content
+   set TheFileName = item 2 of fullmsg.content
+   -- set MyNewFileContent = item 3 of fullmsg.content
+   set FullPathx = TheFolder & "\" & TheFileName
+
+	if FileAdmins contains MyNamee then
+
+		if (FullPathx contains "../" or FullPathx contains "..\") then exit
+
+     	set the itemdelimiter = ":"
+		set n = 1
+     	repeat while line n of FileAdmins <> ""
+       	if item 1 of line n of FileAdmins = MyNamee then
+				if item 2 of line n of FileAdmins = "*" then
+					set TheFile = file("DAT\" & FullPathx).read
+					sendMovieMessage(movie, user.name, "FTSF", TheFile)
+				else
+					set nn = 2
+					repeat while item nn of line n of FileAdmins <> ""
+						if item nn of line n of FileAdmins = TheFolder then
+							set TheFile = file("DAT\" & FullPathx).read
+							sendMovieMessage(movie, user.name, "FTSF", TheFile)
+							exit repeat
+						end if
+						set nn = nn + 1
+					end repeat
+				end if
+       		exit repeat
+       	end if
+       	set n = n + 1
+     	end repeat
+
+   end if
+
+   exit
+
+
+
+	"JoinCTF":
+		CTFJoinTeam(user, movie)
+	exit
+
+	"DropAnItemCTF":
+		dropFlag(user, movie, fullMsg.content)
+   exit
+
+	"ScoreCTF":
+		calculateCTFScore(user.name, movie)
+	exit
+
+	"GetFlagCarrierCTF":
+		getFlagCarrier(user, movie)
+	exit
+
+	"LeaveCTF":
+		CTFLeaveTeam(user, movie)
+	exit
+
+----------------------------------
+-- // Check for special commands
+----------------------------------
+
+	"callcommands":
+
+		if fullmsg.content contains "startctf" then
+			if checkAdminAccess(user.name, 2) then
+				startCTF("BUILD", movie)
+				exit
+			end if
+		end if
+
+		if fullmsg.content contains "endctf" then
+			if checkAdminAccess(user.name, 2) then
+				endCTFGame(movie)
+				exit
+			end if
+		end if
+
+		if fullmsg.content contains "resetflags" then
+			if checkAdminAccess(user.name, 2) then
+				resetFlags(movie)
+				exit
+			end if
+		end if
+
+
+----------------------------------
+-- // Kick / Ban The Dood
+----------------------------------
+   "KickHacker":
+		--set UserName = fullMsg.content
+		--sendMovieMessage(movie, UserName, "234882347782347923482347", "x")
+		--sendMovieMessage(movie, "@Admins", "sqa", UserName & " has been kicked for hacking " & user.name)
+	exit
+
+	"AutoLock":
+		set the itemdelimiter = " "
+		set UserToBan = string(user.name)
+		set MyFile = file("DAT\CHAR\" & UserToBan & ".txt").read
+
+		if myFile contains ":" then
+
+			if MyFile contains "BANNED!!!!!!!!!!!%%" then
+				sendMovieMessage(movie, user.name, "sqa", "You were already locked.")
+			else
+
+				if checkAdminAccess(UserToBan, 1) then exit
+
+				set MyFile = "BANNED!!!!!!!!!!!%%" & MyFile
+				file("DAT\CHAR\" & UserToBan & ".txt").write(MyFile)
+				set theIP = GetIP(UserToBan, movie)
+
+				movie.sendmessage("system.user.delete", "x", UserToBan)
+				sendMovieMessage(movie, UserToBan, "5697838", "x")
+
+				sendMovieMessage(movie, "@Admins", "sqa", usertoban & " (" & theIP & ") has been autolocked.")
+				auditLog(UserToBan & " (" & theIP & ") has been autobanned by the program.", "banlock")
+			end if
+		end if
+	exit
+
+----------------------------------
+-- // Buy Lottery
+----------------------------------
+   "BuyLottery":
+
+		buyLottery(user, movie)
+
+	exit
+
+----------------------------------
+-- // Grab Password List
+----------------------------------
+
+   "GrabPassList":
+
+	set infoUser = file("DAT\QuestPass\" & string(user.name) & "-qp.txt").read
+
+	set the itemdelimiter = "/"
+	set infoUser = item 1 of infoUser
+
+	if string(infoUser) = "" then
+		sendMovieMessage(movie, user.name, "sqa", "Sorry, you have not obtained any passwords yet.")
+	else
+		sendMovieMessage(movie, user.name, "ListPass", infoUser)
+	end if
+
+   exit
+
+--"--------------------------------
+-- // Check PasswordMap
+----------------------------------
+
+   "QPCheck":
+   set infoStr = fullMsg.content
+   set the itemdelimiter = ":"
+
+   set fileName = item 2 of infoStr
+   set infoMap = string(file("DAT\QuestPassMap\" & fileName & "-qp.txt").read)
+
+	if infoMap = "" then
+		sendMovieMessage(movie, user.name, "sqa", "Sorry, this map does not require a password.")
+	else
+   	set infoUser = file("DAT\QuestPass\" & string(user.name) & "-qp.txt").read
+   	set the itemdelimiter = "/"
+		set infoUser = item 1 of infoUser
+		sendMovieMessage(movie, user.name, "CheckedQP", infoStr & "|" & infoMap & "|" & infoUser)
+	end if
+
+   exit
+   
+
+----------------------------------
+-- // 937oom
+----------------------------------
+
+   "937oom":
+
+   exit
+
+
+----------------------------------
+-- // Change Password
+----------------------------------
+
+   "changePass":
+
+	set newPass = fullMsg.content
+   set MyFile = file("DAT\CHAR\" & string(user.name) & ".txt").read
+	set the itemdelimiter = ":"
+
+	put newPass into item 2 of MyFile
+	file("DAT\CHAR\" & string(user.name) & ".txt").write(MyFile)
+	sendMovieMessage(movie, user.name, "PasswordChanged", "x")
+
+	exit
+
+----------------------------------
+-- // cql
+----------------------------------
+   "cq1":
+
+   set xFilName = string(fullmsg.SenderID) & ".txt"
+   set HisName = string(user.name)
+   set FilName = HisName & ".txt"
+   set SrStr = "*" & user.name & "*"
+
+   if LegitUsers contains SrStr then
+
+	else
+
+     sendMovieMessage(movie, user.name, "GetItems", "#@(*|18983|292|123|444|12389")
+     sendMovieMessage(movie, user.name, "YouGotKicked", "The Mighty Server God")
+     sendMovieMessage(movie, user.name, "NewspaperX", "@!#H!@*!@#H*!@H#")
+     sendMovieMessage(movie, user.name, "inv", "@!#H!@*!@#H*!@H#")
+     exit
+   end if
+
+   if FilName <> xFilName then
+      set MyFile = file("DAT\CHAR\" & string(HisName) & ".txt").read
+      set MyFile = "BANNED!!!!!!!!!!!" & MyFile
+      file("DAT\CHAR\" & string(HisName) & ".txt").write(MyFile)
+      sendMovieMessage(movie, user.name, "YouGotKicked", "The Mighty Server God")
+      exit
+   end if
+
+   set FilDT = fullMsg.content
+
+   set MyFile = file("DAT\CHAR\" & HisName & ".txt").read
+
+   set the itemdelimiter = "`"
+   set ActivateCode = item 3 of myFile
+
+   set the itemdelimiter = "."
+   if item 1 of FilDT <> HisName then exit
+   if HisName contains "NewChar" then exit
+
+   file("DAT\CHAR\" & FilName).write(FilDt & "`" & ActivateCode)
+--   if random(4000) = 1 then QuestChest
+   exit
+
+
+----------------------------------
+-- // Save Items
+----------------------------------
+
+   "SaveItems":
+
+   set FileDT = fullMsg.content
+   set the itemdelimiter = "`"
+   set FilName = item 1 of FileDT
+   set FilDat = item 2 of FileDT
+
+   file("DAT\ITEMS\" & FilName).write(FilDat)
+
+
+   set FileDT = fullMsg.content
+   set the itemdelimiter = "`"
+   set FilName = item 1 of FileDT
+
+   set FilDat = item 2 of FileDT
+   set the itemdelimiter = "-"
+   set FilNameX = item 1 of FilName
+	------------------------------
+	-- Trigger LimitedSafeCheck()
+	------------------------------
+
+	if checkAdminAccess(user.name, 4) then
+		set Check = LimitedSafeCheck( user , FilNameX )
+		if Check = "ok" then
+			file("DAT\ITEMS\" & FilName).write(FilDat)
+			file("DAT\MapsToUpdate\" & FilName).write(FilDat)
+		end if
+	else
+		file("DAT\ITEMS\" & FilName).write(FilDat)
+	end if
+
+
+   exit
+
+----------------------------------
+-- // Hacked Items
+----------------------------------
+
+   "HckItm":
+
+   set FileDT = fullMsg.content
+   set the itemdelimiter = "`"
+   set FilName = item 1 of FileDT
+   set NewItem = item 2 of FileDT
+   set ItDt = item 2 of FileDT
+   set ItemList = file("DAT\ITEMS\" & FilName).read
+
+   if ItemList contains NewItem then
+     set the itemdelimiter = "|"
+
+     repeat with itemIndexs = 1 to 20
+        if NewItem = item itemIndexs of Itemlist then put "" into item itemIndexs of ItemList
+     end repeat
+
+     file("DAT\ITEMS\" & FilName).write(ItemList)
+    else
+   end if
+
+   exit
+
+----------------------------------
+-- // Remove Equipment
+----------------------------------
+
+   "remEQ": -- invnt.rem_EQitem
+
+--   if checkAdminAccess(user.name, 9) then exit
+
+   exit
+
+--"--------------------------------
+-- // Save Newspaper
+----------------------------------
+
+   "SaveNewsPaper":
+   file("DAT\NEWSPAPERS\" & string(user.name) & ".txt").write(fullMsg.content)
+
+   exit
+
+--"--------------------------------
+-- // ReadNewspaperGUI
+----------------------------------
+
+   "ReadNewspaperGUI":
+   set NewsName = string(user.name) & ".txt"
+   set NPFile = file("DAT\NEWSPAPERS\" & NewsName).read
+   sendMovieMessage(movie, user.name, "NewspaperX", NPFile)
+
+   exit
+
+--"--------------------------------
+-- // ReadNewspaper
+----------------------------------
+
+   "ReadNewspaper":
+   set NewsName = fullMsg.content & ".txt"
+   set NPFile = file("DAT\NEWSPAPERS\" & NewsName).read
+   sendMovieMessage(movie, user.name, "Newspaper", NPFile)
+   set the itemdelimiter = "`"
+   set Photo1 = item 1 of NPFile
+   set Photo2 = item 2 of NPFile
+   set Photo3 = item 3 of NPFile
+   set ThePainting = file("DAT\ART\" & Photo1).readvalue()
+   sendMovieMessage(movie, user.name, "Photo1Send", ThePainting)
+   set ThePainting = file("DAT\ART\" & Photo2).readvalue()
+   sendMovieMessage(movie, user.name, "Photo2Send", ThePainting)
+   set ThePainting = file("DAT\ART\" & Photo3).readvalue()
+   sendMovieMessage(movie, user.name, "Photo3Send", ThePainting)
+
+   exit
+
+----------------------------------
+-- // rhnd
+----------------------------------
+
+   "rhnd":
+   set FileDT = fullMsg.content
+   set the itemdelimiter = ":"
+   set ItemToRemove = item 1 of FileDT
+   set ItemType = item 2 of FileDT
+
+   set MyName = user.name
+   set MyItemsFile = file("DAT\CHAR\" & string(MyName) & "-i.txt").read
+   set the itemdelimiter = "|"
+   set MyEquipped = item 3 of MyItemsFile
+   set the itemdelimiter = ":"
+
+   put "NOTHING" into item 4 of MyEquipped
+
+   set the itemdelimiter = "|"
+   put MyEquipped into item 3 of MyItemsFile
+   file("DAT\CHAR\" & string(MyName & "-i") & ".txt").write(MyItemsFile)
+   sendMovieMessage(movie, user.name, "inx", MyItemsFile)
+
+   exit
+
+
+--"--------------------------------
+-- // Save The Big Map
+----------------------------------
+
+   "SaveTheBigMap":
+   set MyName = user.name
+   set TheImage = fullmsg.content
+   file("DAT\WORLD MAP\WMAP").writevalue(TheImage)
+   sendMovieMessage(movie, user.name, "TheBigMapWasSaved", "x")
+
+   exit
+
+----------------------------------
+-- // Grab The Big Map
+----------------------------------
+
+   "GrabTheBigMap":
+   set TheBigMap = file("DAT\WORLD MAP\WMAP").readvalue()
+   sendMovieMessage(movie, user.name, "HeresTheBigMap", TheBigMap)
+
+   exit
+
+--"--------------------------------
+-- // Key Usage
+----------------------------------
+
+   "KeyUsage":
+   set FileDT = fullMsg.content
+
+   set the itemdelimiter = ":"
+   set ItemName = item 1 of FileDT
+   set InvenNum = integer(item 2 of FileDT)
+   set KeyFile = file("DAT\SETTINGS\Keys.txt").read
+   if KeyFile contains ItemName & ":Inf" then exit
+
+   set MyName = user.name
+   set MyItemsFile = file("DAT\CHAR\" & string(MyName) & "-i.txt").read
+   set the itemdelimiter = "|"
+   set MyEquipment = item 2 of MyItemsFile
+   set the itemdelimiter = ":"
+
+   set MyItemToDrop = item InvenNum of MyEquipment
+
+   if MyItemToDrop contains ItemName & "-" then
+     set nItem = ItemName
+     set ItemNum = 1
+     InvDel(MyName, MyItemsFile, nItem, ItemNum, User, fullmsg, group, movie)
+   end if
+
+   exit
+
+   exit
+----------------
+-- // Rm Cr
+----------------------------------
+
+   "RmCr":
+   set FileDT = fullMsg.content
+   set the itemdelimiter = ":"
+   set CrName = item 1 of FileDT
+   set Amount = integer(item 2 of FileDT)
+   set InvenNum = item 3 of FileDT
+   if InvenNum <> "x" then set InvenNum = integer(InvenNum )
+   if Amount < 1 then set Amount = 1
+
+   set MyName = user.name
+   set MyItemsFile = file("DAT\CHAR\" & string(MyName) & "-i.txt").read
+   set the itemdelimiter = "|"
+   set MyEquipment = item 2 of MyItemsFile
+   set the itemdelimiter = ":"
+
+   if InvenNum = "x" then
+     repeat with xx = 1 to 15
+       if item xx of MyEquipment contains CrName & "-" then set InvenNum = xx
+      end repeat
+   end if
+
+   set MyLine = item InvenNum of MyEquipment
+
+   if MyLine contains CrName & "-" then
+     set the itemdelimiter = "-"
+     set CurrentAmount = integer(item 2 of MyLine)
+
+     if CurrentAmount < Amount then
+       exit
+     end if
+
+    set nItem = CrName
+    set ItemNum = Amount
+    InvDel(MyName, MyItemsFile, nItem, ItemNum, User, fullmsg, group, movie)
+   end if
+
+   exit
+
+--"--------------------------------
+-- // Add to Queue
+----------------------------------
+
+   "AddToQueue":
+    Global MovementQueue
+    set DtToAdd = fullMsg.content
+    set the itemdelimiter = ":"
+    set WhichMap = item 1 of DtToAdd
+    set the itemdelimiter = "`"
+
+    repeat with x = 1 to 7
+     if item x of MovementQueue contains WhichMap & ":" then
+      set theLine = item x of MovementQueue & DtToAdd & "/"
+      put theLine into item x of MovementQueue
+      exit
+     end if
+    end repeat
+
+    if MovementQueue = "" then
+      set MovementQueue = DtToAdd & "/"
+      exit
+    end if
+
+    set MovementQueue = MovementQueue & "`" & DtToAdd & "/"
+
+   exit
+----------------------------------
+-- // Miscellaneous Cases Part A
+----------------------------------
+
+ "AddMeToCheaters":
+    AddMeToCheaters(me, movie, group, user, fullmsg)
+
+   exit
+
+ "SecureTradeInProgress":
+    SecureTradeInProgress(me, movie, group, user, fullmsg)
+
+   exit
+
+ "b94013":
+    DisxItm(me, movie, group, user, fullmsg)
+
+   exit
+
+ "x91":
+    RunAdd(me, movie, group, user, fullmsg)
+
+   exit
+
+ "bookrd":
+    ReadBook(me, movie, group, user, fullmsg)
+
+   exit
+
+ "bjchk":
+    BlackJackGoldCheck(me, movie, group, user, fullmsg)
+
+   exit
+
+ "snx38":
+    snx38(me, movie, group, user, fullmsg)
+
+   exit
+
+-- //"GiveToPlayer":
+--    GiveToPlayer(me, movie, group, user, fullmsg)
+--
+--   exit
+
+-- //"GiveGoldToPlayer":
+--    GiveGoldToPlayer(me, movie, group, user, fullmsg)
+--
+--   exit
+
+ "QuestGive":
+    QuestGive(me, movie, group, user, fullmsg)
+
+   exit
+
+ "RefNPC":
+    RefNPC(me, movie, group, user, fullmsg)
+
+   exit
+
+"GetSomeFaction":
+    sendMovieMessage(movie, user.name, "factnrtrn",  FactionPowers)
+
+   exit
+
+"GetHelp":
+    GetHelp(me, movie, group, user, fullmsg)
+
+   exit
+
+----------------------------------
+-- // Door Switch
+----------------------------------
+
+"DoorSwitch":
+  set FileDT = fullMsg.content
+  set the itemdelimiter = "|"
+  set MapName = item 1 of FileDT
+  set OldDoor = item 2 of FileDT
+  set NewDoor = item 3 of FileDT
+
+  set MapFile = file("DAT\ITEMS\" & MapName).read
+
+  repeat with x = 1 to 20
+     if item x of MapFile contains OldDoor then
+        set DoorFL = item x of MapFile
+        set the itemdelimiter = ":"
+        put NewDoor into item 1 of DoorFL
+        set the itemdelimiter = "|"
+        put DoorFL into item x of MapFile
+     end if
+  end repeat
+
+  file("DAT\ITEMS\" & MapName).write(MapFile)
+
+   exit
+
+----------------------------------
+-- // Miscellaneous Cases Part B
+----------------------------------
+"returnVehicleWarp":
+	unboardVehicle(movie, user)
+	exit
+
+"DeathTxt":
+
+	if globalmute then
+		sendMovieMessage(movie, user.name, "DeathTxt",  fullmsg.content)
+	else
+		sendMovieMessage(movie, "@Allusers", "DeathTxt",  fullmsg.content)
+	end if
+	exit
+
+"DeathMapGo":
+    DeathMapGo(me, movie, group, user, fullmsg)
+
+   exit
+
+"SaveHouse":
+    SaveHouse(me, movie, group, user, fullmsg)
+
+   exit
+
+"SpCmd":
+    ShopCommand(me, movie, group, user, fullmsg)
+
+   exit
+
+"MpTlCng":
+    MapTileChange(me, movie, group, user, fullmsg)
+
+   exit
+
+"MpT2Cng":
+    BuildLand(me, movie, group, user, fullmsg)
+
+   exit
+
+"MpT3Cng":
+    BuyLand(me, movie, group, user, fullmsg)
+
+   exit
+
+-- //"SayTreasure":
+--    SayTreasure(me, movie, group, user, fullmsg)
+--
+--   exit
+
+"SayFaction":
+    SayFaction(me, movie, group, user, fullmsg)
+   exit
+
+"PrtlExt":
+    Portal(me, movie, group, user, fullmsg)
+
+   exit
+
+-- //"SayQuest":
+--    SayQuest(me, movie, group, user, fullmsg)
+--
+--   exit
+
+"treack":
+    TreasureCheck(me, movie, group, user, fullmsg)
+
+   exit
+
+"BlkJckExch":
+    BlackJackGameOver(me, movie, group, user, fullmsg)
+
+   exit
+
+"STARTASSGAME":
+    STARTASSGAME(me, movie, group, user, fullmsg)
+
+   exit
+
+"StartLightningAssGame":
+    StartLightningAssGame(me, movie, group, user, fullmsg)
+
+   exit
+
+"ENDASSGAME":
+    ENDASSGAME(me, movie, group, user, fullmsg)
+
+   exit
+
+"ASSGAMEADDSCORE":
+    AssGameAddScore(me, movie, group, user, fullmsg)
+
+   exit
+
+"ShowAssScores":
+   set FilName = "DAT\SETTINGS\permassassinsscore.txt"
+   set HighScoreList = file(FilName).read
+   sendMovieMessage(movie, user.name, "assscrlstx", HighScoreList)
+
+   set FilName = "DAT\SETTINGS\assassinsscore.txt"
+   set HighScoreList = file(FilName).read
+   sendMovieMessage(movie, user.name, "assscrlst", HighScoreList)
+
+   exit
+
+"Sccr":
+
+
+   exit
+
+"ShowScores":
+   set FilName = "DAT\SETTINGS\highscore.txt"
+   set HighScoreList = file(FilName).read
+   sendMovieMessage(movie, user.name, "scrlst", HighScoreList)
+
+   exit
+
+"sltwn":
+	SlotDone(me, movie, group, user, fullMsg)
+
+   exit
+
+----------------------------------
+-- // Slot Machine
+----------------------------------
+
+"SltMcn":
+   set TheCost = integer(fullmsg.content)
+
+   set MyName = user.name
+   set MyItemsFile = file("DAT\CHAR\" & string(MyName) & "-i.txt").read
+   set the itemdelimiter = "|"
+   set MyGold = integer(item 1 of MyItemsFile)
+   set the itemdelimiter = ":"
+
+   if MyGold >= TheCost then
+
+     sendMovieMessage(movie, user.name, "goslt", TheCost)
+   else
+     sendMovieMessage(movie, user.name, "noslt", "x")
+   end if
+
+   exit
+
+----------------------------------
+-- // Grab Items
+----------------------------------
+
+   "GrabItems":
+     GrabItems(me, movie, group, user, fullmsg)
+
+   exit
+
+----------------------------------
+-- // Check IP Ban
+----------------------------------
+
+   "SortIP":
+   MyIPP = fullmsg.content
+   set FilName = "DAT\SETTINGS\bans.txt"
+   set MyFile = file(FilName).read
+   if MyFile contains MyIPP then sendMovieMessage(movie, user.name, "455934785938712364852348", "x")
+
+   exit
+
+----------------------------------
+-- // Load Stuff (Items, Board, Map, Monsters)
+----------------------------------
+
+   "LoadItems":
+   set FilName = "DAT\ITEMS\"
+   FilName = FilName & fullmsg.content
+   set MyFile = file(FilName).read
+   sendMovieMessage(movie, user.name, "GetItems", MyFile)
+
+   "LoadItemsW":
+   set FilName = "DAT\ITEMS\"
+   FilName = FilName & fullmsg.content
+   set MyFile = file(FilName).read
+   sendMovieMessage(movie, user.name, "GetItemsW", MyFile)
+
+   "LoadItemsX":
+   set FilName = "DAT\ITEMS\"
+   FilName = FilName & fullmsg.content
+   set MyFile = file(FilName).read
+   sendMovieMessage(movie, user.name, "GetItemsX", MyFile)
+
+   exit
+
+--"--------------------------------
+-- // Load & Save Board
+----------------------------------
+
+   "LoadBoard1":
+   set FilName = "DAT\BOARDS\"
+   FilName = FilName & fullmsg.content
+   set MyFile = file(FilName).read
+   sendMovieMessage(movie, user.name, "GetBoards", MyFile)
+
+   "SaveBoard1":
+   set FileDT = fullMsg.content
+   set the itemdelimiter = "`"
+   set FilName = item 1 of FileDT
+   set FilDat = item 2 of FileDT
+   file("DAT\BOARDS\" & FilName).write(FilDat)
+
+
+-- // Load & Save Board2 are pretty redundant, as they are not applied in Inoca's Client Version
+
+--   "LoadBoard2":
+--   set FilName = "DAT\BOARDS\"
+--   FilName = FilName & fullmsg.content
+--   set MyFile = file(FilName).read
+--   sendMovieMessage(movie, user.name, "GetBoards", MyFile)
+
+--   "SaveBoard2":
+--   set FileDT = fullMsg.content
+--   set the itemdelimiter = "`"
+--   set FilName = item 1 of FileDT
+--   delete item 1 of FileDT
+--   if char 1 of FileDT = "`" then delete char 1 of FileDT
+--   file("DAT\BOARDS\" & FilName).write(FileDT)
+
+   exit
+
+----------------------------------
+-- // Load & Save Map
+----------------------------------
+
+   "LoadMap":
+   set TheName = fullmsg.content
+
+   set FilName = "DAT\MAPS\" & TheName
+   set MyFile = file(FilName).read
+
+   set FilxName = "DAT\MOBS\" & TheName
+   set MyxFile = file(FilxName).read
+
+   set the itemdelimiter = "."
+   set FilName = "DAT\ITEMS\" & item 1 of TheName & "i.txt"
+   set ItemFile = file(FilName).read
+
+   set TheFiles = MyFile & "^" & ItemFile & "^" & MyxFile & "^"
+   SendNPCs (MyxFile, me, movie, group, user, fullMsg, TheFiles)
+   set the itemdelimiter = "."
+   ReleasePassword (user, movie, item 1 of TheName)
+
+   "LoadMapX":
+   set FilName = "DAT\MAPS\"
+   FilName = FilName & fullmsg.content
+   set MyFile = file(FilName).read
+   sendMovieMessage(movie, user.name, "GetMapX", MyFile)
+
+
+	"SM8910291X": -- Save Map for house building
+	set FileDT = fullMsg.content
+	set the itemdelimiter = "`"
+	set FilName = item 1 of FileDT
+	set FilDat = item 2 of FileDT
+	file("DAT\MAPS\" & FilName).write(FilDat)
+	sendMovieMessage(movie, user.name, "MapIsCreated", "x")
+
+	--"
+
+   "SaveMap":
+   set FileDT = fullMsg.content
+   set the itemdelimiter = "`"
+   set FilName = item 1 of FileDT
+   set FilDat = item 2 of FileDT
+	------------------------------
+	-- Trigger LimitedSafeCheck()
+	------------------------------
+
+	if checkAdminAccess(user.name, 4) then
+
+		set isPresent = string(file("DAT\MAPS\" & FilName).read)
+		if isPresent = "" or isPresent = void then
+			auditLog(filName & " was created by " & user.name, "newmap")
+			IncreaseTotalMaps()
+		end if
+
+		set Check = LimitedSafeCheck( user , FilName )
+		if Check = "ok" then
+			file("DAT\MAPS\" & FilName).write(FilDat)
+			file("DAT\MapsToUpdate\" & FilName).write(FilDat)
+			sendMovieMessage(movie, user.name, "MapIsCreated", "x")
+		end if
+	end if
+
+--"--------------------------------
+-- // Load & Save Monster
+----------------------------------
+
+	"LoadMobsX":
+	set FilName = "DAT\MOBS\"
+	FilName = FilName & fullmsg.content
+	set MyFile = file(FilName).read
+	sendMovieMessage(movie, user.name, "GetMobsX", MyFile)
+
+   "SveMb":
+   set FileDT = fullMsg.content
+   set the itemdelimiter = "`"
+   set FilName = item 1 of FileDT
+   set FilDat = item 2 of FileDT
+
+   set the itemdelimiter = "."
+   set MapName = item 1 of FilName
+
+   ------------------------------
+   -- Trigger CheckSaveMobs()
+   ------------------------------
+   set ReturnMSG = CheckSaveMobs(user, MapName, FilDat, movie)
+   if ReturnMSG = "Hacked" then exit
+   ------------------------------
+   -- Trigger LockedMobsCheck()
+   ------------------------------
+	set Check = LockedMobsCheck(user, MapName)  --locks MobMaps
+	if Check = "False" then
+		------------------------------
+		-- Trigger LimitedSafeCheck()
+		------------------------------
+			set Check = LimitedSafeCheck( user , FilName )
+			if Check = "ok" then
+			file("DAT\MOBS\" & FilName).write(FilDat)
+			end if
+		------------------------------
+	end if
+   ------------------------------
+   exit
+
+
+--"--------------------------------
+-- // Load News
+----------------------------------
+
+--   "LoadNews":
+--   set MyFile = getWelcomeText()
+--   sendMovieMessage(movie, user.name, "News", MyFile)
+--   exit
+
+----------------------------------
+-- // Load & Complete Quests
+----------------------------------
+   "LoadQuests":
+   set FilName = "DAT\SETTINGS\CurQuest.txt"
+   set MyFile = file(FilName).read
+   sendMovieMessage(movie, user.name, "Quests", MyFile)
+
+   "QuestComplete":
+   set FileDT = fullMsg.content
+   file("DAT\SETTINGS\CurQuest.txt").write(FileDT)
+
+   exit
+
+----------------------------------
+-- // View Char (DEFUNCT)
+----------------------------------
+
+   --"ViewChar":
+   --set CharName = fullMsg.content
+   --set FilName = "DAT\CHAR\" & CharName & ".txt"
+   --set MyFile = file(FilName).read
+   --sendMovieMessage(movie, user.name, "ViewChar", MyFile)
+
+   exit
+
+--"-------------------------------
+-- // Load & Save NPC
+----------------------------------
+
+   "LoadTheNPC":
+   if checkAdminAccess(user.name, 1) then
+   	set CharName = fullMsg.content
+   	set FilName = "DAT\NPC\" & CharName & ".txt"
+   	set MyFile = file(FilName).read
+   	sendMovieMessage(movie, user.name, "NPCLoaded", MyFile)
+   else
+      sendMovieMessage(movie, user.name, "kick", "x")
+   end if
+
+   "SaveTheNPC":
+
+   if checkAdminAccess(user.name, 1) then
+     set FileDT = fullMsg.content
+     set the itemdelimiter = "`"
+     set FilName = item 1 of FileDT
+     set FilDat = item 2 of FileDT
+     file("DAT\NPC\" & FilName).write(FilDat)
+     sendMovieMessage(movie, user.name, "NPCIsCreated", "x")
+   else
+     sendMovieMessage(movie, user.name, "kick", "x")
+   end if
+
+   exit
+
+
+---------------------------------
+-- // Reduce Gold From Spell
+---------------------------------
+  "ReduceGoldFromSpell":
+   set MyName =  user.name
+   set MyItemsFile = file("DAT\CHAR\" & string(MyName) & "-i.txt").read
+   set the itemdelimiter = "|"
+   set myCharGold = integer(item 1 of MyitemsFile)
+   set MycharGold = MyCharGold - integer(fullmsg.content)
+   if MyCharGold < 0 then exit
+   if string(MyCharGold) contains "-" then exit
+   put MycharGold into item 1 of MyItemsFile
+   file("DAT\CHAR\" & string(MyName & "-i") & ".txt").write(MyItemsFile)
+   sendMovieMessage(movie, user.name, "inx", MyItemsFile)
+
+   exit
+
+---------------------------------
+-- // Give Gold To NPC
+---------------------------------
+
+  "GiveGoldToNPC":
+
+   set MyName =  user.name
+   set MyItemsFile = file("DAT\CHAR\" & string(MyName) & "-i.txt").read
+
+   set NPCDat = fullMsg.content
+   set the itemdelimiter = ":"
+   set NPCName = item 1 of NPCDat
+   set NewGold = integer(item 2 of NPCDat)
+   set the itemdelimiter = "."
+   set FNPCxName = item 1 of NPCName
+   set NPCTalkDAt = FNPCxName & " says " & QUOTE & "Thanks for the gold!"
+   set the itemdelimiter = "|"
+   set myCharGold = integer(item 1 of MyitemsFile)
+   set MycharGold = MyCharGold - integer(NewGold)
+   if MyCharGold < 0 then exit
+   put MycharGold into item 1 of MyItemsFile
+   file("DAT\CHAR\" & string(MyName & "-i") & ".txt").write(MyItemsFile)
+   sendMovieMessage(movie, user.name, "inx", MyItemsFile)
+   sendMovieMessage(movie, user.name, "sqa",  NPCTalkDAt)
+
+   set FilName = "DAT\NPC\" & NPCName
+   set LList = file(FilName).read
+
+   repeat with x = 1 to 60
+      if line x of LList contains "GLD|" then
+        set the itemdelimiter = "|"
+        set MyGold = integer(item 2 of line x of LList)
+        set GoldtoAdd = MyGold + NewGold
+        set GoldToAdd = "GLD|" & string(GoldToAdd)
+        put GoldToAdd into line x of LList
+      end if
+   end repeat
+
+   file("DAT\NPC\" & NPCName).write(LList)
+
+   exit
+
+
+---------------------------------
+-- // Buy and Sell from NPC
+---------------------------------
+
+   "Mkilldrp":
+
+   set FileDT = fullMsg.content
+   set the itemdelimiter = "`"
+   set FilName = item 1 of FileDT
+   set NPCname = item 2 of FileDT
+   set ItemDat = item 3 of FileDT
+
+   set NPCFilName = "DAT\NPC\" & NPCname
+   set NPCFile = file(NPCFilName).read
+   if NPCFile = VOID then exit
+
+   set CurInvLst = ""
+   set InvAmnt = 0
+
+   set x = 1
+--   repeat with x = 1 to 80
+   repeat while line x of NPCFile <> ""
+     if line x of NPCFile contains "INV|" then
+      set the itemdelimiter = "|"
+      set TheGoods = item 2 of line x of NPCFile
+      set CurInvLst = CurInvLst & TheGoods & RETURN
+      set InvAmnt = InvAmnt + 1
+     end if
+     set x = x + 1
+   end repeat
+
+   if InvAmnt = 0 then exit
+   set WhichOneLine = random(InvAmnt)
+
+   set CurItttm = line WhichOneLine of CurInvLst
+   set the itemdelimiter = ":"
+   set RndAmnt = integer(item 2 of CurItttm)
+   set DoWeDrop = random(RndAmnt)
+   if DoWeDrop <> 1 then exit
+   set TheItemm = item 1 of CurItttm
+
+   set ItemList = file("DAT\ITEMS\" & FilName).read
+   set the ItemDelimiter = "|"
+   set OneToPlace = 0
+   if item 8 of ItemList = "" then set OneToPlace = 8
+   if item 7 of ItemList = "" then set OneToPlace = 7
+   if item 6 of ItemList = "" then set OneToPlace = 6
+   if item 5 of ItemList = "" then set OneToPlace = 5
+   if item 4 of ItemList = "" then set OneToPlace = 4
+   if item 3 of ItemList = "" then set OneToPlace = 3
+   if item 2 of ItemList = "" then set OneToPlace = 2
+   if item 1 of ItemList = "" then set OneToPlace = 1
+   if OneToPlace = 0 then exit
+   set the itemdelimiter = ":"
+   set TheItemDrp = TheItemm & ":" & ItemDat
+   set the ItemDelimiter = "|"
+   put TheItemDrp into item OnetoPlace of ItemList
+
+   if ItemList contains "|" then
+    else
+    exit
+   end if
+
+   file("DAT\ITEMS\" & FilName).write(ItemList)
+
+   sendMovieMessage(movie, user.name, "drelxu", TheItemDrp)
+
+   exit
+
+--"
+---------------------------------
+-- // Barber Shop
+---------------------------------
+
+   "barberHair":
+		changeHair(movie, user, string(fullmsg.content))
+		exit
+end case

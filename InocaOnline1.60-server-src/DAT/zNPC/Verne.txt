@@ -1,0 +1,1 @@
+BIO|Name: VerneBIO|Class: FarmerFLG|PassivePRO|I can get you started growing you own crops, so long as you have a farm!SEL|Watering Bucket:150:25SEL|Hoe:150:25SEL|Seeds:3:25SEL|Magic Seeds:5:25SEL|Premium Seeds:7:25SEL|Flower Seeds:5:25SEL|Rose Seeds:6:25BUY|Watering Bucket:15BUY|Hoe:15GLD|200

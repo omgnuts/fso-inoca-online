@@ -1,0 +1,1 @@
+OWN|AardvarkBIO|Name: HemeBIO|Class: ShopkeeperPRO|GLD|6074SEL|steel shield:500:0BUY|steel shield:50SEL|chain helm:100:0BUY|chain helm:1SEL|fishing pole:50:0BUY|fishing pole:1SEL|leather armor:100:3BUY|leather armor:1SEL|long sword:300:4BUY|long sword:1SEL|chain armor:600:0BUY|chain armor:1

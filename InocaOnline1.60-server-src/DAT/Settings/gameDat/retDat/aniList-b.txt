@@ -1,0 +1,22 @@
+%:Agavar:219:128:13:18:0:20:129:Trimble
+%:Amber:201:128:13:18:0:20:129:Trimble
+%:Dantan:200:128:13:18:0:20:129:Trimble
+%:Galor:200:128:13:18:0:20:129:Trimble
+%:Kanta:200:128:13:18:0:20:129:Trimble
+%:Rutxon:200:128:13:18:0:20:129:Trimble
+%:Wenslas:200:128:13:18:0:20:129:Trimble
+%:Wrel:200:128:13:18:0:20:129:Trimble
+%:Plone:200:128:13:18:0:20:129:Trimble
+%:Trimble:200:128:13:18:0:20:129:Trimble
+%:Ariel:622:128:13:18:0:20:129:Trimble
+%:Ogre Fool:31:128:13:18:0:20:129:Trimble
+%:Garion:200:128:13:18:0:20:129:Trimble
+%:Belgarion:200:128:13:18:0:20:129:Trimble
+%:Police Inspector:SP115:128:13:18:0:20:129:Trimble
+%:Casino Operator:200:128:13:18:0:20:129:Trimble
+%:Cameron Diaze:201:128:13:18:0:20:129:Trimble
+%:Afracos:202:128:13:18:0:20:129:Trimble
+%:Swadran:200:128:13:18:0:20:129:Trimble
+%:Krist:202:128:13:18:0:20:129:Trimble
+%:Henchmen:207:128:13:18:0:20:129:Trimble
+%:Sakunai:204:44:10:14:0:20:129:Trimble

@@ -1,0 +1,7 @@
+Once you are in the world editor, you will notice a few new buttons.
+
+On the left side you see buttons labeled: 1, 2, 3, S, with 1 being selected. 
+
+These are the layers you will be drawing tiles onto. Layer 1 is the "floor" layer. It has no transparency. Layer 2 is the bottom transparent layer. Any tiles you see with green edges represent tiles that should be applied to layer 2. Layer 3 is the top layer, any tiles you place here will appear on top of all characters. The S layer is the shadow layer. In the last set of tiles you'll see black and green tiles. Use these to place shadows on your map.
+
+Above the tiles you'll see you have 3 paint tools. Pencil, which draws in 1 tile at a time, praintbucket, which fills the screen with the selected tile, and fat brush, which paints a portion of the screen with the selected tile.

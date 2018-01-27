@@ -1,0 +1,9 @@
+BIO|Name: Legithranduil
+BIO|Class: Miner
+PRO|You can buy a mining hammer from me to mine down the stairs. Mining is easy, just equip the hammer and go smash some rocks! You can sell the crystals/ore you find to me for a pretty penny if you want.GLD|661928818SEL|Mining Hammer:50:999661
+BUY|Mining Hammer:25:999999
+BUY|Red Crystals:3
+BUY|Blue Crystals:1
+BUY|Chunk of Iron:250
+BUY|Chunk of Steel:500
+BUY|Chunk of Star:750

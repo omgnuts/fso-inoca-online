@@ -1,0 +1,5 @@
+BIO|Name: Legadriembor
+BIO|Class: Mage
+PRO|Spellcasting is easy, read the signs on the top. I only have Minor Heal so you'll have to stick with that. Remember to buy Blue Crystals!GLD|143348SEL|Minor Heal Book:50:999759
+BUY|Minor Heal Book:25:999999SEL|Blue Crystals:2:999987755
+BUY|Blue Crystals:1

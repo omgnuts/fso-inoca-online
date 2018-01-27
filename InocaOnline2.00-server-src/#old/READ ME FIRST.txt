@@ -1,0 +1,14 @@
+YOURGAMEHERE Server Installation/Running Instructions
+---------------------------------------------------------
+
+First and foremost, make sure you install the server into this directory:
+
+C:/FSOServer/
+
+If you don't, your DAT files will not be read. If you unzip this file to your C: drive you should have no problems. 
+
+To start up the server simply double click on "MultiuserServer.exe"
+
+Once the server has started up you can use the YOURGAMEHERE client to log-in and test out your server.
+
+As an admin you can change the game world however you see fit. When you log-in under an admin name you'll notice that you have an "Admin" menu-item. Use this to edit the game world. 

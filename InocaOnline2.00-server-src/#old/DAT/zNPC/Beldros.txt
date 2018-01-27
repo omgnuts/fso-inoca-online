@@ -1,0 +1,1 @@
+BIO|Name: BeldrosBIO|Class: SmithPRO|My items are the finest of quality.SEL|Ice Helm:125000:766034BUY|Ice Helm:62500SEL|Argon's Plate:125000:999982BUY|Argon's Plate:62500SEL|Knight Shield:40000:968944BUY|Knight Shield:20000GLD|-1190800256

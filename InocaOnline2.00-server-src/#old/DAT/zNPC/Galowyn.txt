@@ -1,0 +1,3 @@
+BIO|Name: Galowyn
+BIO|Class: Farmer
+PRO|Farming is very simple, what you need to do is get a hoe, and hoe the type of land i'm standing on til it turns to straight lines, then plant seeds and water them til they have vines, then they will grow crops that you harvest!

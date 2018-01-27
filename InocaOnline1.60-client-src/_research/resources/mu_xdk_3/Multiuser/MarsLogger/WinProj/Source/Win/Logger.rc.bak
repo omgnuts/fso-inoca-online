@@ -1,0 +1,60 @@
+/*==========================================================================\
+|                                                                           |
+|                     Copyright 1999 Macromedia, Inc.                       |
+|                                                                           |
+|      This material is the confidential trade secret and proprietary       |
+|      information of Macromedia, Inc.  It may not be reproduced, used,     |
+|      sold or transferred to any third party without the prior written     |
+|      consent of Macromedia, Inc.  All rights reserved.                    |
+|                                                                           |
+\==========================================================================*/
+/****************************************************************************
+/ Filename
+/   Logger.rc
+/
+/ Version:
+/   $Revision: 2 $
+/
+/ Purpose:
+/   Resources
+/
+/ Modification History
+/   Date        Engineer    Notes
+/   --------    --------    --------
+/10-02-2000   amk			changed include of xversion.r to xversion.h
+/
+******************************************************************************/  
+
+
+#ifndef WINDOWS
+#define WINDOWS 1
+#endif
+
+#include "windows.h"
+
+
+// Include the standard Director Xtra resources.  This will include our
+// xversion.h file to get our version info.
+#include "xversion.r"
+
+// Include strings.
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#include	"LoggerStringsE.str"
+
+
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+#pragma code_page(1252)
+#include	"LoggerStringsF.str"
+
+
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#include	"LoggerStringsG.str"
+
+
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+#include	"LoggerStringsJ.str"
+

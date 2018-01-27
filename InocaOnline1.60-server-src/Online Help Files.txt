@@ -1,0 +1,9 @@
+As a server owner, you can set an unlimited number of help files players can view by utilizing the /DAT/HELP/ folder.
+
+the help.txt file is the first help file players will get by simply typing /help. They will also see this when they log on the server. To disable this, open up the globalscripts file and find where a player loads his account. There will be a command to send back the help.txt file. Add -- to the beginning of this line to disable getting the default help file when someone logs on.
+
+Each file in the HELP folder will be sent when a player requests it. for example:
+
+/help topics
+
+this will send the user the "topics.txt" file. If the file they request doesn't exist the server informs them.

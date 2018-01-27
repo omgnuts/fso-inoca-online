@@ -1,0 +1,65 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MarsLogger - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/Logger.res" /i "Resources" /i "..\..\lib" /i "..\..\..\..\include" /i "Source\\" /i "Source\Win" /i "..\..\ServerXtras\Common" /i "..\..\Common" /d WINVER=0x0400 /d _WINVER=0x0400 /d "WINDOWS" /d "_WINDOWS" /d "WIN32" /d "_WIN32" /d "WIN32_LEAN_AND_MEAN" /d "RELEASE" /d "_RELEASE" /d "NDEBUG" /d "_NDEBUG" /d XDEBUG=0 /d "WINDLL" /d "_WINDLL" "D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Resources\Logger.rc"" 
+Creating temporary file "C:\TEMP\RSP2A8.tmp" with contents
+[
+/nologo /Gz /MD /W3 /GR /GX /O2 /I "..\..\lib" /I "..\..\..\..\include\win32" /I "..\..\..\..\include" /I "..\..\MoaXDK" /I "Source" /I "Source\Win" /I "..\..\ServerXtras\Common" /I "..\..\Common" /I "..\..\Stl" /D WINVER=0x0400 /D _WINVER=0x0400 /D "WINDOWS" /D "_WINDOWS" /D "WIN32" /D "_WIN32" /D "WIN32_LEAN_AND_MEAN" /D "RELEASE" /D "_RELEASE" /D "NDEBUG" /D "_NDEBUG" /D XDEBUG=0 /D "WINDLL" /D "_WINDLL" /FR"Release/" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\BExcpton.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\BString.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\Logger.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\MovieLogData.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\operatornew.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\SrvExtension.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\SrvXtnGUIDs.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\SrvXtnReg.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\SrvXtnUtils.cpp"
+"D:\TronSrc\tron\Xtras\XDK_DIR7\Examples\Multiuser\MarsLogger\WinProj\Source\SrvXtnXtra.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP2A8.tmp" 
+Creating temporary file "C:\TEMP\RSP2A9.tmp" with contents
+[
+D:\progra~1\micros~1\vc98\lib\kernel32.lib D:\progra~1\micros~1\vc98\lib\user32.lib D:\progra~1\micros~1\vc98\lib\gdi32.lib D:\progra~1\micros~1\vc98\lib\comdlg32.lib D:\progra~1\micros~1\vc98\lib\winmm.lib D:\progra~1\micros~1\vc98\lib\ole32.lib D:\progra~1\micros~1\vc98\lib\uuid.lib D:\progra~1\micros~1\vc98\lib\shell32.lib D:\progra~1\micros~1\vc98\lib\advapi32.lib D:\progra~1\micros~1\vc98\lib\version.lib D:\progra~1\micros~1\vc98\lib\msvcrt.lib /nologo /base:"0x6a400000" /dll /incremental:no /pdb:"Release/Logger.pdb" /machine:I386 /nodefaultlib /def:".\Source\xtra.def" /out:"..\Xtras\Logger.x32" /implib:"Release/Logger.lib" 
+.\Release\BExcpton.obj
+.\Release\BString.obj
+.\Release\Logger.obj
+.\Release\MovieLogData.obj
+.\Release\operatornew.obj
+.\Release\SrvExtension.obj
+.\Release\SrvXtnGUIDs.obj
+.\Release\SrvXtnReg.obj
+.\Release\SrvXtnUtils.obj
+.\Release\SrvXtnXtra.obj
+.\Release\Logger.res
+]
+Creating command line "link.exe @C:\TEMP\RSP2A9.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+BExcpton.cpp
+BString.cpp
+Logger.cpp
+MovieLogData.cpp
+operatornew.cpp
+SrvExtension.cpp
+SrvXtnGUIDs.cpp
+SrvXtnReg.cpp
+SrvXtnUtils.cpp
+SrvXtnXtra.cpp
+Generating Code...
+Linking...
+   Creating library Release/Logger.lib and object Release/Logger.exp
+LINK : warning LNK4089: all references to "USER32.dll" discarded by /OPT:REF
+
+
+
+<h3>Results</h3>
+Logger.x32 - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

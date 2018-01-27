@@ -1,0 +1,2 @@
+INV|81 Gold:2
+INV|Steel Scimitar:20

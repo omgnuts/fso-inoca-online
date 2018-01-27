@@ -1,0 +1,111 @@
+At the top of GlobalScripts.ls
+Insert this:
+global pollFile, pollQuestion, yesVotes, noVotes, pollPeople, pollPeople2
+at the top of the file on the next free line
+
+Poll Part:
+After this:
+  "Broadcast":
+   set TheName = string(user.name)
+   set TheBCast = string(fullmsg.content)
+Insert this:
+----------------------------------------------------------------
+-- "poll current"
+----------------------------------------------------------------
+if string(fullmsg.content) = "poll current" then
+	set the itemdelimiter = ":"
+	set pollFile = file("C:\FSOServer\DAT\poll\current.txt").read
+		if pollFile contains ":" then
+			set pollQuestion = item 1 of string(pollFile)
+			set yesVotes = item 2 of string(pollFile)
+			set noVotes = item 3 of string(pollFile)
+			set the itemdelimiter = "."
+			set yesVotes = item 1 of string(yesVotes)
+			set noVotes = item 1 of string(noVotes)
+				if noVotes = "1" then
+					set pollPeople = "person"
+				else
+					set pollPeople = "people"
+				end if
+
+				if yesVotes = "1" then
+					set pollPeople2 = "person"
+				else
+					set pollPeople2 = "people"
+				end if
+			user.sendmessage("sqa", "The poll question is, " & pollQuestion & " " & yesVotes & " " & pollPeople2 & " voted yes, " & noVotes &  " " & pollPeople & " voted no.", 0, FALSE, user.name)
+		else
+			file("C:\FSOServer\DAT\poll\current.txt").write(":::")
+		end if
+exit
+end if
+----------------------------
+--end "poll current"
+----------------------------
+----------------------------------------------------------------
+-- "poll set"
+----------------------------------------------------------------
+if string(fullmsg.content) contains "poll set:" then
+	set FilName = "C:\FSOServer\DAT\SETTINGS\immortals.txt"
+	set IMMMs = file(FilName).read
+	set CheckName = "*" & string(user.name) & "*"
+
+		if IMMMs contains CheckName then
+			set the itemdelimiter = ":"
+			set pollFile = file("C:\FSOServer\DAT\poll\current.txt").read
+			set pollQuestion = item 2 of string(fullmsg.content)
+			set yesVotes = "0"
+			set noVotes = "0"
+			file("C:\FSOServer\DAT\poll\current.txt").write(pollQuestion & ":" & yesVotes & ":" & noVotes)
+			file("C:\FSOServer\DAT\poll\voters.txt").write(" ")
+			movie.sendmessage( "@AllUsers", "Broadcast", "New Poll! The question is " & pollQuestion & ". To vote yes type 'poll vote yes', to vote no type 'poll vote no' . To get the current question type 'poll current'")
+		exit
+		else
+			user.sendmessage("sqa", "You can not create a poll.", 0, FALSE, user.name)
+		exit
+		end if
+end if
+-------------------
+--end poll set
+-------------------
+----------------------------------------------------------------
+-- "poll vote"
+----------------------------------------------------------------
+if string(fullmsg.content) contains "poll vote " then
+	set pollVoters = file("C:\FSOServer\DAT\poll\voters.txt").read
+		if pollVoters contains ":" & TheName & ":" then
+			user.sendmessage("sqa", "You have already voted!", 0, FALSE, user.name)
+		exit
+		end if
+	set pollFile = file("C:\FSOServer\DAT\poll\current.txt").read
+	set the itemdelimiter = ":"
+	set pollQuestion = item 1 of string(pollFile)
+	set yesVotes = item 2 of string(pollFile)
+	set noVotes = item 3 of string(pollFile)
+	set the itemdelimiter = " "
+		if item 3 of string(fullmsg.content) = "yes" then
+			set yesVotes = yesVotes + 1
+			user.sendmessage("sqa", "You voted yes.", 0, FALSE, user.name)
+			file("C:\FSOServer\DAT\poll\voters.txt").write(":" & TheName & ":" & pollVoters)
+			file("C:\FSOServer\DAT\poll\current.txt").write(pollQuestion & ":" & yesVotes & ":" & noVotes)
+
+		exit	
+		else
+		end if
+
+		if item 3 of string(fullmsg.content) = "no" then
+			set noVotes = noVotes + 1
+			user.sendmessage("sqa", "You voted no.", 0, FALSE, user.name)
+			file("C:\FSOServer\DAT\poll\voters.txt").write(":" & TheName & ":" & pollVoters)
+			file("C:\FSOServer\DAT\poll\current.txt").write(pollQuestion & ":" & yesVotes & ":" & noVotes)
+		exit
+		else
+			user.sendmessage("sqa", "You must vote yes or no.", 0, FALSE, user.name)
+		exit
+		end if
+exit
+end if
+--------------------
+--end poll vote
+--------------------
+End Poll

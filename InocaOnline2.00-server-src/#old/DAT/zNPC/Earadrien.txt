@@ -1,0 +1,9 @@
+BIO|Name: Earadrien
+BIO|Class: Smith
+PRO|Buying and using items and equipment is really easy, just read the signs to my left and right.SEL|Knife:30:100369
+BUY|Knife:15
+BUY|Dagger:25SEL|Leather Armor:150:99794
+BUY|Leather Armor:75SEL|Leather Cap:60:99759
+BUY|Leather Cap:30SEL|Small Shield:80:99639
+BUY|Small Shield:40SEL|Short Sword:100:100463
+BUY|Short Sword:50GLD|303048133

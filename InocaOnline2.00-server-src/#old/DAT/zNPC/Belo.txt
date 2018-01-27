@@ -1,0 +1,5 @@
+OWN|mageofhonor
+BIO|Name: Belo
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

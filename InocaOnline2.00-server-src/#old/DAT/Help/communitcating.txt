@@ -1,0 +1,16 @@
+COMMUNICATING
+On the starting map (unless the server admin has altered it) you will find a message board on the wall. Click it to post and read messages. 
+
+To broadcast a message to the entire server type this ' (an apostrophe) in front of all your broadcasts, for example: 'hello!
+
+to emote type /me action. for example to bow type this: /me bows 
+
+to whisper to a player type /msg user message (user = player's name)
+
+to guild speak type /g message
+
+to ignore someone type /ignore user, to unignore them type /unignore user (user = player's name)
+
+If you just type straight into the chat box then your message will only be heard by the players on the screen with you.
+
+MOVEMENT - You must use the arrow keys located in the lower right hand corner of your keyboard to control your character. Left, right, up or down. If you wish to change directions while standing still then hold down the ALT key while pressing the corresponding arrow key for the direction you wish to face. If you are lucky enough to at some point aquire a boat or an airship, you will need to control them in the same manner. 

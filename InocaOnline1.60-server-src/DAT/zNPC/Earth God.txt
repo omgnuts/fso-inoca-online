@@ -1,0 +1,6 @@
+TRN|Earth Mage:10000
+BIO|Name:The Earth God
+BIO|Class:Earth Elemental
+PRO|This being rules the earth. 
+RND|Wind cannot penetrate nature's stones.
+RND|I worry that fire will spread into my world and set us ablaze.

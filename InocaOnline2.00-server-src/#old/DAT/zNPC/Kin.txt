@@ -1,0 +1,4 @@
+BIO|Name: Kin
+BIO|Class: Fisherman
+PRO|Get yourself a pole and start fishing, the fish are always biting!SEL|Fishing Pole:100:99817
+BUY|Fishing Pole:50GLD|124900

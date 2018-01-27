@@ -1,0 +1,110 @@
+Slime:1:30
+Orc:2:31
+Wolf:3:32
+Imp:4:35
+x
+Cyclops:6:34
+Dragon Hatchling:7:36
+Poison Frog:8:33
+Mega Slime:9:37
+Gazer:10:38
+Death:11:40
+Lizard Warrior:12:41
+x
+Demon:14:42
+x
+Illusionary Spikes:16:90
+x
+x
+Ghoul:19:45
+Snared Loah:20:46
+Fire Demon:21:47
+Elf:22:50
+Pig:23:91
+Zombie:24:61
+Dwarf:25:60
+Assasin:26:62
+Ogre:27:503
+Stone Skull:28:500
+Dragon:29:501
+Web:30:92
+Skeleton:31:59
+Yeti:32:51
+Ghost:33:52
+Dragon Snake:34:58
+Dark Fairy:35:89
+Trimble:36:200
+Water God:37:200
+Fire God:38:200
+Earth God:39:200
+Wind God:40:200
+Cril:41:200
+Akadius:42:200
+Galor:43:200
+Qieros:44:200
+Ratmas:45:200
+Wenslas:46:200
+Krista:47:201
+Roulan:48:200
+Amber:49:201
+Teral:50:200
+Vin:51:200
+Helum:52:200
+Lir:53:200
+Prestin:54:200
+Miqa:55:200
+Dantan:56:200
+Tela:57:201
+Mirra:58:201
+Wrel:59:200
+Andero:60:200
+Teli:61:200
+Crushto:62:200
+Alex:63:200
+Kin:64:200
+Barnum:65:200
+Beldros:66:200
+Katks:67:201
+Divela:68:200
+Stephie:69:201
+Plone:70:200
+Agavar:71:200
+Jim:72:200
+Krist:73:200
+Benolio:74:200
+Trixin:75:200
+Missie:76:201
+Kanta:77:200
+Smithy:78:200
+Rutxon:79:200
+Akiro:80:200
+Acrostia:81:200
+Mutant Worm:82:502
+Angela:83:202
+Trianus:84:203
+Corin:85:204
+Warrior Faction Member:86:1
+Mage Faction Member:87:3
+x
+Adventurer Faction Member:89:5
+Officer:90:210
+Cow:91:94
+Oraku:92:207
+Orc Lord:93:311
+Squid:94:444
+Shark:95:445
+Stripper:96:857
+Somewhat Naked Stripper:97:856
+Naked Stripper:98:855
+Snow Serpent:99:858
+Snow Demon:100:891
+Overlord:101:988
+Holy Shield:102:99
+Mizella:103:621
+Krommie:104:621
+Jelstar:105:621
+Merius:106:621
+Mellanie:107:622
+Minmaye:108:622
+Gryphon:109:498
+Hellhound:110:477

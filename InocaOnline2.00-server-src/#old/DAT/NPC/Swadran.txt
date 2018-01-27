@@ -1,0 +1,1 @@
+BIO|Name: SwadranBIO|Class: Small Weapons DealerPRO|Hey! You have some thing to sell? Cool!PRO|I deal mainly with small weaponsSEL|Short Sword:200:18576BUY|Short Sword:100SEL|Dagger:20:1081BUY|Dagger:10SEL|Knife:20:995BUY|Knife:10SEL|Wooden staff:20:994BUY|Wooden staff:10SEL|Blacksmith Hammer:500:5483BUY|Blacksmith Hammer:250GLD|45212

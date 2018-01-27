@@ -1,0 +1,48 @@
+You can write your own NPC behaviors for each NPC in the game. To edit an NPC first open up the "DAT" folder in your FSOServer folder. Then open up the "NPC" folder and find the file of the NPC you wish to edit.
+
+Here is an example of an NPC file...
+
+RND|Seems a lot colder than usual today.
+RND|Are you the one sent to save us? Now I feel safe!
+RND|I don't know why I volunteered to watch this post. I'm regretting it now!
+SEL|Knife:5:10
+SEL|Dagger:10:10
+SEL|Short Sword:250:5
+SEL|Long Sword:600:4
+BUY|Knife:2
+BUY|Dagger:4
+BUY|Short Sword:90
+BIO|Name: Cril
+PRO|This is Cril, a blacksmith of these parts.
+SEL|Wooden Staff:90:12
+BUY|Wooden Staff:23
+BUY|Long Sword:290
+FLG|Passive
+INV|Short Sword:1
+SPL|Meteor
+GLD|10000
+
+The start of each line contains the type of line
+
+RND|   this is random chat the NPC will speak. 
+SEL|   this is an item the NPC sells
+BUY|   this is an item the NPC buys
+PRO|   this is the NPC's profile, this can be multiple lines.
+BIO|   this is the NPC's bio, used for name, class, etc
+TRN|   this is class training, used to advance characters in a new class.
+GLD|   this is the amount of gold the NPC has.
+SPL|   a spell an NPC will cast
+INV|   an item that an NPC will drop when killed. (the second number is the random)
+FLG|   an npc behaviour flag (Passive = wont attack unless attacked)
+
+To set an NPC to sell a "Long Sword" for 100 gold, and to have 10 of that inventory in stock you would add this line...
+
+SEL|Long Sword:100:10
+
+You must seperate the item name with a colon, and can only have 1 item per line. NPC scripts can be up to 100 lines long.
+
+
+Random chat is chat an NPC will speak at random intervals...
+
+RND|Seems a lot colder than usual today.
+

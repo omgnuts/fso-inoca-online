@@ -1,0 +1,2 @@
+MOVEMENT
+You must use the arrow keys located in the lower right hand corner of your keyboard to control your character. Left, right, up or down. If you wish to change directions while standing still then hold down the ALT key while pressing the corresponding arrow key for the direction you wish to face. If you are lucky enough to at some point aquire a boat or an airship, you will need to control them in the same manner. 

@@ -1,0 +1,2 @@
+Lottery:ON
+CTF:ON

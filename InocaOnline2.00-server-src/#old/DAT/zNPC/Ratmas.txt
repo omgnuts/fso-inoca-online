@@ -1,0 +1,1 @@
+BIO|Name: RatmasBIO|Class: AdventurerPRO|I love this town so much!BUY|Crates:15SEL|Crates:20:10000BUY|Chair:10SEL|Chair:15:10000BUY|Table:15SEL|Table:30:10000BUY|Cabinet:20SEL|Cabinet:40:10000BUY|Wind Cabinet:25SEL|Wind Cabinet:50:10000GLD|25500FLG|Passive

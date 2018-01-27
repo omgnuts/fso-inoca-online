@@ -1,0 +1,1 @@
+Stove:110-253|Stove:142-253|Stove:174-253|Stove:206-253|Stove:494-253|Stove:462-253|Stove:430-253|Stove:398-253|Exit:302-349||Stove:110-189|Stove:142-189|Stove:174-189|Stove:494-189|Stove:462-189|Stove:430-189|Stove:494-93|Stove:462-93|Stove:110-93|Stove:142-93|

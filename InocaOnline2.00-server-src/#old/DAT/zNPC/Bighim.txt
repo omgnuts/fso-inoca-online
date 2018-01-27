@@ -1,0 +1,6 @@
+OWN|Agasajo
+BIO|Name: Bighim
+BIO|Class: Shopkeeper
+PRO|
+GLD|0
+

@@ -1,0 +1,7 @@
+BIO|Name: Galund
+BIO|Class: Woodsman
+PRO|You can buy a fishing pole, a saw and an axe from me. Read the signs to learn how to use them, its easy!GLD|1836645754SEL|Axe:100:999863
+BUY|Axe:50:999999
+BUY|Chair:10SEL|Fishing Pole:100:9499846
+BUY|Fishing Pole:50:9999999SEL|Saw:50:99999898
+BUY|Saw:50

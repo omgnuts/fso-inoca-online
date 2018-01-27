@@ -1,0 +1,1 @@
+OWN|MasterDTBIO|Name: ZughudBIO|Class: ShopkeeperPRO|GLD|0SEL|Table:15:0BUY|Table:1SEL|Leather Armor:50:0BUY|Leather Armor:1SEL|Broad Sword:900:0BUY|Broad Sword:1SEL|Chunk of Iron:1000:0BUY|Chunk of Iron:1SEL|Chair:1:0BUY|Chair:1

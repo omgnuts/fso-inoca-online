@@ -1,0 +1,5 @@
+OWN|Ractor
+BIO|Name: Jiste
+BIO|Class: Shopkeeper
+PRO|
+GLD|0

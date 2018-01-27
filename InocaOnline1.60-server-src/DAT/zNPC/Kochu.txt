@@ -1,0 +1,4 @@
+OWN|Shawtee
+BIO|Name: Kochu
+BIO|Class: ShopkeeperGLD|0
+SEL|Broad Sword:1000:0BUY|Broad Sword:750

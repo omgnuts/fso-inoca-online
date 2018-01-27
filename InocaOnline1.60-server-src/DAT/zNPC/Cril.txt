@@ -1,0 +1,8 @@
+BIO|Name: Cril
+BIO|Class:Miner Extrodinnaire 
+PRO|Got some rocks?SEL|Mining Hammer:100:99276SEL|Blacksmith Hammer:200:99479
+BUY|Blacksmith Hammer:100
+BUY|Mining Hammer:50
+BUY|Chunk of Iron:250
+BUY|Chunk of Steel:500
+BUY|Chunk of Star:750GLD|1365791554

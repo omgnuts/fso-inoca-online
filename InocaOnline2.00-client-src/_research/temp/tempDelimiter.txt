@@ -1,0 +1,47 @@
+Squid:122
+Shark:150
+Slime:14
+Wolf:21
+Imp:24
+Orc:26
+Cyclops:38
+Orc Lord:90
+Elf:44
+Poison Frog:47
+Mega Slime:54
+Zombie:67
+Skeleton:69
+Gazer:82
+Lizard Warrior:82
+Dwarf:94
+Death:96
+Ghost:102
+Demon:121
+Assasin:128
+Dragon Snake:142
+Yeti:151
+Stone Skull:172
+Dark Fairy:182
+Overlord:812
+Mutant Worm:242
+Dragon Hatchling:322
+Snow Serpent:392
+Ghoul:202
+Snared Loah:70
+Fire Demon:622
+Dragon:320
+Faction:70
+Officer:249
+Angela:389
+Corin:389
+Trianus:389
+Snow Demon:555
+Gryphon:420
+Hellhound:670
+  
+Illusionary Spikes:60
+Web:80
+Pig:1
+Cow:18
+Holy Shield:200
+

@@ -1,0 +1,6 @@
+error messages
+-5 - xtra not registered
+-4 - error in hashing.  probably file in use
+-3 - cannot link to folder root
+-2 - string is not a path
+-1 - parameter string is over the legal limit of 255

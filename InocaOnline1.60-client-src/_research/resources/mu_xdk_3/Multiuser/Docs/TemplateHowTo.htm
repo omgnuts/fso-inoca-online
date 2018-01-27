@@ -1,0 +1,384 @@
+<html>
+<head>
+<title>Multiuser XDK Template How-To</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h3><font face="Arial, Helvetica, sans-serif">Multiuser Server XDK</font><font face="Arial, Helvetica, sans-serif" size="-1"> 
+  </font></h3>
+<font face="Arial, Helvetica, sans-serif"><b>How To Use the Template projects</b></font> 
+<p><font face="Arial, Helvetica, sans-serif" size="-1">The Multiuser Server XDK 
+  includes template files that can be modified by developers to streamline the 
+  process of writing Server Extension xtras. Use the instructions in this document 
+  as a "quick star" for learning the basics of writing Server Extension xtras. 
+  These instructions assume that you are familiar with the Multiuser server, have 
+  working knowledge of C/C++, and that you have specific server commands in mind 
+  for the Server Extension xtra you wish to write. </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">With these instructions 
+  developers can use the files in the Template directory, link to the supporting 
+  files, edit the template files as desired to implement their xtra, then compile 
+  and have the server load the xtra. The template files have been edited to produce 
+  a message to the server console on server startup, and to create an xtra that 
+  will respond to 2 messges: &quot;System.Hello.Say&quot; and &quot;System.Hello.Echo&quot;. 
+  The xtra will display a &quot;Hello&quot; message on the server console when 
+  it has been loaded.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">In order to build and compile 
+  server Xtras you must first install the Director 8 XDK. This is available at 
+  the Macromedia <a href="http://www.macromedia.com/support/xtras/">Xtra Developer's 
+  Support</a> pages. After installing the D8 XDK, extract the Multiuser folder 
+  into the Examples directory of the D8 XDK. The instructions for setting up workspace 
+  and project folders are different for <a href="#startWindows">Windows</a> and 
+  <a href="#startMacintosh">Macintosh</a>.</font></p>
+<p><font face="Arial, Helvetica, sans-serif"><b>Contents</b></font></p>
+<font face="Arial, Helvetica, sans-serif" size="-1">The Template consists of files 
+in the Template directory as well as external headers and code files that support 
+building server extension xtras. The following is a list of all the files that 
+are needed to build simple xtras.</font> 
+<p><font face="Arial, Helvetica, sans-serif"><b><font size="-1">Files in the Template 
+  </font></b></font></p>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1"><b><i>Template</i></b></font></p>
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvExtension.h<br>
+      SrvExtension.cpp<br>
+      SrvXtnConfig.h<br>
+      SrvXtnDefs.h <br>
+      SrvXtnGUIDs.h <br>
+      SrvXtnPrecompile.h<br>
+      SrvXtnReg.cpp <br>
+      SrvXtnReg.h</font><font face="Arial, Helvetica, sans-serif" size="-1"><br>
+      SrvXtnVersion.h<br>
+      </font><font face="Arial, Helvetica, sans-serif" size="-1">XVersion.h</font></p>
+    <p><b><i><font size="-1" face="Arial, Helvetica, sans-serif">Mac</font></i></b></p>
+	<blockquote> 
+	  <p><font size="-1" face="Arial, Helvetica, sans-serif">ServerXtra.rsrc<br>
+        TemplatePrecompile.pch </font></p>
+	</blockquote>
+	<p><b><i><font size="-1" face="Arial, Helvetica, sans-serif">Win</font></i></b></p>
+	<blockquote> 
+	  <p><font size="-1" face="Arial, Helvetica, sans-serif">CPrecompile.h<br>
+        Template.def </font></p>
+	</blockquote>
+  </blockquote>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif"><b><font size="-1">Other files required 
+  by Server Extension Xtras</font></b></font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1"><b><i>Common</i></b></font> 
+  </p>
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="-1">Assert.h<br>
+      <font color="#FF3366">BExcpton.cpp <br>
+      BExcpton.h </font><br>
+      <font color="#000000">BString.cpp</font><br>
+      BString.h<br>
+      BTypes.h <br>
+      CommonVersion.h <br>
+      OperatorNew.h<br>
+      OperatorNew.cpp<br>
+      SrvXtnGUIDs.cpp<br>
+      SrvXtnPrecompile.h<br>
+      SrvXtnReg.h<br>
+      SrvXtnReg.cpp<br>
+      SrvXtnUtils.h<br>
+      SrvXtnUtils.cpp<br>
+      SrvXtnXtra.cpp</font></p>
+    <p><b><font face="Arial, Helvetica, sans-serif" size="-1"><i>Windows</i></font></b></p>
+    <blockquote>
+      <p>types.r </p>
+    </blockquote>
+  </blockquote>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1"><i><b>MOAXDK</b></i></font></p>
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="-1">MarsErrors.h<br>
+      SWServer.h<br>
+      SWServerContent.h<br>
+      SWServerEvents.h<br>
+      SWServerGroup.h<br>
+      SWServerMovie.h<br>
+      SWServerObject.h<br>
+      SWServerUser.h <br>
+      SWServerXtra.h </font></p>
+  </blockquote>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1"><b><i>Director XDK Include 
+    directory </i></b></font></p>
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="-1">Files too numerous 
+      to list </font></p>
+  </blockquote>
+  <p><font face="Arial, Helvetica, sans-serif"><font size="-1">Other useful files 
+    provided. These are not required by Server Extension Xtras, but the example 
+    Logger xtra uses some of the files in this library.</font></font></p>
+  <p><b><i><font size="-1">Stl<br>
+    </font></i></b><b><i><font size="-1">Director XDK\Runtime\Mac\Include</font></i></b></p>
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="-1">Files too numerous 
+      to list</font><font size="-1"> </font></p>
+  </blockquote>
+  <hr>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="startWindows"></a>Using 
+  the Template files - Windows</b></font></h3>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">The following topics are 
+  covered in this section:<b> </b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><a href="#setupWin">Setting 
+  up the workspace and project</a> <br>
+  <a href="#editingWindows">E</a><a href="#editingWin">diting the Template File</a> 
+  <br>
+  <a href="#projectSettingsWin">Project Settings</a> <br>
+  <a href="#finishingWin">Finishing</a></font> </p>
+<h3><font face="Arial, Helvetica, sans-serif" size="-1"><b>Using the template 
+  files - Windows</b></font></h3>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b><i><a name="setupWin"></a></i>Setting 
+  up your workspace and project</b></font><font face="Arial, Helvetica, sans-serif" size="-1"><br>
+  </font> </p>
+<ol>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Create a project folder 
+    for your server extension xtra anywhere on your hard drive. This folder will 
+    contain the source code for your Server Extension xtra.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Launch Microsoft Visual 
+    C++ and select File-&gt;New from the pulldown menu.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Click the Projects tab 
+    and select Win32 Dynamic Link Library. Type the project name into the Project 
+    Name field; this is generally the name of the folder created in step one. 
+    Click the Location dialog box button and navigate to the folder you created 
+    in step one. Click the Create New Workspace radio button and the Win32 line 
+    in the Platforms box. Click &quot;OK&quot;.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">In the Win32 Dynamic-Link 
+    Library dialog select the radio button for &quot;An empty DLL project&quot;. 
+    Click &quot;Finish&quot; and &quot;Okay&quot;. Minimize MSVC++ and go back 
+    to your XDK folder(s).</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Copy the contents of 
+    the Template folder into the Project folder.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">In the Workspace window 
+    select FileView. Right-click the line that reads &quot;&lt;<i>yourProject</i>&gt; 
+    Files&quot; and select Add Files to Project. Select all the files you copied 
+    to your project folder and click OK. <font size="-2"><i><b>MSVC++ will put 
+    the files in the proper places: SrvExtension.cpp, SrvXtnGUIDs.cpp, SrvXtnReg.cpp 
+    and SrvXtnXtra.cpp should all be placed into the Source Files folder in your 
+    project the the Workspace. All the files that end in &quot;.h&quot; should 
+    have been placed into the Header Files folder. These are: SrvExtension.h, 
+    SrvXtnConfig.h, SrvXtnDefs.h, SrvXtnGUIDs.h, SrvXtnPrecompile.h, SrvXtnReg.h, 
+    SrvXtnVersion.h.</b></i></font></font></li>
+</ol>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="editingWin"></a>Editing 
+  the Template files</b></font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvXtnDefs.h</font></p>
+  <ul>
+    <li><font face="Arial, Helvetica, sans-serif" size="-1">Double-click on the 
+      SrvXtnDefs.h file to open it.</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="-1">Edit the enumerated 
+      list of command numbers, one for each command you'll add.</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="-1">Set the commands the 
+      xtra will respond to. For an exact match use &quot;+&quot;; for any string 
+      that begins with the command string use &quot;*&quot;.</font> </li>
+  </ul>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvXtnConfig.h - </font><font face="Arial, Helvetica, sans-serif" size="-1">Does 
+    not require editing.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvXtnGUIDs.h</font></p>
+  <ul>
+    <li><font face="Arial, Helvetica, sans-serif" size="-1">Run GUIDGen, a utility 
+      app that is provided with MSVC. In GUIDGen click &quot;Define GUID&quot;. 
+      This will generate a GUID and copy it in the clipboard.</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="-1">Open SrvXtnGUIDs and 
+      paste the GUID you just generated into the file beneath the line that reads 
+      &quot;#include &quot;moaxtra.h&quot;. </font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="-1">Repeat this process 
+      twice - once for each class interface you'll be using.</font></li>
+    <li><font face="Arial, Helvetica, sans-serif" size="-1">Replace the portion 
+      of the GUID that reads &quot;&lt;&lt;name&gt;&gt;&quot; with <code>CLSID_CSrvXtn</code> 
+      on one line and CLSID_CSrvXtnReg on the other.</font> </li>
+  </ul>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">Xversion.h - </font><font face="Arial, Helvetica, sans-serif" size="-1">Contains 
+    Director-related info and does not require editing.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvXtnVersion.h - </font><font face="Arial, Helvetica, sans-serif" size="-1">Does 
+    not require editing.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvXtnPrecompile - </font><font face="Arial, Helvetica, sans-serif" size="-1">Does 
+    not require editing.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvExtension.h - </font><font face="Arial, Helvetica, sans-serif" size="-1">Add 
+    class instance variables. This has two pointers built in: movie and server.</font> 
+  </p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">SrvExtension.cpp - </font><font face="Arial, Helvetica, sans-serif" size="-1">moaCreate_Proc 
+    - initialize variables</font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="projectSettingsWin"></a>Project 
+  Settings</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Only the differences between 
+  the default settings and those needed by xtra projects have been indicated.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">General Tab:</font></p>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">Set directories for your 
+    intermediate and output files.</font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Debug Tab:</font></p>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">Set the executable for 
+    your debug session as the Shockwave Multiuser Server 3.0</font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">C/C++ Tab:</font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">General: set Optimizations 
+    to Maximize Speed<br>
+    Code generation:<br>
+    -- set Processor to Blend*<br>
+    -- set the Calling Convention to __stdcall<br>
+    -- set Use run-time library to Multithreaded DLL<br>
+    -- set Struct member alignment to 8 bytes *<br>
+    Precompiled Headers: <br>
+    -- set to Not Using precompiled headers<br>
+    Preprocessor: <br>
+    -- set your Additional Include Directories to include:<br>
+    ---- The Director XDK Include folder<br>
+    ---- The Director XDK Lib folder<br>
+    ---- The Examples\Multiuser\MOAXDK folder<br>
+    ---- The </font><font face="Arial, Helvetica, sans-serif" size="-1">Examples\Multiuser\Common 
+    folder <br>
+    ---- The directory your xtra project resides in.<br>
+    ---- The Examples\Multiuser\Stl folder - this is optional and used in the 
+    Logger xtra<br>
+    ---- any other path that the compiler or linker will need to search for folders. 
+    </font> </p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Link Tab: </font></p>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">Set an output file name 
+    with the &quot;.X32&quot; extension. Commonly this would be your server xtras 
+    folder so the xtra builds right into that location. If you build your xtra 
+    into this folder all you then have to do is edit the multiuser.cfg file to 
+    have the server load the xtra on startup.</font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><a name="finishingWin"></a><b>Finishing</b></font></p>
+<ol>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Build your xtra. If 
+    you set the output path to your server xtras folder you can skip step 3.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Edit your Multiuser.cfg 
+    file -- add the name of your Xtra to the ServerExtensionXtras line.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Place a shortcut to 
+    your Xtra in the Xtras folder in the Server folder.</font></li>
+</ol>
+<hr>
+<h3><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="startMacintosh"></a>Using 
+  the template files - Macintosh</b></font></h3>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b>The following topics 
+  are covered in this section: </b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><a href="#setupMac">Setting 
+  up the workspace and project</a> <br>
+  <a href="#editingMac">Editing the Template File</a><br>
+  <a href="#projectSettingsMac">Project Settings<br>
+  </a></font><font face="Arial, Helvetica, sans-serif" size="-1"><a href="#finishingMac">Finishing</a> 
+  <br>
+  </font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="setupMac"></a>Setting 
+  up your workspace and project</b><br>
+  </font> </p>
+<ol>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Create a project folder 
+	anywhere you want on your hard drive - this is where the source code for your 
+	Xtra will go.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Copy the contents of 
+	the Template folder into the Project folder.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Launch Metrowerks CodeWarrior 
+	and select File-&gt;New from the pulldown menu.</font> </li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Click the Project tab 
+	and select Empty Project. </font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">In the resulting New 
+	Project dialog: <br>
+	-- Type the project name into the Project Name field; this is generally the 
+	name of the folder you created in step one. <br>
+	-- Click the Set button next to the Location field and navigate to the folder 
+	you created in step one. <br>
+	-- Type your project name with the &quot;.mcp&quot; extension into the Name 
+	field. <br>
+    -- De-select the Create Folder check box and click Save. Click OK. </font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Select Project-&gt;Add 
+	Files, navigate to the files you copied into your project folder and select 
+	Add.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Add the files contained 
+    in the Common folder.</font></li>
+</ol>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="editingMac"></a>Editing 
+  the Template files</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Follow the instructions 
+  for editing contained in the <a href="#editingWin">Windows Editing</a> section.</font></p>
+<ol>
+</ol>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="projectSettingsMac"></a>Project 
+  Settings</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Only the differences between 
+  the default settings and those needed by xtra projects have been indicated.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Target:</font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">Linker: MacOS PPC Linker<br>
+    Output directory: Set this to your Project or Server Xtras folder.<br>
+    Access Paths:<br>
+    -- Add a path to the project folder. <br>
+    -- Add the path to Director XDK:Include folder.<br>
+    -- Add the path to Director XDK:Lib folder.<br>
+    -- Add the path to Director XDK:Runtime:Mac folder<br>
+    -- Add a path to Examples:Multiuser:MoaXDK folder. <br>
+    -- Add a path to Examples:Multiuser:Common folder. <br>
+    -- Add a path to the compiler folder. <br>
+    Runtime Settings: Set Host App to your installed Multiuser Server.<br>
+    PPC Target: <br>
+    -- Set this to Shared Library project, with your project name.<br>
+    -- </font><font face="Arial, Helvetica, sans-serif" size="-1">Creator should 
+    be Xown; <br>
+    -- Type should be Xtra.</font></p>
+  </blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Language Settings:</font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">C++ Language: <br>
+	-- Select Activate C++ Compiler;<br>
+    -- Select Enums always Int; <br>
+	--Set Inline depth to: Don't Inline; <br>
+	-- Prefix File - this is for any precompiled headers you may want to use. 
+	There are none for the Template. You can look at the MarsLogger sample project 
+	for how to set this.<br>
+    C++ Warnings: All on except Unused Arguments and Implicit Arithmetic Conversions.</font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Code Generation:</font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1">PPC Processor: <br>
+	-- Set Struct Alignment toPowerPC; <br>
+	-- Select Make strings read-only; <br>
+	--Select Schedule Instructions; <br>
+	Global Optimization:<br>
+    -- For development you could turn optimization off. This will make debugging 
+    easier <br>
+	-- For shipping settings set the slider to level 4 and select Optimize for 
+	faster execution.</font></p>
+</blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Linker:</font></p>
+<blockquote> 
+  <p><font face="Arial, Helvetica, sans-serif" size="-1"> PPC Linker: <br>
+    -- Entry Points-<br>
+    -- </font><font face="Arial, Helvetica, sans-serif" size="-1"> Initialization: 
+    __initialize; <br>
+    -- Main: &lt;empty&gt;; <br>
+    -- Termination: __terminate.<br>
+    PPC PEF: <br>
+    -- set export to use #pragma.</font></p>
+  </blockquote>
+<p><font face="Arial, Helvetica, sans-serif" size="-1"><b><a name="finishingMac"></a>Finishing:</b></font></p>
+<ol>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Build the xtra. If you 
+    have set the Output Directory to be the server xtras folder skip step 3.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Edit your Multiuser.cfg 
+    file -- add the name of your Xtra to the ServerExtensionXtras line.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Place a shortcut to 
+    your Xtra in the Xtras folder in the Server folder.</font></li>
+  <li><font face="Arial, Helvetica, sans-serif" size="-1">Fire up the server and 
+    watch your Xtra go! </font></li>
+</ol>
+<hr>
+<h4><font face="Arial, Helvetica, sans-serif" size="-1">Contact Information<br>
+  </font></h4>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">Your participation in the 
+  Multiuser XDK program is greatly appreciated! Sends comments, questions and 
+  bug reports to mmxdk-l.</font></p>
+<p><font face="Arial, Helvetica, sans-serif" size="-1">The Multiuser XDK team<br>
+  </font><font face="Arial, Helvetica, sans-serif" size="-1">May, 2001</font></p>
+</body>
+</html>

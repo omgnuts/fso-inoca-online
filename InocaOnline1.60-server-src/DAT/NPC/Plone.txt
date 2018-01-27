@@ -1,0 +1,1 @@
+BIO|Name: PloneBIO|Class: LumberjackPRO|I can cut a tree in half with two swings, how about you?FLG|StillFLG|PassiveSEL|Axe:150:9999131BUY|Axe:75SELL|Logs:15:10000BUY|Logs:5GLD|1874514869

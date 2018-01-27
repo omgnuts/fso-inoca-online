@@ -1,0 +1,1 @@
+BIO|Name: TrianusBIO|Class: WarriorPRO|Welcome to the Warrior Faction HQ! Are you here to sign up, or possibly continue your membership?SEL|Fire Hammer:10000:99976BUY|Fire Hammer:5000SEL|Titanium Armor:25000:99911BUY|Titanium Armor:12500SEL|Fire Helm:250000:-1007510783BUY|Fire Helm:125000GLD|2062016307

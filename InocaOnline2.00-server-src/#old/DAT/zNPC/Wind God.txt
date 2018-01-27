@@ -1,0 +1,1 @@
+SEL|Whirlwind:100SEL|Wind Wave:500TRN|Wind Mage:10000BIO|Name:The Wind GodBIO|Class:Wind ElementalPRO|The Wind Mage controls the mightiest storms, to the calm breeze.RND|The earth blocks our passage with its high mountains, therefore it must be stopped.RND|Water? Ha! We simply blow it out of our path.

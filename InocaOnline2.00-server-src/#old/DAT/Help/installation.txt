@@ -1,0 +1,14 @@
+INSTALLATION:
+Before installing make sure that you have downloaded the latest version of the game client from the official site. If you downloaded the client from another distributor you may not have the most current version. You do not have to bother with downloading the server unless you plan to operate a server of your own. 
+
+Minimum System requirements:
+PC Requirements
+500 mhz PC with 2 meg VRAM.
+64 meg RAM and at least 30 meg HD space.
+
+Mac Requirements
+300 mhz G3 or G4 with 2 meg VRAM.
+64 meg RAM an at least 30 meg HD space.
+OS 8.5 - 9.2 (no OSX support yes, use classic mode)
+
+You'll need to unzip the client somewhere on your hard drive for it to function. If you are reading this manual no doubt you have completed that function already. To start up the client simply double click on the "firststaronline.exe" icon.

@@ -1,0 +1,3 @@
+INV|912 Gold:4
+INV|Wind Wave Book:40
+INV|Ruby Ring:600

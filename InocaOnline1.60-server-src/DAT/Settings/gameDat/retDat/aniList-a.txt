@@ -1,0 +1,47 @@
+@:Adventurer Faction Member:5:70:13:17:0:20:80:hgd
+@:Assasin:62:128:12:38:0:16:135:Ashffn
+@:Cyclops:34:38:9:8:0:8:59:hjf
+@:Dark Fairy:89:182:18:36:0:39:180:Dhjffy
+@:Dark Shaman:1000:670:12:47:0:6:470:Wahjfental
+@:Death:40:96:13:23:0:20:90:Dhfh
+@:Demon:42:121:18:29:0:39:120:Dhf
+@:Dragon Hatchling:36:322:13:45:0:10:300:Wahjfental
+@:Dragon Snake:58:142:17:38:0:16:175:Dhfffake
+@:Dwarf:60:94:7:27:0:9:89:Dwhf
+@:Elf:50:44:10:14:0:6:65:Ehf
+@:Fire Demon:47:622:31:65:0:30:400:Efhl
+@:Gazer:38:82:15:19:0:7:85:Ghjfr
+@:Ghost:52:102:11:19:0:26:115:Ghff
+@:Ghoul:45:202:18:36:18:18:200:Fihftal
+@:Gryphon:498:420:13:60:0:10:400:Wahjfental
+@:Hellhound:477:670:12:47:0:6:470:Wahjfental
+@:Imp:35:24:9:5:0:5:38:jhf
+@:Lizard Warrior:41:82:11:25:0:17:87:Lhfr
+@:Mage Faction Member:3:70:13:17:0:20:80:hgd
+@:Mega Slime:37:54:10:15:0:6:72:Mhjfe
+@:Mutant Worm:502:242:13:34:0:15:245:Ogffe
+@:Officer:210:249:13:35:0:20:30:hgd
+@:Orc:31:26:6:5:0:3:44:Ohjfrc
+@:Orc Lord:311:90:19:21:0:18:85:hjf
+@:Overlord:47:812:29:77:0:29:625:Wahjfental
+@:Poison Frog:33:47:8:14:0:4:70:Pohhjf
+@:Shark:445:150:10:36:0:6:70:Mhjfe
+@:Skeleton:59:69:9:28:0:8:80:Shffn
+@:Slime:30:14:2:1:0:1:14:hfj
+@:Snared Loah:46:70:19:18:0:10:90:Whfal
+@:Snow Demon:891:555:19:59:0:21:360:Wahjfental
+@:Snow Serpent:858:392:18:55:0:18:330:Wahjfental
+@:Squid:444:122:10:20:0:6:60:Mhjfe
+@:Warrior Faction Member:1:70:13:17:0:20:80:hgd
+@:Wolf:32:21:4:3:0:2:22:hjf
+@:Yeti:51:151:16:39:0:26:175:Yff
+@:Zombie:61:67:8:18:0:7:78:Zhf
+#:Cow:94:18:7:9:0:0:5:Wf
+#:Dragon:501:320:37:44:0:160:295:Dffn
+#:Holy Shield:99:200:5:25:0:5:5:Wahjfental
+#:Web:92:80:1:5:0:0:5:Wf
+#:Illusionary Spikes:90:60:1:29:0:0:5:Ihfkes
+#:Pig:91:1:1:1:0:0:1:Phf
+%:Angela:202:389:23:28:20:20:29:Trimble
+%:Trianus:203:389:13:28:20:20:29:Trimble
+%:Corin:204:389:23:18:20:20:129:Trimble
