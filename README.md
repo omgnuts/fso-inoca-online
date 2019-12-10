@@ -1,15 +1,25 @@
-## Introductions
+# Introductions
 
 My first stab at game development of Inoca Online (2005) that began out of personal interest. 
 
 Interestingly, it was served out of only a ADSL 256KB network back then, with more than 1000 playable characters and max concurrency of about ~100ish. 
+
+Back-end runs off Shockwave Multiuser Server, and uses proprietary protocol developed by Macromedia via TCP. Commands are dispatched as messages. 
+
+Front-end is built on Macromedia Director MX 2004. 
+
+And, frankly I can't fully recall what I did, but it was fun :)
 
 ## How to Run this?
 
 - Double-click the MultiuserServer.exe in the server-src. 
 - Run the corresponding client (1.60 or 2.00) from dist.
 
-## Screenshot (v2.00) 
+## Requirements
+
+Macromedia MX 2004. 
+
+## Screenshots (v2.00) 
 
 Screenshots of v2.00, which was a complete redesign from v1.60 to improve the rendering and add extensible item, map & npc features into the game play. Basic features are up.
 
