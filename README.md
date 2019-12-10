@@ -2,16 +2,16 @@
 
 My first stab at game development of Inoca Online (2005) that began out of personal interest. 
 
-Interestingly, it was serving out of only a ADSL 256KB network back then, with more than 1000 playable characters and max concurrency of about ~100ish. 
+Interestingly, it was served out of only a ADSL 256KB network back then, with more than 1000 playable characters and max concurrency of about ~100ish. 
 
 ## How to Run this?
 
-- Double-click the Macromedia Flash Server.exe in the server sources. 
-- Run the correct client in dist.
+- Double-click the MultiuserServer.exe in the server-src. 
+- Run the corresponding client (1.60 or 2.00) from dist.
 
 ## Screenshot (v2.00) 
 
-Screenshots of v2.00, which was a complete rewrite from v1.60. Basic features are up.
+Screenshots of v2.00, which was a complete redesign from v1.60 to improve the rendering and add extensible item, map & npc features into the game play. Basic features are up.
 
 #### 01 Monkey Pet! & Equipment
 <img src="screens/2100-pet-equipment.PNG" width="500px">
@@ -28,7 +28,7 @@ Screenshots of v2.00, which was a complete rewrite from v1.60. Basic features ar
 
 ## Screenshots (v1.60)
 
-Screenshots of v1.60, which is based of FSO engine. Rewrote the client to optimize sprite rendering & movements, as well as server scripts in Lingo.
+Screenshots of v1.60, which was based off an FSO engine. Rewrote the client in a more object-oriented design to optimize sprite rendering & movements, as well as server scripts in Lingo.
 
 #### 01 Login Screen 
 <img src="screens/0100-login.PNG" width="500px">
