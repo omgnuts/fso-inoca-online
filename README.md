@@ -1,10 +1,17 @@
 ## Introductions
 
-My first attempt at game development of Inoca Online (2005) that began out of personal interest.
+My first stab at game development of Inoca Online (2005) that began out of personal interest. 
+
+Interestingly, it was serving out of only a ADSL 256KB network back then, with more than 1000 playable characters and max concurrency of about ~100ish. 
+
+## How to Run this?
+
+- Double-click the Macromedia Flash Server.exe in the server sources. 
+- Run the correct client in dist.
 
 ## Screenshot (v2.00) 
 
-Screenshots of v2.00, which is a complete rewrite from v1.60
+Screenshots of v2.00, which was a complete rewrite from v1.60. Basic features are up.
 
 #### 01 Monkey Pet! & Equipment
 <img src="screens/2100-pet-equipment.PNG" width="500px">
@@ -61,6 +68,7 @@ Screenshots of v1.60, which is based of FSO engine. Rewrote the client to optimi
 ## Game Play
 - Social (Buddy List, World Chat, Private Messaging, Guilds)
 - PVE/PVP
+- Character Leveling
 - Item Enchantment
 - Monster Drops
 - NPC Quests
