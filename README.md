@@ -1,6 +1,6 @@
 # Introductions
 
-My first stab at game development of Inoca Online (2005) that began out of personal interest. 
+My first stab at game development of Inoca Online that began out of personal interest. 
 
 Interestingly, it was served out of only a ADSL 256KB network back then, with more than 1000 playable characters and max concurrency of about ~100ish. 
 
